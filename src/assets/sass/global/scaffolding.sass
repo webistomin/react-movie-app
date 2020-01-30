@@ -16,15 +16,11 @@ body
   -moz-osx-font-smoothing: grayscale
   -webkit-text-size-adjust: none
 
-  @supports (min-height: calc(var(--vh) * 100))
-    min-height: calc(var(--vh) * 100)
-
 img
   max-width: 100%
   height: auto
 
-audio, canvas,
-iframe, svg, video, img
+iframe, svg, img
   vertical-align: top
 
 ul
@@ -43,9 +39,6 @@ a
   -webkit-tap-highlight-color: transparent
   touch-action: manipulation
 
-blockquote
-  margin: 0
-
 p
   margin: 0
 
@@ -62,8 +55,7 @@ figure
   margin: 0
 
 input,
-input[type=search],
-textarea
+input[type=search]
   touch-action: manipulation
   -webkit-appearance: none
   border-radius: 0
@@ -74,13 +66,6 @@ textarea
 
   &::-ms-clear
     display: none
-
-textarea
-  resize: none
-
-label
-  touch-action: manipulation
-  -webkit-tap-highlight-color: transparent
 
 picture
   display: inline-block

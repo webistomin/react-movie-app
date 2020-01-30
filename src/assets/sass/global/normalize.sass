@@ -48,16 +48,6 @@ h1
 /* Text-level semantics
   ========================================================================== */
 
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-
-abbr[title]
-  border-bottom: none /* 1 */
-  text-decoration: underline /* 2 */
-  text-decoration: underline dotted /* 2 */
-
 
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
@@ -76,27 +66,6 @@ small
   font-size: 80%
 
 
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
-sub,
-sup
-  font-size: 75%
-  line-height: 0
-  position: relative
-  vertical-align: baseline
-
-
-sub
-  bottom: -0.25em
-
-
-sup
-  top: -0.5em
-
-
 /* Embedded content
   ========================================================================== */
 
@@ -110,9 +79,7 @@ sup
 
 button,
 input,
-optgroup,
-select,
-textarea
+select
   font-family: inherit /* 1 */
   font-size: 100% /* 1 */
   line-height: 1.15 /* 1 */
@@ -172,46 +139,6 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring
   outline: 1px dotted ButtonText
 
-
-/**
- * Correct the padding in Firefox.
- */
-
-fieldset
-  padding: 0.35em 0.75em 0.625em
-
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-
-legend
-  box-sizing: border-box /* 1 */
-  color: inherit /* 2 */
-  display: table /* 1 */
-  max-width: 100% /* 1 */
-  padding: 0 /* 3 */
-  white-space: normal /* 1 */
-
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-
-textarea
-  overflow: auto
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button
-  height: auto
-
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
@@ -228,13 +155,3 @@ textarea
 
 [type="search"]::-webkit-search-decoration
   -webkit-appearance: none
-
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-
-::-webkit-file-upload-button
-  -webkit-appearance: button /* 1 */
-  font: inherit /* 2 */

@@ -1,2 +1,41 @@
 +b('main-nav')
-  background-color: $color-text
+  position: fixed
+  width: 100%
+  height: 60px
+  left: 0
+  bottom: 0
+  background-color: $color-black
+  z-index: 10
+  display: flex
+  flex-direction: column
+
+  +media($screen-lg)
+    width: 100px
+    height: 100%
+
+  +e('list')
+    display: flex
+    flex-grow: 1
+
+    +media($screen-lg)
+      flex-direction: column
+
+  +e('link')
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0
+    color: $color-white
+
+    &:hover
+      color: $color-blue
+
+  +e('item')
+    display: flex
+    flex: 1
+
+    +media($screen-lg)
+      height: 100px
+      flex: initial

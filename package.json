@@ -17,7 +17,7 @@
     "eject": "react-scripts eject",
     "ec:write": "editorconfig-checker",
     "lint:write": "eslint src/. --fix",
-    "prettier:write": "prettier --write \"src/**/*.+(jsx|js|json|md|sass)\""
+    "prettier:write": "prettier --write \"src/**/*.+(jsx|js|json|md)\""
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",

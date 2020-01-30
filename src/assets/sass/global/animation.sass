@@ -1,0 +1,27 @@
++media($screen-lg)
+  [data-animation]
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s
+
+  [data-animation=fade-up]
+    opacity: 0
+    transform: translate3d(0, 50px, 0)
+
+  [data-animation=fade-down]
+    opacity: 0
+    transform: translate3d(0, -50px, 0)
+
+  [data-animation=fade-left]
+    opacity: 0
+    transform: translate3d(-50px, 0, 0)
+
+  [data-animation=fade-right]
+    opacity: 0
+    transform: translate3d(50px, 0, 0)
+
+  @for $i from 1 through 10
+    [data-delay='#{$i * 50}']
+      transition-delay: #{$i * 0.05}s
+
+  &.animated
+    opacity: 1
+    transform: none

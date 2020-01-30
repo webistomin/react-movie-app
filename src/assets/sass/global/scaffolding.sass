@@ -1,0 +1,94 @@
+html
+  display: flex
+
+body
+  min-height: 100vh
+  width: 100%
+  display: flex
+  flex-direction: column
+  margin: 0
+  font-size: $font-size-body
+  line-height: $line-height-body
+  font-family: $font-family-main
+  color: $color-text
+  font-weight: 400
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  -webkit-text-size-adjust: none
+
+  @supports (min-height: calc(var(--vh) * 100))
+    min-height: calc(var(--vh) * 100)
+
+img
+  max-width: 100%
+  height: auto
+
+audio, canvas,
+iframe, svg, video, img
+  vertical-align: top
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
+li
+  list-style-type: none
+  margin: 0
+  padding: 0
+
+a
+  color: inherit
+  text-decoration: none
+  -webkit-tap-highlight-color: transparent
+  touch-action: manipulation
+
+blockquote
+  margin: 0
+
+p
+  margin: 0
+
+button
+  padding: 0
+  border: none
+  background-color: transparent
+  cursor: pointer
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  touch-action: manipulation
+
+figure
+  margin: 0
+
+input,
+input[type=search],
+textarea
+  touch-action: manipulation
+  -webkit-appearance: none
+  border-radius: 0
+  box-shadow: none
+
+  &:required
+    box-shadow: none
+
+  &::-ms-clear
+    display: none
+
+textarea
+  resize: none
+
+label
+  touch-action: manipulation
+  -webkit-tap-highlight-color: transparent
+
+picture
+  display: inline-block
+
+::-moz-selection
+  background-color: #b3d4fc
+  text-shadow: none
+
+::selection
+  background-color: #b3d4fc
+  text-shadow: none

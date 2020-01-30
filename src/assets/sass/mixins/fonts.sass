@@ -1,0 +1,8 @@
+=font-face($ff, $style: normal, $weight: 400)
+  @font-face
+    font-family: $ff
+    font-style: $style
+    font-weight: $weight
+    font-display: swap
+    src: url('../fonts/#{$ff}-#{$weight}-#{$style}.woff2') format('woff2'), url('../fonts/#{$ff}-#{$weight}-#{$style}.woff') format('woff')
+

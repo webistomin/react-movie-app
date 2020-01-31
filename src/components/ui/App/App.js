@@ -3,12 +3,17 @@ import AppFooter from '@/components/partials/AppFooter';
 import AppNav from '@/components/partials/AppNav';
 import '@/assets/sass/main.sass';
 import { BrowserRouter as Router } from 'react-router-dom';
+import AppIntro from '../AppIntro';
+import AppContent from '../AppContent';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='app'>
       <Router>
         <AppNav />
+        <AppContent>
+          <AppIntro />
+        </AppContent>
         <AppFooter />
       </Router>
     </div>

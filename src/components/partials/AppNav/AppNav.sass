@@ -1,17 +1,21 @@
 +b('main-nav')
+  box-sizing: border-box
   position: fixed
   width: 100%
   height: 60px
   left: 0
   bottom: 0
-  background-color: $color-black
+  background-color: $color-blacker
   z-index: 10
   display: flex
   flex-direction: column
+  border-top: 1px solid $color-darkgrey
 
   +media($screen-lg)
     width: 100px
     height: 100%
+    border-top: none
+    border-right: 1px solid $color-darkgrey
 
   +e('list')
     display: flex

@@ -1,19 +1,7 @@
 {
   "name": "react-movie-app",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "classnames": "^2.2.6",
-    "customize-cra": "^0.9.1",
-    "react": "^16.12.0",
-    "react-app-rewired": "^2.1.5",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
-  },
+  "private": false,
   "scripts": {
     "dev": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -24,12 +12,23 @@
     "prettier:write": "prettier --write \"src/**/*.+(jsx|js|json|md)\"",
     "analyze": "react-app-rewired build --analyze"
   },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-lazy-load-image-component": "^1.4.1",
+    "react-router-dom": "^5.1.2"
+  },
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-angular": "^8.3.4",
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^8.1.0",
     "babel-eslint": "^10.0.3",
+    "customize-cra": "^0.9.1",
     "editorconfig-checker": "^3.0.3",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -40,6 +39,8 @@
     "lint-staged": "^10.0.5",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
+    "react-app-rewired": "^2.1.5",
+    "react-scripts": "^3.3.0",
     "sass-resources-loader": "^2.0.1",
     "svg-sprite-loader": "^4.1.6",
     "svgo-loader": "^2.2.1",

@@ -3,7 +3,7 @@ import './AppFooter.sass';
 
 const AppFooter = () => {
   return (
-    <footer>
+    <footer className='page-footer'>
       <h1>Hello</h1>
     </footer>
   );

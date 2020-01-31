@@ -1,3 +1,16 @@
 .will-change
   will-change: transform, opacity
   backface-visibility: hidden
+
+.visually-hidden
+  +visually-hidden()
+
+body.using-mouse *:focus,
+body.using-touch *:focus
+  outline: none
+
+body.using-keyboard *:focus
+  outline: 2px solid Highlight
+
+  @supports (outline-color: -webkit-focus-ring-color)
+    outline: 2px auto -webkit-focus-ring-color

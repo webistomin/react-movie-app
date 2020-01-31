@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from '@/components/ui/App';
 import * as serviceWorker from './serviceWorker';
+import { detectUserInput } from './utils/detectUserInput';
 
+// set svg sprite
 // eslint-disable-next-line no-unused-vars
 import * as icons from './assets/img/icons';
 
@@ -12,3 +14,4 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+detectUserInput();

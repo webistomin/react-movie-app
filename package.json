@@ -11,7 +11,8 @@
     "ec:write": "editorconfig-checker",
     "lint:write": "eslint src/. --fix",
     "prettier:write": "prettier --write \"src/**/*.+(jsx|js|json|md)\"",
-    "analyze": "react-app-rewired build --analyze"
+    "analyze": "react-app-rewired build --analyze",
+    "deploy": "now"
   },
   "dependencies": {
     "classnames": "^2.2.6",

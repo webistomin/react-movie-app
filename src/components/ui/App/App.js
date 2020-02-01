@@ -5,6 +5,7 @@ import '@/assets/sass/main.sass';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppIntro from '../AppIntro';
 import AppContent from '../AppContent';
+import AppCarousel from '../AppCarousel';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <AppNav />
         <AppContent>
           <AppIntro />
+          <AppCarousel />
         </AppContent>
         <AppFooter />
       </Router>

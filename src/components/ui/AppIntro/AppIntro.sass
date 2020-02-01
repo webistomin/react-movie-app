@@ -52,11 +52,6 @@
     height: 30vh
     object-fit: cover
     object-position: top
-    opacity: 0
-    transition: all .3s ease-in-out
-
-    &.visible
-      opacity: 1
 
     +media($screen-md)
       height: 40vh
@@ -90,7 +85,7 @@
 
   +e('meta')
     font-size: 14px
-    color: #999999
+    color: $color-lightgrey
     display: inline-block
 
     &:not(:last-child)

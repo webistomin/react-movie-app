@@ -1,15 +1,12 @@
 import React from 'react';
 import './AppIntro.sass';
 import AppRating from '../AppRating';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import AppButton from '../AppButton';
+import AppIcon from '../AppIcon';
+import AppLazyImage from '../AppLazyImage';
 
 const AppIntro = (props) => {
-  const afterLoad = () => {
-    document.querySelector('.intro__img').classList.add('visible');
-  };
-
   return (
     <div className='intro'>
       <div className='intro__inner'>
@@ -28,16 +25,14 @@ const AppIntro = (props) => {
           At the height of the First World War, two young British soldiers, Schofield and Blake are given a seemingly
           impossible mission. In a race against time, they must cross enemy territory and deliver...
         </p>
-        <AppButton className='intro__btn'>Watch trailer</AppButton>
+        <AppButton className='intro__btn'>
+          <AppIcon className='btn__icon' icon='icon-play' width='14' height='14' />
+          Watch trailer
+        </AppButton>
       </div>
       <figure className='intro__figure'>
         <picture className='intro__pic'>
-          <LazyLoadImage
-            src='https://image.tmdb.org/t/p/original/ds9GKAMhxv5AbprmZ2xCpK8FiEG.jpg'
-            alt='#'
-            className='intro__img'
-            afterLoad={afterLoad}
-          />
+          <AppLazyImage className='intro__img' />
         </picture>
       </figure>
     </div>

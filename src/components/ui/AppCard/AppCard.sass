@@ -11,6 +11,12 @@
     background-color: #202124
     transition: transform .3s ease-in-out
 
+    @media (pointer: fine)
+      &:hover
+        .card__like
+          opacity: 1
+          visibility: visible
+
   +e('link')
     display: block
     width: 100%
@@ -49,4 +55,19 @@
       margin: 10px 0 10px 0
       letter-spacing: 0.4px
       +text-overflow()
+
+  +e('like')
+    top: 24px
+    right: 24px
+    position: absolute
+    z-index: 1
+    color: $color-blue
+    transition: all 0.2s ease-out
+
+    &:hover
+      transform: scale(1.1)
+
+    @media (pointer: fine)
+      visibility: hidden
+      opacity: 0
 

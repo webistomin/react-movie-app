@@ -15,6 +15,7 @@ function App() {
         <AppContent>
           <AppIntro />
           <AppCarousel />
+          <AppCarousel />
         </AppContent>
         <AppFooter />
       </Router>

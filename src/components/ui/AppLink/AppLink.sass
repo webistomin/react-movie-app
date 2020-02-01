@@ -1,0 +1,36 @@
++b('link')
+  transition: all 0.2s ease-out
+
+  +m('color')
+    +m('white')
+      color: $color-white
+
+      &:hover
+        color: $color-blue
+
+    +m('grey')
+      color: $color-lightgrey
+
+      &:hover
+        color: $color-white
+
+    +m('blue')
+      color: $color-blue
+      position: relative
+
+      &::before
+        content: ''
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        height: 1px
+        background-color: currentColor
+        transition: inherit
+        transform: scaleX(0)
+        transform-origin: left
+        backface-visibility: hidden
+
+      &:hover
+        &::before
+          transform: scaleX(1)

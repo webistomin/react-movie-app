@@ -1,8 +1,8 @@
 import React from 'react';
-import './AppCarousel.sass';
 import Flickity from 'react-flickity-component';
 import AppCard from '../AppCard';
-import { Link } from 'react-router-dom';
+import AppLink from '../AppLink';
+import './AppCarousel.sass';
 
 class AppCarousel extends React.Component {
   flickityOptions = {
@@ -21,7 +21,9 @@ class AppCarousel extends React.Component {
       <section className='card-carousel'>
         <div className='card-carousel__heading'>
           <h2 className='card-carousel__title title'>Popular movies</h2>
-          <Link to='/'>Explore all</Link>
+          <AppLink to='/' color='blue'>
+            Explore all
+          </AppLink>
         </div>
         <div className='card-carousel__wrapper'>
           <Flickity className='card-carousel__slider' options={this.flickityOptions}>
@@ -62,9 +64,9 @@ class AppCarousel extends React.Component {
               <AppCard />
             </li>
             <li className='card-carousel__item'>
-              <Link to='/' className='card-carousel__explore'>
+              <AppLink to='/' className='card-carousel__explore' color='white'>
                 Explore all
-              </Link>
+              </AppLink>
             </li>
           </Flickity>
         </div>

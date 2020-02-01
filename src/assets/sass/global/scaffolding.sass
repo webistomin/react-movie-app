@@ -1,5 +1,6 @@
 html
   display: flex
+  +scrollbar(12px, $color-blue, transparent)
 
 body
   min-height: 100vh
@@ -72,11 +73,13 @@ picture
   display: inline-block
 
 ::-moz-selection
-  background-color: #b3d4fc
+  background-color: $color-lightgrey
+  color: $color-white
   text-shadow: none
 
 ::selection
-  background-color: #b3d4fc
+  background-color: $color-lightgrey
+  color: $color-white
   text-shadow: none
 
 .root,

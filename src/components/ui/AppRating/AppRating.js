@@ -1,7 +1,7 @@
 import React from 'react';
-import './AppRating.sass';
-import AppIcon from '../AppIcon';
 import classnames from 'classnames';
+import AppIcon from '@/components/ui/AppIcon';
+import './AppRating.sass';
 
 const AppRating = ({ className }) => {
   return (

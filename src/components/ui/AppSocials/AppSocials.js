@@ -1,8 +1,8 @@
 import React from 'react';
-import './AppSocials.sass';
-import AppLink from '../AppLink';
-import AppIcon from '../AppIcon';
 import classnames from 'classnames';
+import AppLink from '@/components/ui/AppLink';
+import AppIcon from '@/components/ui/AppIcon';
+import './AppSocials.sass';
 
 const AppSocials = ({ className }) => {
   return (

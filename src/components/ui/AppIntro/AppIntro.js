@@ -1,9 +1,9 @@
 import React from 'react';
-import AppRating from '../AppRating';
 import { Link } from 'react-router-dom';
-import AppButton from '../AppButton';
-import AppIcon from '../AppIcon';
-import AppLazyImage from '../AppLazyImage';
+import AppRating from '@/components/ui/AppRating';
+import AppButton from '@/components/ui/AppButton';
+import AppIcon from '@/components/ui/AppIcon';
+import AppLazyImage from '@/components/ui/AppLazyImage';
 import './AppIntro.sass';
 
 const AppIntro = (props) => {

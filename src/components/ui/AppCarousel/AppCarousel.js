@@ -1,7 +1,7 @@
 import React from 'react';
 import Flickity from 'react-flickity-component';
-import AppCard from '../AppCard';
-import AppLink from '../AppLink';
+import AppCard from '@/components/ui/AppCard';
+import AppLink from '@/components/ui/AppLink';
 import './AppCarousel.sass';
 
 class AppCarousel extends React.Component {

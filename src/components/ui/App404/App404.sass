@@ -1,0 +1,22 @@
++b('error-404')
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+  position: relative
+
+  +e('noise')
+    flex-grow: 1
+    width: 100%
+    background-color: $color-darkgrey
+
+  +e('title')
+    width: 100%
+    text-align: center
+    text-transform: uppercase
+    margin: 0
+    font-size: 7vw
+    letter-spacing: 3px
+    +absolute-center()
+    color: $color-white
+    mix-blend-mode: overlay
+    text-shadow: 0 0 10px rgba($color-white, 0.9)

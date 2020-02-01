@@ -1,26 +1,22 @@
 import React from 'react';
-import AppFooter from '@/components/partials/AppFooter';
-import AppNav from '@/components/partials/AppNav';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import '@/assets/sass/main.sass';
-import { BrowserRouter as Router } from 'react-router-dom';
-import AppIntro from '../AppIntro';
-import AppContent from '../AppContent';
-import AppCarousel from '../AppCarousel';
+import AppNav from '@/components/partials/AppNav';
+import Home from '@/pages/Home';
+import Error404 from '@/pages/Error404';
 
-function App() {
+const App = (props) => {
   return (
     <div className='app'>
       <Router>
         <AppNav />
-        <AppContent>
-          <AppIntro />
-          <AppCarousel />
-          <AppCarousel />
-        </AppContent>
-        <AppFooter />
+        <Switch>
+          <Route path='/' exact render={(props) => <Home {...props} />} />
+          <Route component={Error404} />
+        </Switch>
       </Router>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
-import './AppButton.sass';
 import classnames from 'classnames';
+import './AppButton.sass';
 
 const AppButton = ({ className, children, color }) => {
   return (

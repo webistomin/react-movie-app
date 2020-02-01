@@ -1,7 +1,7 @@
 import React from 'react';
-import './AppLink.sass';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import './AppLink.sass';
 
 const AppLink = ({ className, to, children, color }) => {
   if (!to) {

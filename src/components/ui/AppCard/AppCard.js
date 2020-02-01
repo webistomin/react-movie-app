@@ -1,9 +1,9 @@
 import React from 'react';
-import './AppCard.sass';
 import { Link } from 'react-router-dom';
-import AppLazyImage from '../AppLazyImage';
-import AppRating from '../AppRating';
-import AppIcon from '../AppIcon';
+import AppLazyImage from '@/components/ui/AppLazyImage';
+import AppRating from '@/components/ui/AppRating';
+import AppIcon from '@/components/ui/AppIcon';
+import './AppCard.sass';
 
 const AppCard = () => {
   return (

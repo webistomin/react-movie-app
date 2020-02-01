@@ -24,3 +24,6 @@ coverage
 
 # dotenv environment variables file
 .env
+
+# build
+build

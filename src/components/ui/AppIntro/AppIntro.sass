@@ -10,7 +10,16 @@
     justify-content: center
 
   +e('title')
-    margin: 0
+    font-weight: 400
+    font-size: 28px
+    margin: 0 0 14px
+    +line-clamp(2)
+
+    +media($screen-lg)
+      margin-bottom: 18px
+
+    +media($screen-xl)
+      font-size: 2.4vw
 
   +e('figure')
     position: relative
@@ -56,9 +65,63 @@
       height: 100%
 
   +e('inner')
+    padding: 0 15px 15px 15px
+
+    +media($screen-md)
+      padding: 0 40px 40px 40px
+
     +media($screen-lg)
       position: relative
       z-index: 3
       box-sizing: border-box
       width: 43%
       padding: 50px
+
+  +e('rating')
+    margin-bottom: 14px
+
+    +media($screen-lg)
+      margin-right: 14px
+      margin-bottom: 0
+
+  +e('meta-info')
+    display: flex
+    flex-wrap: wrap
+
+  +e('meta')
+    font-size: 14px
+    color: #999999
+    display: inline-block
+
+    &:not(:last-child)
+      margin-right: 8px
+
+    +media($screen-lg)
+      font-size: 16px
+
+  +e('desc')
+    display: none
+
+    +media($screen-md)
+      display: block
+      font-size: 15px
+      +line-clamp(3)
+
+    +media($screen-lg)
+      margin-bottom: 28px
+
+    +media($screen-xl)
+      font-size: 0.9vw
+
+  +e('info')
+    +media($screen-md)
+      margin-bottom: 24px
+
+    +media($screen-lg)
+      display: flex
+
+  +e('btn')
+    display: none
+
+    +media($screen-lg)
+      display: inline-block

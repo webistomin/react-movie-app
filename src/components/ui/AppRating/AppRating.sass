@@ -1,0 +1,24 @@
++b('rating')
+  +e('box')
+    width: 106px
+    position: relative
+
+  +e('current')
+    display: flex
+    overflow: hidden
+    width: 50%
+    position: absolute
+    top: 0
+    left: 0
+
+  +e('star')
+    stroke: $color-blue
+    flex-shrink: 0
+
+    &:not(:last-of-type)
+      margin-right: 4px
+
+    +m('filled')
+      fill: $color-blue
+      stroke: $color-blue
+

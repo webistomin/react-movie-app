@@ -11,6 +11,21 @@ const AppNav = () => {
       icon: 'icon-home',
     },
     {
+      name: 'Account',
+      link: '/',
+      icon: 'icon-user',
+    },
+    {
+      name: 'Favorite list',
+      link: '/',
+      icon: 'icon-heart',
+    },
+    {
+      name: 'Search',
+      icon: 'icon-search',
+      isButton: true,
+    },
+    {
       name: 'Movies',
       link: '/movies',
       icon: 'icon-movie',
@@ -19,11 +34,6 @@ const AppNav = () => {
       name: 'TV',
       link: '/tv',
       icon: 'icon-tv',
-    },
-    {
-      name: 'Search',
-      icon: 'icon-search',
-      isButton: true,
     },
   ];
 

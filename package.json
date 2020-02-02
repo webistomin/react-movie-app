@@ -6,7 +6,7 @@
     "dev": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test:unit": "react-app-rewired test",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "eject": "react-scripts eject",
     "ec:write": "editorconfig-checker",
     "lint:write": "eslint src/. --fix",

@@ -12,6 +12,7 @@ import iconStarFilled from './icon-star-filled.svg';
 import iconPlay from './icon-play.svg';
 import iconHeart from './icon-heart.svg';
 import iconUser from './icon-user.svg';
+import iconCross from './icon-cross.svg';
 
 export {
   iconArrow,
@@ -28,4 +29,5 @@ export {
   iconPlay,
   iconHeart,
   iconUser,
+  iconCross,
 };

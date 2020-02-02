@@ -6,6 +6,7 @@ export default (function polyfills() {
         return false;
       }
       // 2. If number is NaN, +∞, or −∞, return false.
+      // eslint-disable-next-line no-self-compare
       if (value !== value || value === Infinity || value === -Infinity) {
         return false;
       }

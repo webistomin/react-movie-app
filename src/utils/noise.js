@@ -65,7 +65,7 @@ export default class Grain {
   }
 
   draw() {
-    const { ctx, patternCanvas, canvas, viewHeight } = this;
+    const { ctx, patternCanvas, canvas } = this;
     const { width, height } = canvas;
 
     // clear canvas

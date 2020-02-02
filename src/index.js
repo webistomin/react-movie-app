@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '@/components/ui/App';
+import App from '@/components/partials/App';
 import * as serviceWorker from './serviceWorker';
 import { detectUserInput } from './utils/detectUserInput';
 

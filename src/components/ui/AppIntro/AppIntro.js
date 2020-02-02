@@ -11,7 +11,7 @@ const AppIntro = (props) => {
     <div className='intro'>
       <div className='intro__inner'>
         <h1 className='intro__title title'>
-          <Link to='/'>1917</Link>
+          <Link to='/movie'>1917</Link>
         </h1>
         <div className='intro__info'>
           <AppRating className='intro__rating' />

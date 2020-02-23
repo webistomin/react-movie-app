@@ -10,7 +10,7 @@ import * as icons from './assets/img/icons';
 
 // polyfills
 // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-import polyfill from './utils/polyfill';
+import polyfill from 'utils/polyfill';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

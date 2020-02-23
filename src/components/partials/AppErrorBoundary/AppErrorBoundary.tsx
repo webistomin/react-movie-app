@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import block from 'bem-cn';
+import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
 
 import AppErrorIndicator from 'components/ui/AppErrorIndicator';
@@ -8,7 +8,7 @@ interface IProps {
   className?: string;
 }
 
-const b = block('ErrorBoundary');
+const b = cn('ErrorBoundary');
 
 export default class ErrorBoundary extends Component<IProps> {
   state = {

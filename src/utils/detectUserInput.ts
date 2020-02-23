@@ -1,4 +1,4 @@
-export const detectUserInput = () => {
+export const detectUserInput = (): void => {
   document.body.addEventListener('mousedown', function() {
     document.body.classList.add('using-mouse');
     document.body.classList.remove('using-keyboard');

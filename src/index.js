@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '@/components/partials/App';
+import App from 'components/partials/App';
 import * as serviceWorker from './serviceWorker';
-import { detectUserInput } from './utils/detectUserInput';
+import { detectUserInput } from 'utils/detectUserInput';
 
 // set svg sprite
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 import * as icons from './assets/img/icons';
 
 // polyfills
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 import polyfill from './utils/polyfill';
 
 ReactDOM.render(<App />, document.getElementById('root'));

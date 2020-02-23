@@ -1,6 +1,14 @@
 +b('Card')
-  &:hover .card__img
-    transform: scale(1.02)
+  position: relative
+
+  &:hover .Card-Img.Lazyload_loaded
+    transform: scale(1.05)
+
+  @media (pointer: fine)
+    &:hover
+      .Card-Like
+        opacity: 1
+        visibility: visible
 
   +e('Figure')
     width: 100%
@@ -9,13 +17,7 @@
     padding-top: 150.27%
     overflow: hidden
     background-color: #202124
-    transition: transform .3s ease-in-out
-
-    @media (pointer: fine)
-      &:hover
-        .card__like
-          opacity: 1
-          visibility: visible
+    transition: transform 0.3s ease-in-out
 
   +e('Link')
     display: block

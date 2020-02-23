@@ -13,11 +13,11 @@ const b = cn('Card');
 const AppCard: FunctionComponent = () => {
   return (
     <article className={b()}>
+      <button type='button' className={b('Like')}>
+        <AppIcon className='Icon_heart' icon='icon-heart' width={24} height={24} />
+      </button>
       <Link to='/' className={b('Link')}>
         <figure className={b('Figure')}>
-          <button type='button' className={b('Like')}>
-            <AppIcon className='Icon_heart' icon='icon-heart' width={24} height={24} />
-          </button>
           <picture className={b('Picture')}>
             <AppLazyImage className={b('Img')} />
           </picture>

@@ -9,6 +9,7 @@ import AppNav from 'components/partials/AppNav';
 import AppSearch from 'components/partials/AppSearch';
 import AppTransitionWrapper from 'components/partials/AppTransitionWrapper';
 import ErrorBoundary from 'components/partials/AppErrorBoundary';
+import AppInitializer from 'components/partials/AppInitializer';
 
 const Home = lazy(() => import('pages/Home'));
 const Movie = lazy(() => import('pages/Movie'));
@@ -24,6 +25,7 @@ const App: FunctionComponent = () => {
   return (
     <Provider store={store}>
       <ErrorBoundary className={b()}>
+        <AppInitializer />
         <Router>
           <AppTransitionWrapper>
             <div className={w()}>

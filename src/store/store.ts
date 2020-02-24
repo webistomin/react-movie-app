@@ -7,9 +7,11 @@ import rootSaga from 'store/saga';
 import { IS_DEV } from 'utils/env';
 
 import searchReducer from 'store/search/reducer';
+import movieReducer from 'store/movie/reducer';
 
 const rootReducers = combineReducers({
   search: searchReducer,
+  movie: movieReducer,
 });
 
 export function configureStore(initialState = {}) {

@@ -8,4 +8,8 @@ export enum FetchStatus {
   FAILURE = 'failure',
 }
 
-export type InitializeApplication = ActionType<typeof initializeApp>;
+export enum ActionTypes {
+  APP_INITIALIZE = '[app] initialization',
+}
+
+export type InitializeApplicationAction = ActionType<typeof initializeApp>;

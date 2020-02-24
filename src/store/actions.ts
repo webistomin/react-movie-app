@@ -1,5 +1,7 @@
+import { ActionTypes } from 'store/types';
+
 export function initializeApp() {
   return {
-    type: '[app] initialization',
+    type: ActionTypes.APP_INITIALIZE,
   };
 }

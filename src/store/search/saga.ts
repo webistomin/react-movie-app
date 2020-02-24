@@ -1,4 +1,4 @@
-import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { all, takeLatest, call } from 'redux-saga/effects';
 import { ActionTypes, ISearchQueryAction } from 'store/search/types';
 import TMDbService from '~/services/TMDbService';
 

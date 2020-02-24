@@ -2,7 +2,7 @@ import React, { FunctionComponent, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 import { Provider } from 'react-redux';
-import store from 'store/store';
+import { configureStore } from 'store/store';
 import '@/assets/sass/main.sass';
 
 import AppNav from 'components/partials/AppNav';
@@ -17,6 +17,8 @@ const PopularMovies = lazy(() => import('pages/PopularMovies'));
 
 const b = cn('App');
 const w = cn('Wrapper');
+
+const store = configureStore();
 
 const App: FunctionComponent = () => {
   return (

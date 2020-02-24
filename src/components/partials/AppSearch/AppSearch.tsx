@@ -1,6 +1,9 @@
-import React, { FunctionComponent, MutableRefObject, useRef, useState } from 'react';
+import React, { FunctionComponent, MutableRefObject, useEffect, useRef } from 'react';
 import debounce from 'lodash.debounce';
 import { cn } from '@bem-react/classname';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSearchBarVisibility, getSearchQuery } from 'store/search/selectors';
+import { setSearchQuery } from 'store/search/actions';
 
 import AppIcon from 'components/ui/AppIcon';
 
@@ -9,10 +12,18 @@ import './AppSearch.sass';
 const b = cn('Search');
 
 const AppSearch: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const searchInput = useRef() as MutableRefObject<HTMLInputElement>;
-  const [searchQuery, setSearchQuery] = useState('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isSearchBarVisible, setSearchBarVisibility] = useState(false);
+  const isSearchBarVisible = useSelector(getSearchBarVisibility);
+  const searchQuery = useSelector(getSearchQuery);
+
+  useEffect(() => {
+    searchInput.current.value = searchQuery;
+  }, [searchInput, searchQuery]);
+
+  const onSetSearchQuery = (value: string): void => {
+    dispatch(setSearchQuery(value));
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
@@ -20,12 +31,12 @@ const AppSearch: FunctionComponent = () => {
   };
 
   const handleClear = () => {
-    setSearchQuery('');
+    onSetSearchQuery('');
     searchInput.current.value = '';
   };
 
   const handleInputDebounced = debounce((event) => {
-    setSearchQuery(event.target.value);
+    onSetSearchQuery(event.target.value);
   }, 200);
 
   return (
@@ -38,7 +49,7 @@ const AppSearch: FunctionComponent = () => {
           onChange={handleChange}
           ref={searchInput}
         />
-        <button type='button' className={b('Clear', { visible: searchQuery })} onClick={handleClear}>
+        <button type='button' className={b('Clear', { visible: Boolean(searchQuery) })} onClick={handleClear}>
           <AppIcon icon='icon-cross' width={24} height={24} />
         </button>
       </form>

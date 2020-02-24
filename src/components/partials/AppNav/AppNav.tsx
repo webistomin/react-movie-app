@@ -1,14 +1,25 @@
 import React, { FunctionComponent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { cn } from '@bem-react/classname';
+import { setSearchQuery, toggleSearchBarVisibility } from 'store/search/actions';
+import { getSearchBarVisibility } from 'store/search/selectors';
 
+import { Link } from 'react-router-dom';
 import AppIcon from 'components/ui/AppIcon';
 
 import './AppNav.sass';
-import { Link } from 'react-router-dom';
 
 const b = cn('MainNav');
 
 const AppNav: FunctionComponent = () => {
+  const dispatch = useDispatch();
+  const isSearchBarVisible = useSelector(getSearchBarVisibility);
+
+  const onToggleSearchBarVisibility = () => {
+    dispatch(setSearchQuery(''));
+    dispatch(toggleSearchBarVisibility(!isSearchBarVisible));
+  };
+
   const navLinks = [
     {
       name: 'Home',
@@ -29,6 +40,7 @@ const AppNav: FunctionComponent = () => {
       name: 'Search',
       icon: 'icon-search',
       isButton: true,
+      action: onToggleSearchBarVisibility,
     },
     {
       name: 'Movies',
@@ -47,7 +59,7 @@ const AppNav: FunctionComponent = () => {
       if (item.isButton) {
         return (
           <li className={b('Item')} key={item.name}>
-            <button type='button' className={b('Link')} title={item.name}>
+            <button type='button' className={b('Link')} title={item.name} onClick={item.action}>
               {item.name}
               <AppIcon icon={item.icon} width={24} height={24} className={b('Icon')} />
             </button>

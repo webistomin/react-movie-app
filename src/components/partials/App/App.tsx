@@ -36,7 +36,7 @@ const App: FunctionComponent = () => {
                   <Route path='/' exact render={() => <Home />} />
                   <Route path='/movie/:id' exact render={() => <Movie />} />
                   {/*<Route path='/popular' exact render={() => <PopularMovies />} />*/}
-                  {/*<Route component={Error404} />*/}
+                  <Route component={Error404} />
                 </Switch>
               </Suspense>
             </div>

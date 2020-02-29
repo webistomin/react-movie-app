@@ -7,7 +7,8 @@
       "components/*": [ "./src/components/*" ],
       "store/*": [ "./src/store/*" ],
       "utils/*": [ "./src/utils/*" ],
-      "pages/*": [ "./src/pages/*" ]
-    },
+      "pages/*": [ "./src/pages/*" ],
+      "common/*": [ "./src/common/*" ]
+    }
   }
 }

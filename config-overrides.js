@@ -16,6 +16,7 @@ module.exports = override(
     store: path.resolve(__dirname, 'src/store/'),
     utils: path.resolve(__dirname, 'src/utils/'),
     pages: path.resolve(__dirname, 'src/pages/'),
+    common: path.resolve(__dirname, 'src/common/'),
   }),
   addBundleVisualizer({}, true),
   ...addBabelPlugins('@babel/plugin-proposal-nullish-coalescing-operator', '@babel/plugin-proposal-optional-chaining'),

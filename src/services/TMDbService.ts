@@ -47,7 +47,7 @@ export default class TMDb {
 
   public getLatestMovie = async () => {
     return await this.fetchJSON(
-      `${this.API_BASE}movie/latest?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
+      `${this.API_BASE}movie/latest?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&include_adult=false`
     );
   };
 

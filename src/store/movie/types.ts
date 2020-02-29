@@ -24,6 +24,9 @@ export interface IMovie {
   genres: IGenres;
   release_date: string;
   runtime: number;
+  video: string | null;
+  vote_average: string | null;
+  reviews: string | null | undefined;
 }
 
 export interface IFetchLatestMovieStartAction extends Action {
@@ -32,7 +35,7 @@ export interface IFetchLatestMovieStartAction extends Action {
 
 export interface IFetchLatestMovieSuccessAction extends Action {
   type: ActionTypes.FETCH_LATEST_MOVIE_SUCCESS;
-  payload: IMovie;
+  payload: IMovieInterface;
 }
 
 export interface IFetchLatestMovieFailureAction extends Action {

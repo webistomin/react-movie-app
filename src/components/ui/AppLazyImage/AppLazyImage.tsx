@@ -10,9 +10,10 @@ const b = cn('Lazyload');
 interface IProps {
   className: string;
   scrollPosition: ScrollPosition;
+  image?: string;
 }
 
-const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition }) => {
+const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, image }) => {
   const [isLoaded, setLoadingState] = useState(false);
 
   const afterLoad = () => {
@@ -21,7 +22,7 @@ const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition }) 
 
   return (
     <LazyLoadImage
-      src='https://image.tmdb.org/t/p/original/ds9GKAMhxv5AbprmZ2xCpK8FiEG.jpg'
+      src={image}
       alt='#'
       width='600'
       height='100'

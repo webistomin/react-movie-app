@@ -14,10 +14,12 @@ function reducer(state: IMovieInterface = initialState, action: IFetchLatestMovi
         fetchStatus: FetchStatus.PENDING,
       };
     case ActionTypes.FETCH_LATEST_MOVIE_SUCCESS:
+      const latestMovie = action.payload.latestMovie;
+      const fetchStatus = action.payload.fetchStatus;
       return {
         ...state,
-        latestMovie: action.payload,
-        fetchStatus: FetchStatus.SUCCESS,
+        latestMovie,
+        fetchStatus,
       };
     case ActionTypes.FETCH_LATEST_MOVIE_FAILURE:
       return {

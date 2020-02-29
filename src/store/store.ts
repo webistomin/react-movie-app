@@ -9,11 +9,13 @@ import { IS_DEV } from 'utils/env';
 import searchReducer from 'store/search/reducer';
 import latestMovieReducer from 'store/movie/latest/reducer';
 import popularMoviesReducer from 'store/movie/popular/reducer';
+import movieDetailsReducer from 'store/movie/details/reducer';
 import genresReducer from 'store/genres/reducer';
 
 const movieReducers = combineReducers({
   latestMovies: latestMovieReducer,
   popularMovies: popularMoviesReducer,
+  movieDetails: movieDetailsReducer,
 });
 
 const rootReducers = combineReducers({

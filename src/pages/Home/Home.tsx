@@ -4,23 +4,27 @@ import AppIntro from 'components/ui/AppIntro';
 import AppCarousel from 'components/ui/AppCarousel';
 import AppContent from 'components/ui/AppContent';
 import AppFooter from 'components/partials/AppFooter';
-import { useDispatch } from 'react-redux';
-import { fetchLatestMovieStart } from 'store/movie/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLatestMovieStart } from 'store/movie/latest/actions';
+import { fetchPopularMoviesStart } from 'store/movie/popular/actions';
+import { getPopularMovies } from 'store/movie/popular/selectors';
 
 const Home: FunctionComponent = () => {
   const dispatch = useDispatch();
+  const popularMovies = useSelector(getPopularMovies);
 
   useEffect(() => {
     document.title = 'Home, sweet home :: 💚';
     dispatch(fetchLatestMovieStart());
+    dispatch(fetchPopularMoviesStart());
   }, [dispatch]);
 
   return (
     <>
       <AppContent>
         <AppIntro />
-        <AppCarousel />
-        <AppCarousel />
+        {popularMovies ? <AppCarousel title='Popular movies' items={popularMovies.results} /> : null}
+        {/*<AppCarousel />*/}
       </AppContent>
       <AppFooter />
     </>

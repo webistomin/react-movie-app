@@ -7,12 +7,18 @@ import rootSaga from 'store/saga';
 import { IS_DEV } from 'utils/env';
 
 import searchReducer from 'store/search/reducer';
-import movieReducer from 'store/movie/reducer';
+import latestMovieReducer from 'store/movie/latest/reducer';
+import popularMoviesReducer from 'store/movie/popular/reducer';
 import genresReducer from 'store/genres/reducer';
+
+const movieReducers = combineReducers({
+  latestMovies: latestMovieReducer,
+  popularMovies: popularMoviesReducer,
+});
 
 const rootReducers = combineReducers({
   search: searchReducer,
-  movie: movieReducer,
+  movies: movieReducers,
   genres: genresReducer,
 });
 

@@ -4,6 +4,9 @@ import { FetchStatus } from 'store/types';
 
 export interface IMovieInterface {
   latestMovie: IMovie | null;
+}
+
+export interface IMovieStateInterface extends IMovieInterface {
   fetchStatus: FetchStatus | null;
 }
 
@@ -25,7 +28,7 @@ export interface IMovie {
   release_date: string;
   runtime: number;
   video: string | null;
-  vote_average: string | null;
+  vote_average: number | null;
   reviews: string | null | undefined;
 }
 

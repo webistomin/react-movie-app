@@ -1,5 +1,5 @@
 import { ApplicationState } from 'store/store';
 
 export function getLatestMovie(state: ApplicationState) {
-  return state.movie.latestMovie;
+  return state.movies.latestMovies.latestMovie;
 }

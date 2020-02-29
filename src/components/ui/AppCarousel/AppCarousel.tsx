@@ -7,10 +7,16 @@ import AppCard from 'components/ui/AppCard';
 import AppLink from 'components/ui/AppLink';
 
 import './AppCarousel.sass';
+import { IMovie } from 'store/movie/popular/types';
 
 const b = cn('CardCarousel');
 
-class AppCarousel extends Component {
+interface IProps {
+  title: string;
+  items: Array<IMovie>;
+}
+
+class AppCarousel extends Component<IProps> {
   flickityOptions = {
     freeScroll: true,
     contain: true,
@@ -23,46 +29,33 @@ class AppCarousel extends Component {
   };
 
   render() {
+    const { title, items } = this.props;
+
     return (
       <section className={b()}>
         <div className={b('Heading')}>
-          <h2 className={classnames(b('Title'), 'Title')}>Popular movies</h2>
+          <h2 className={classnames(b('Title'), 'Title')}>{title}</h2>
           <AppLink to='/' color='blue'>
             Explore all
           </AppLink>
         </div>
         <div className={b('Wrapper')}>
           <Flickity className={b('Slider')} options={this.flickityOptions}>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
-            <li className={b('Item')}>
-              <AppCard />
-            </li>
+            {items.map((card) => {
+              return (
+                <li className={b('Item')} key={card.id}>
+                  <AppCard
+                    id={card.id}
+                    genre_ids={card.genre_ids}
+                    overview={card.overview}
+                    poster_path={card.poster_path}
+                    release_date={card.release_date}
+                    title={card.title}
+                    vote_average={card.vote_average}
+                  />
+                </li>
+              );
+            })}
             <li className={b('Item')}>
               <AppLink to='/' className={b('Explore')} color='white'>
                 Explore all

@@ -1,8 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { ActionTypes, IFetchLatestMovieStartAction } from 'store/movie/types';
+import { ActionTypes, IFetchLatestMovieStartAction } from 'store/movie/latest/types';
 import TMDbService from '~/services/TMDbService';
-import { fetchLatestMovieSuccess } from 'store/movie/actions';
-import { FetchStatus } from 'store/types';
+import { fetchLatestMovieFailure, fetchLatestMovieSuccess } from 'store/movie/latest/actions';
 
 const API = new TMDbService();
 
@@ -12,10 +11,11 @@ function* fetchLatestMovieSaga(action: IFetchLatestMovieStartAction) {
     yield put(
       fetchLatestMovieSuccess({
         latestMovie,
-        fetchStatus: FetchStatus.SUCCESS,
       })
     );
-  } catch (error) {}
+  } catch (error) {
+    yield put(fetchLatestMovieFailure());
+  }
 }
 
 export default function*() {

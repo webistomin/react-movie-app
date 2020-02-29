@@ -1,4 +1,4 @@
-import { ActionTypes, IMovieInterface } from 'store/movie/types';
+import { ActionTypes, IMovieInterface } from 'store/movie/latest/types';
 
 export function fetchLatestMovieStart() {
   return {
@@ -10,5 +10,11 @@ export function fetchLatestMovieSuccess(payload: IMovieInterface) {
   return {
     type: ActionTypes.FETCH_LATEST_MOVIE_SUCCESS,
     payload,
+  };
+}
+
+export function fetchLatestMovieFailure() {
+  return {
+    type: ActionTypes.FETCH_LATEST_MOVIE_FAILURE,
   };
 }

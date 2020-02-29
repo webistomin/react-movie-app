@@ -8,11 +8,12 @@ import './AppRating.sass';
 
 interface IProps {
   className?: string;
+  rating: number | null;
 }
 
 const b = cn('Rating');
 
-const AppRating: FunctionComponent<IProps> = ({ className }) => {
+const AppRating: FunctionComponent<IProps> = ({ className, rating }) => {
   const getBorderedStars = () => {
     return Array(5)
       .fill(null)
@@ -33,11 +34,27 @@ const AppRating: FunctionComponent<IProps> = ({ className }) => {
       });
   };
 
+  const getFilledStyle = () => {
+    const MAX_WIDTH = 106;
+    const style = {
+      width: '',
+    };
+
+    if (rating) {
+      const percent = ((rating / 2) * 100) / 5;
+      style.width = `${(MAX_WIDTH / 100) * percent}%`;
+    }
+
+    return style;
+  };
+
   return (
     <div className={classnames(b(), className)}>
       <div className={b('Box')}>
         <div className={b('All')}>{getBorderedStars()}</div>
-        <div className={b('Current')}>{getFilledStars()}</div>
+        <div style={getFilledStyle()} className={b('Current')}>
+          {getFilledStars()}
+        </div>
       </div>
     </div>
   );

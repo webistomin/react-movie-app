@@ -9,7 +9,7 @@ import AppIcon from 'components/ui/AppIcon';
 import AppLazyImage from 'components/ui/AppLazyImage';
 
 import { useSelector } from 'react-redux';
-import { getLatestMovie } from 'store/movie/selectors';
+import { getLatestMovie } from 'store/movie/latest/selectors';
 import { minutesToHoursAndMinutes } from 'utils/minutesToHoursAndMinutes';
 import { buildImagePath } from 'utils/buildImagePath';
 import { BackdropSizes } from 'common/image/types';
@@ -31,7 +31,7 @@ const AppIntro: FunctionComponent = () => {
         )}
 
         <div className={b('Info')}>
-          {latestMovie?.vote_average ? <AppRating className={b('Rating')} /> : null}
+          {latestMovie?.vote_average ? <AppRating rating={latestMovie.vote_average} className={b('Rating')} /> : null}
 
           <div className={b('MetaInfo')}>
             {latestMovie?.reviews ? <span className={classnames(b('Reviews'), b('Meta'))}>1,613 Reviews</span> : null}

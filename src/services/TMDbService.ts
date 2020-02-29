@@ -57,9 +57,9 @@ export default class TMDb {
     );
   };
 
-  public getPopularMovies = async (id: number, page: number) => {
+  public getPopularMovies = async (page = 1) => {
     return await this.fetchJSON(
-      `${this.API_BASE}movie/${id}/popular?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+      `${this.API_BASE}movie/popular?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 

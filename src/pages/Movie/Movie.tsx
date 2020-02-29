@@ -10,8 +10,8 @@ const Movie: FunctionComponent = () => {
     <>
       <AppContent>
         <AppIntro />
-        <AppCarousel />
-        <AppCarousel />
+        {/*<AppCarousel />*/}
+        {/*<AppCarousel />*/}
       </AppContent>
       <AppFooter />
     </>

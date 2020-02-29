@@ -52,7 +52,7 @@ const AppCardList: FunctionComponent = () => {
   ].map((item, index) => {
     return (
       <li className={b('Item')} key={index}>
-        <AppCard />
+        {/*<AppCard />*/}
       </li>
     );
   });
@@ -63,7 +63,7 @@ const AppCardList: FunctionComponent = () => {
     [1, 2, 3].map((item, index) => {
       return items.push(
         <li className={b('Item')} key={counter++}>
-          <AppCard />
+          {/*<AppCard />*/}
         </li>
       );
     });

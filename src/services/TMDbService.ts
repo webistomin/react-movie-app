@@ -1,8 +1,8 @@
 export default class TMDb {
-  private readonly API_BASE = process.env.REACT_APP_TMDB_URL;
-  private readonly IMG_BASE = process.env.REACT_APP_API_IMAGE_URL;
-  private readonly TMDB_API_KEY = process.env.REACT_APP_API_KEY;
-  private readonly API_LANGUAGE = process.env.REACT_APP_API_LANG;
+  private readonly API_BASE = process.env.REACT_APP_TMDB_URL || process.env.react_app_tmdb_url;
+  private readonly IMG_BASE = process.env.REACT_APP_API_IMAGE_URL || process.env.react_app_api_image_url;
+  private readonly TMDB_API_KEY = process.env.REACT_APP_API_KEY || process.env.react_app_api_key;
+  private readonly API_LANGUAGE = process.env.REACT_APP_API_LANG || process.env.react_app_api_lang;
 
   private fetchJSON = async (url: string) => {
     const response = await fetch(url);

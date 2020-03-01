@@ -10,12 +10,14 @@ import searchReducer from 'store/search/reducer';
 import latestMovieReducer from 'store/movie/latest/reducer';
 import popularMoviesReducer from 'store/movie/popular/reducer';
 import movieDetailsReducer from 'store/movie/details/reducer';
+import recommendedMoviesReducer from 'store/movie/recommended/reducer';
 import genresReducer from 'store/genres/reducer';
 
 const movieReducers = combineReducers({
   latestMovies: latestMovieReducer,
   popularMovies: popularMoviesReducer,
   movieDetails: movieDetailsReducer,
+  recommendedMovies: recommendedMoviesReducer,
 });
 
 const rootReducers = combineReducers({

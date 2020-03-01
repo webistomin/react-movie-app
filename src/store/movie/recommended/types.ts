@@ -2,7 +2,7 @@ import { Action } from 'redux';
 import { FetchStatus } from 'store/types';
 
 export interface IMovieInterface {
-  recommendedMovies: IRecommendedMovies | null;
+  recommendedMovie: IRecommendedMovies | null;
 }
 
 export interface IMovieStateInterface extends IMovieInterface {

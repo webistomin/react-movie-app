@@ -39,7 +39,7 @@ export default class TMDb {
     );
   };
 
-  public getMovieSimilar = async (id: number, page: number) => {
+  public getMovieSimilar = async (id: number, page = 1) => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}/similar?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );

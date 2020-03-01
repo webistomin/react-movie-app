@@ -5,12 +5,12 @@ import { fetchRecommendedMoviesFailure, fetchRecommendedMoviesSuccess } from 'st
 
 const API = new TMDbService();
 
-function* fetchPopularMoviesSaga(action: IFetchRecommendedMoviesStartAction) {
+function* fetchRecommendedMoviesSaga(action: IFetchRecommendedMoviesStartAction) {
   try {
-    const recommendedMovies = yield call(API.getMovieRecommendations, action.payload);
+    const recommendedMovie = yield call(API.getMovieRecommendations, action.payload);
     yield put(
       fetchRecommendedMoviesSuccess({
-        recommendedMovies,
+        recommendedMovie,
       })
     );
   } catch (error) {
@@ -19,5 +19,5 @@ function* fetchPopularMoviesSaga(action: IFetchRecommendedMoviesStartAction) {
 }
 
 export default function*() {
-  yield all([takeLatest(ActionTypes.FETCH_RECOMMENDED_MOVIES_START, fetchPopularMoviesSaga)]);
+  yield all([takeLatest(ActionTypes.FETCH_RECOMMENDED_MOVIES_START, fetchRecommendedMoviesSaga)]);
 }

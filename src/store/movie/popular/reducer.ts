@@ -2,7 +2,7 @@ import { ActionTypes, IFetchPopularMoviesActions, IMovieStateInterface } from 's
 import { FetchStatus } from 'store/types';
 
 const initialState: IMovieStateInterface = {
-  popularMovies: null,
+  popularMovie: null,
   fetchStatus: null,
 };
 
@@ -16,7 +16,7 @@ function reducer(state: IMovieStateInterface = initialState, action: IFetchPopul
     case ActionTypes.FETCH_POPULAR_MOVIES_SUCCESS:
       return {
         ...state,
-        popularMovies: action.payload.popularMovies,
+        popularMovie: action.payload.popularMovie,
         fetchStatus: FetchStatus.SUCCESS,
       };
     case ActionTypes.FETCH_POPULAR_MOVIES_FAILURE:

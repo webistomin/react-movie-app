@@ -1,12 +1,12 @@
-import { ActionTypes, IFetchGenresActions, IGenres } from 'store/genres/types';
+import { ActionTypes, IFetchGenresActions, IGenresState } from 'store/genres/types';
 import { FetchStatus } from 'store/types';
 
-const initialState: IGenres = {
+const initialState: IGenresState = {
   genres: null,
   fetchStatus: null,
 };
 
-function reducer(state: IGenres = initialState, action: IFetchGenresActions): IGenres {
+function reducer(state: IGenresState = initialState, action: IFetchGenresActions): IGenresState {
   switch (action.type) {
     case ActionTypes.FETCH_MOVIE_GENRES_START:
       return {

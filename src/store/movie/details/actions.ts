@@ -1,4 +1,5 @@
-import { ActionTypes, IMovieInterface } from 'store/movie/details/types';
+import { ActionTypes } from 'store/movie/details/types';
+import { IMovie } from 'common/types/movie';
 
 export function fetchMovieDetailsStart(payload: number) {
   return {
@@ -7,7 +8,7 @@ export function fetchMovieDetailsStart(payload: number) {
   };
 }
 
-export function fetchMovieDetailsSuccess(payload: IMovieInterface) {
+export function fetchMovieDetailsSuccess(payload: IMovie) {
   return {
     type: ActionTypes.FETCH_MOVIE_DETAILS_SUCCESS,
     payload,

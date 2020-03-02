@@ -1,11 +1,14 @@
-import { ActionTypes, ISearchActions, ISearchInterface } from 'store/search/types';
+import { ActionTypes, ISearchActions, ISearchState } from 'store/search/types';
+import { FetchStatus } from 'store/types';
 
-const initialState: ISearchInterface = {
+const initialState: ISearchState = {
   searchQuery: '',
   isSearchBarVisible: false,
+  searchResult: null,
+  fetchStatus: null,
 };
 
-function reducer(state: ISearchInterface = initialState, action: ISearchActions): ISearchInterface {
+function reducer(state: ISearchState = initialState, action: ISearchActions): ISearchState {
   switch (action.type) {
     case ActionTypes.SET_SEARCH_QUERY:
       return {
@@ -16,6 +19,17 @@ function reducer(state: ISearchInterface = initialState, action: ISearchActions)
       return {
         ...state,
         isSearchBarVisible: action.payload,
+      };
+    case ActionTypes.FETCH_SEARCH_CONTENT_START:
+      return {
+        ...state,
+        fetchStatus: FetchStatus.PENDING,
+      };
+    case ActionTypes.FETCH_SEARCH_CONTENT_SUCCESS:
+      return {
+        ...state,
+        searchResult: action.payload,
+        fetchStatus: FetchStatus.SUCCESS,
       };
     default:
       return state;

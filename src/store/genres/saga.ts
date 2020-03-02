@@ -1,23 +1,16 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionTypes, IFetchMovieGenresStartAction } from 'store/genres/types';
 import TMDbService from '~/services/TMDbService';
-import { failureMovieGenres, fetchMovieGenres, setMovieGenres } from 'store/genres/actions';
-import { FetchStatus } from 'store/types';
+import { fetchMovieGenresFailure, fetchMovieGenresSuccess } from 'store/genres/actions';
 
 const API = new TMDbService();
 
 function* fetchMovieGenresSaga(action: IFetchMovieGenresStartAction) {
   try {
-    yield put(fetchMovieGenres());
     const genres = yield call(API.getGenres);
-    yield put(
-      setMovieGenres({
-        genres,
-        fetchStatus: FetchStatus.SUCCESS,
-      })
-    );
+    yield put(fetchMovieGenresSuccess(genres));
   } catch (error) {
-    yield put(failureMovieGenres());
+    yield put(fetchMovieGenresFailure());
   }
 }
 

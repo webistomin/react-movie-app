@@ -1,4 +1,6 @@
-import { ActionTypes, IMovieInterface } from 'store/movie/recommended/types';
+import { ActionTypes } from 'store/movie/recommended/types';
+import { ISearch } from 'common/types/search';
+import { IMovie } from 'common/types/movie';
 
 export function fetchRecommendedMoviesStart(payload: number) {
   return {
@@ -7,7 +9,7 @@ export function fetchRecommendedMoviesStart(payload: number) {
   };
 }
 
-export function fetchRecommendedMoviesSuccess(payload: IMovieInterface) {
+export function fetchRecommendedMoviesSuccess(payload: ISearch<IMovie>) {
   return {
     type: ActionTypes.FETCH_RECOMMENDED_MOVIES_SUCCESS,
     payload,

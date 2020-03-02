@@ -1,12 +1,12 @@
-import { ActionTypes, IFetchPopularMoviesActions, IMovieStateInterface } from 'store/movie/popular/types';
+import { ActionTypes, IFetchPopularMoviesActions, IPopularMoviesState } from 'store/movie/popular/types';
 import { FetchStatus } from 'store/types';
 
-const initialState: IMovieStateInterface = {
+const initialState: IPopularMoviesState = {
   popularMovie: null,
   fetchStatus: null,
 };
 
-function reducer(state: IMovieStateInterface = initialState, action: IFetchPopularMoviesActions): IMovieStateInterface {
+function reducer(state: IPopularMoviesState = initialState, action: IFetchPopularMoviesActions): IPopularMoviesState {
   switch (action.type) {
     case ActionTypes.FETCH_POPULAR_MOVIES_START:
       return {
@@ -16,7 +16,7 @@ function reducer(state: IMovieStateInterface = initialState, action: IFetchPopul
     case ActionTypes.FETCH_POPULAR_MOVIES_SUCCESS:
       return {
         ...state,
-        popularMovie: action.payload.popularMovie,
+        popularMovie: action.payload,
         fetchStatus: FetchStatus.SUCCESS,
       };
     case ActionTypes.FETCH_POPULAR_MOVIES_FAILURE:

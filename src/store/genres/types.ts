@@ -1,14 +1,10 @@
 import { Action } from 'redux';
 import { FetchStatus } from 'store/types';
+import { IGenre } from 'common/types/genre';
 
-export interface IGenres {
+export interface IGenresState {
   genres: Array<IGenre> | null;
   fetchStatus: FetchStatus | null;
-}
-
-export interface IGenre {
-  id: number;
-  name: string;
 }
 
 export enum ActionTypes {

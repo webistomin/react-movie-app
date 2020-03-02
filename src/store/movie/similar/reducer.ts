@@ -1,12 +1,12 @@
-import { ActionTypes, IFetchSimilarMoviesActions, IMovieStateInterface } from 'store/movie/similar/types';
+import { ActionTypes, IFetchSimilarMoviesActions, ISimilarMovieState } from 'store/movie/similar/types';
 import { FetchStatus } from 'store/types';
 
-const initialState: IMovieStateInterface = {
+const initialState: ISimilarMovieState = {
   similarMovie: null,
   fetchStatus: null,
 };
 
-function reducer(state: IMovieStateInterface = initialState, action: IFetchSimilarMoviesActions): IMovieStateInterface {
+function reducer(state: ISimilarMovieState = initialState, action: IFetchSimilarMoviesActions): ISimilarMovieState {
   switch (action.type) {
     case ActionTypes.FETCH_SIMILAR_MOVIES_START:
       return {
@@ -16,7 +16,7 @@ function reducer(state: IMovieStateInterface = initialState, action: IFetchSimil
     case ActionTypes.FETCH_SIMILAR_MOVIES_SUCCESS:
       return {
         ...state,
-        similarMovie: action.payload.similarMovie,
+        similarMovie: action.payload,
         fetchStatus: FetchStatus.SUCCESS,
       };
     case ActionTypes.FETCH_SIMILAR_MOVIES_FAILURE:

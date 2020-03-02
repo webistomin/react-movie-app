@@ -1,15 +1,12 @@
-import { ActionTypes, IFetchMovieDetailsActions, IMovieDetailsStateInterface } from 'store/movie/details/types';
+import { ActionTypes, IFetchMovieDetailsActions, IMovieDetailsState } from 'store/movie/details/types';
 import { FetchStatus } from 'store/types';
 
-const initialState: IMovieDetailsStateInterface = {
+const initialState: IMovieDetailsState = {
   movieDetails: null,
   fetchStatus: null,
 };
 
-function reducer(
-  state: IMovieDetailsStateInterface = initialState,
-  action: IFetchMovieDetailsActions
-): IMovieDetailsStateInterface {
+function reducer(state: IMovieDetailsState = initialState, action: IFetchMovieDetailsActions): IMovieDetailsState {
   switch (action.type) {
     case ActionTypes.FETCH_MOVIE_DETAILS_START:
       return {
@@ -19,7 +16,7 @@ function reducer(
     case ActionTypes.FETCH_MOVIE_DETAILS_SUCCESS:
       return {
         ...state,
-        movieDetails: action.payload.movieDetails,
+        movieDetails: action.payload,
         fetchStatus: FetchStatus.SUCCESS,
       };
     case ActionTypes.FETCH_MOVIE_DETAILS_FAILURE:

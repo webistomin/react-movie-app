@@ -8,11 +8,7 @@ const API = new TMDbService();
 function* fetchLatestMovieSaga(action: IFetchLatestMovieStartAction) {
   try {
     const latestMovie = yield call(API.getLatestMovie);
-    yield put(
-      fetchLatestMovieSuccess({
-        latestMovie,
-      })
-    );
+    yield put(fetchLatestMovieSuccess(latestMovie));
   } catch (error) {
     yield put(fetchLatestMovieFailure());
   }

@@ -1,15 +1,15 @@
-import { ActionTypes, IFetchRecommendedMoviesActions, IMovieStateInterface } from 'store/movie/recommended/types';
+import { ActionTypes, IFetchRecommendedMoviesActions, IRecommendedMoviesState } from 'store/movie/recommended/types';
 import { FetchStatus } from 'store/types';
 
-const initialState: IMovieStateInterface = {
+const initialState: IRecommendedMoviesState = {
   recommendedMovie: null,
   fetchStatus: null,
 };
 
 function reducer(
-  state: IMovieStateInterface = initialState,
+  state: IRecommendedMoviesState = initialState,
   action: IFetchRecommendedMoviesActions
-): IMovieStateInterface {
+): IRecommendedMoviesState {
   switch (action.type) {
     case ActionTypes.FETCH_RECOMMENDED_MOVIES_START:
       return {
@@ -19,7 +19,7 @@ function reducer(
     case ActionTypes.FETCH_RECOMMENDED_MOVIES_SUCCESS:
       return {
         ...state,
-        recommendedMovie: action.payload.recommendedMovie,
+        recommendedMovie: action.payload,
         fetchStatus: FetchStatus.SUCCESS,
       };
     case ActionTypes.FETCH_RECOMMENDED_MOVIES_FAILURE:

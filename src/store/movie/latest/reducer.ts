@@ -1,12 +1,12 @@
-import { ActionTypes, IFetchLatestMovieActions, IMovieStateInterface } from 'store/movie/latest/types';
+import { ActionTypes, IFetchLatestMovieActions, ILatestMovieState } from 'store/movie/latest/types';
 import { FetchStatus } from 'store/types';
 
-const initialState: IMovieStateInterface = {
+const initialState: ILatestMovieState = {
   latestMovie: null,
   fetchStatus: null,
 };
 
-function reducer(state: IMovieStateInterface = initialState, action: IFetchLatestMovieActions): IMovieStateInterface {
+function reducer(state: ILatestMovieState = initialState, action: IFetchLatestMovieActions): ILatestMovieState {
   switch (action.type) {
     case ActionTypes.FETCH_LATEST_MOVIE_START:
       return {
@@ -16,7 +16,7 @@ function reducer(state: IMovieStateInterface = initialState, action: IFetchLates
     case ActionTypes.FETCH_LATEST_MOVIE_SUCCESS:
       return {
         ...state,
-        latestMovie: action.payload.latestMovie,
+        latestMovie: action.payload,
         fetchStatus: FetchStatus.SUCCESS,
       };
     case ActionTypes.FETCH_LATEST_MOVIE_FAILURE:

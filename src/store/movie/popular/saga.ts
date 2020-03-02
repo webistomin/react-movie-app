@@ -8,11 +8,7 @@ const API = new TMDbService();
 function* fetchPopularMoviesSaga(action: IFetchPopularMoviesStartAction) {
   try {
     const popularMovie = yield call(API.getPopularMovies);
-    yield put(
-      fetchPopularMoviesSuccess({
-        popularMovie,
-      })
-    );
+    yield put(fetchPopularMoviesSuccess(popularMovie));
   } catch (error) {
     yield put(fetchPopularMoviesFailure());
   }

@@ -1,19 +1,19 @@
-import { ActionTypes, IGenres } from 'store/genres/types';
+import { ActionTypes, IGenresState } from 'store/genres/types';
 
-export function fetchMovieGenres() {
+export function fetchMovieGenresStart() {
   return {
     type: ActionTypes.FETCH_MOVIE_GENRES_START,
   };
 }
 
-export function setMovieGenres(payload: IGenres) {
+export function fetchMovieGenresSuccess(payload: IGenresState) {
   return {
     type: ActionTypes.FETCH_MOVIE_GENRES_SUCCESS,
     payload,
   };
 }
 
-export function failureMovieGenres() {
+export function fetchMovieGenresFailure() {
   return {
     type: ActionTypes.FETCH_MOVIE_GENRES_FAILURE,
   };

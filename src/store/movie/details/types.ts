@@ -25,6 +25,9 @@ export interface IMovieDetails {
   runtime: number | null;
   title: string | null;
   vote_average: number | null;
+  overview: string | null;
+  reviews: number | null;
+  video: string | null;
 }
 
 export interface IFetchMovieDetailsStartAction extends Action {

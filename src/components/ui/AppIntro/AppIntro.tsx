@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import React, { FunctionComponent } from 'react';
 import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
@@ -8,8 +9,6 @@ import AppButton from 'components/ui/AppButton';
 import AppIcon from 'components/ui/AppIcon';
 import AppLazyImage from 'components/ui/AppLazyImage';
 
-import { useSelector } from 'react-redux';
-import { getLatestMovie } from 'store/movie/latest/selectors';
 import { minutesToHoursAndMinutes } from 'utils/minutesToHoursAndMinutes';
 import { buildImagePath } from 'utils/buildImagePath';
 import { BackdropSizes } from 'common/image/types';
@@ -18,39 +17,55 @@ import './AppIntro.sass';
 
 const b = cn('Intro');
 
-const AppIntro: FunctionComponent = () => {
-  const latestMovie = useSelector(getLatestMovie);
+interface IProps {
+  id?: number | null;
+  original_title?: string | null;
+  vote_average?: number | null;
+  reviews?: number | null;
+  release_date?: string | null;
+  runtime?: number | null;
+  overview?: string | null;
+  video?: string | null;
+  backdrop_path?: string | null;
+}
 
+const AppIntro: FunctionComponent<IProps> = ({
+  id,
+  original_title,
+  vote_average,
+  release_date,
+  reviews,
+  runtime,
+  video,
+  overview,
+  backdrop_path,
+}) => {
   return (
     <div className={b()}>
       <div className={b('Inner')}>
-        {latestMovie?.id && latestMovie?.original_title && (
+        {id && original_title && (
           <h1 className={classnames(b('Title'), 'Title')}>
-            <Link to={`/movie/${latestMovie.id}`}>{latestMovie.original_title}</Link>
+            <Link to={`/movie/${id}`}>{original_title}</Link>
           </h1>
         )}
 
         <div className={b('Info')}>
-          {latestMovie?.vote_average ? <AppRating rating={latestMovie.vote_average} className={b('Rating')} /> : null}
+          {vote_average ? <AppRating rating={vote_average} className={b('Rating')} /> : null}
 
           <div className={b('MetaInfo')}>
-            {latestMovie?.reviews ? <span className={classnames(b('Reviews'), b('Meta'))}>1,613 Reviews</span> : null}
-            {latestMovie?.release_date ? (
-              <span className={classnames(b('Year'), b('Meta'))}>
-                {new Date(latestMovie.release_date).getUTCFullYear()}
-              </span>
+            {reviews ? <span className={classnames(b('Reviews'), b('Meta'))}>1,613 Reviews</span> : null}
+            {release_date ? (
+              <span className={classnames(b('Year'), b('Meta'))}>{new Date(release_date).getUTCFullYear()}</span>
             ) : null}
-            {latestMovie?.runtime ? (
-              <time className={classnames(b('Duration'), b('Meta'))}>
-                {minutesToHoursAndMinutes(latestMovie.runtime)}
-              </time>
+            {runtime ? (
+              <time className={classnames(b('Duration'), b('Meta'))}>{minutesToHoursAndMinutes(runtime)}</time>
             ) : null}
           </div>
         </div>
 
-        {latestMovie?.overview ? <p className={b('Desc')}>{latestMovie.overview}</p> : null}
+        {overview ? <p className={b('Desc')}>{overview}</p> : null}
 
-        {latestMovie?.video ? (
+        {video ? (
           <AppButton className={b('Btn')}>
             <AppIcon className='Btn-Icon' icon='icon-play' width={14} height={14} />
             Watch trailer
@@ -58,13 +73,10 @@ const AppIntro: FunctionComponent = () => {
         ) : null}
       </div>
 
-      {latestMovie?.backdrop_path ? (
+      {backdrop_path ? (
         <figure className={b('Figure')}>
           <picture className={b('Pic')}>
-            <AppLazyImage
-              image={`${buildImagePath(latestMovie.backdrop_path, BackdropSizes.w1280)}`}
-              className={b('Img')}
-            />
+            <AppLazyImage image={`${buildImagePath(backdrop_path, BackdropSizes.w1280)}`} className={b('Img')} />
           </picture>
         </figure>
       ) : null}

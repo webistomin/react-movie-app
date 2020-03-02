@@ -1,5 +1,5 @@
 import { ActionTypes, IFetchLatestMovieActions, ILatestMovieState } from 'store/movie/latest/types';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 
 const initialState: ILatestMovieState = {
   latestMovie: null,

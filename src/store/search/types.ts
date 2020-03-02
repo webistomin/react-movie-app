@@ -3,7 +3,7 @@ import { ISearch } from 'common/types/search';
 import { IMovie } from 'common/types/movie';
 import { IShow } from 'common/types/show';
 import { IPerson } from 'common/types/person';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 
 export interface ISearchState {
   searchQuery: string;

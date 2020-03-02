@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 import { IMovie } from 'common/types/movie';
 
 export interface ILatestMovieState {

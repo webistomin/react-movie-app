@@ -7,9 +7,9 @@ import AppRating from 'components/ui/AppRating';
 import AppIcon from 'components/ui/AppIcon';
 
 import './AppCard.sass';
-import { IMovie } from 'store/movie/popular/types';
+import { IMovie } from 'common/types/movie';
 import { buildImagePath } from 'utils/buildImagePath';
-import { PosterSizes } from 'common/image/types';
+import { PosterSizes } from 'common/types/images';
 
 const b = cn('Card');
 

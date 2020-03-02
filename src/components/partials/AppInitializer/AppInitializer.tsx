@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { initializeApp } from 'store/actions';
+import { initializeApp } from 'store/init/actions';
 
 const AppInitializer: FunctionComponent = () => {
   const dispatch = useDispatch();

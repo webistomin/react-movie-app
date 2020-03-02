@@ -8,7 +8,7 @@ const API = new TMDbService();
 function* fetchMovieGenresSaga(action: IFetchMovieGenresStartAction) {
   try {
     const genres = yield call(API.getGenres);
-    yield put(fetchMovieGenresSuccess(genres));
+    yield put(fetchMovieGenresSuccess(genres.genres));
   } catch (error) {
     yield put(fetchMovieGenresFailure());
   }

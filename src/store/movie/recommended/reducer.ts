@@ -1,5 +1,5 @@
 import { ActionTypes, IFetchRecommendedMoviesActions, IRecommendedMoviesState } from 'store/movie/recommended/types';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 
 const initialState: IRecommendedMoviesState = {
   recommendedMovie: null,

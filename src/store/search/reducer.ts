@@ -1,5 +1,5 @@
 import { ActionTypes, ISearchActions, ISearchState } from 'store/search/types';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 
 const initialState: ISearchState = {
   searchQuery: '',

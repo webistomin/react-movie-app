@@ -1,5 +1,5 @@
 import { ActionTypes, IFetchMovieDetailsActions, IMovieDetailsState } from 'store/movie/details/types';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 
 const initialState: IMovieDetailsState = {
   movieDetails: null,

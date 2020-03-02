@@ -7,6 +7,7 @@ import recommendedMoviesSaga from 'store/movie/recommended/saga';
 import similarMoviesSaga from 'store/movie/similar/saga';
 import movieDetailsSaga from 'store/movie/details/saga';
 import genresSaga from 'store/genres/saga';
+import initializeAppSaga from 'store/init/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -17,5 +18,6 @@ export default function* rootSaga() {
     movieDetailsSaga(),
     recommendedMoviesSaga(),
     similarMoviesSaga(),
+    initializeAppSaga(),
   ]);
 }

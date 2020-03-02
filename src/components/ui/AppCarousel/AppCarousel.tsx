@@ -7,7 +7,7 @@ import AppCard from 'components/ui/AppCard';
 import AppLink from 'components/ui/AppLink';
 
 import './AppCarousel.sass';
-import { IMovie } from 'store/movie/popular/types';
+import { IMovie } from 'common/types/movie';
 
 const b = cn('CardCarousel');
 

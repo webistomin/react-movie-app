@@ -1,5 +1,5 @@
 import { ActionTypes, IFetchSimilarMoviesActions, ISimilarMovieState } from 'store/movie/similar/types';
-import { FetchStatus } from 'store/types';
+import { FetchStatus } from 'common/types/fetch-status';
 
 const initialState: ISimilarMovieState = {
   similarMovie: null,

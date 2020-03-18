@@ -4,6 +4,7 @@ module.exports = {
     'npm run prettier:write',
     'npm run ec:write',
     'npx scriptlint',
+    'npx @ls-lint/ls-lint',
     'git add',
   ],
 };

@@ -1,0 +1,22 @@
+ls:
+  .tsx: PascalCase
+  .js: kebab-case | camelCase | point.case
+  .ts: camelCase | PascalCase | kebab-case
+  .d.ts: kebab-case
+  .mock.ts: kebab-case
+  .spec.ts: camelCase | PascalCase | point.case
+  .test.js: camelCase | PascalCase | point.case
+  .test-d.ts: kebab-case
+  .config.js: kebab-case
+  .umd.js: kebab-case
+  .spec.ts.snap: camelCase | PascalCase
+  .global.js: kebab-case
+
+ignore:
+  - node_modules
+  - .git
+  - .circleci
+  - .github
+  - .vscode
+  - .idea
+  - build

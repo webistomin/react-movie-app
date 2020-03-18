@@ -1,6 +1,6 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import { ActionTypes, ISearchQueryAction } from 'store/search/types';
-import TMDbService from '~/services/TMDbService';
+import TMDbService from '~/services/tmdbService';
 import { fetchSearchContentFailure, fetchSearchContentStart, fetchSearchContentSuccess } from 'store/search/actions';
 
 const API = new TMDbService();

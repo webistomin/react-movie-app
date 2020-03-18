@@ -1,6 +1,6 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { ActionTypes, IFetchMovieGenresStartAction } from 'store/genres/types';
-import TMDbService from '~/services/TMDbService';
+import TMDbService from '~/services/tmdbService';
 import { fetchMovieGenresFailure, fetchMovieGenresSuccess } from 'store/genres/actions';
 
 const API = new TMDbService();

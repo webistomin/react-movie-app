@@ -4,6 +4,7 @@
   "private": false,
   "scripts": {
     "dev": "react-app-rewired start",
+    "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test:unit": "react-app-rewired test",
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -68,6 +69,7 @@
     "react-scripts": "^3.3.0",
     "redux-devtools": "^3.5.0",
     "sass-resources-loader": "^2.0.1",
+    "scriptlint": "^2.0.4",
     "svg-sprite-loader": "^4.1.6",
     "svgo-loader": "^2.2.1",
     "typescript": "^3.8.2",

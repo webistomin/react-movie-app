@@ -24,6 +24,12 @@ function reducer(state: IMovieDetailsState = initialState, action: IFetchMovieDe
         ...state,
         fetchStatus: FetchStatus.FAILURE,
       };
+    case ActionTypes.CLEAR_MOVIE_DETAILS:
+      return {
+        ...state,
+        movieDetails: null,
+        fetchStatus: null,
+      };
     default:
       return state;
   }

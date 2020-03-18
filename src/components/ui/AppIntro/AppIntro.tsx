@@ -18,15 +18,13 @@ import './AppIntro.sass';
 const b = cn('Intro');
 
 interface IProps {
-  id?: number | null;
-  original_title?: string | null;
-  vote_average?: number | null;
-  reviews?: number | null;
-  release_date?: string | null;
-  runtime?: number | null;
-  overview?: string | null;
-  video?: string | null;
-  backdrop_path?: string | null;
+  id: number | undefined;
+  original_title: string | undefined;
+  vote_average: number | undefined;
+  release_date: Date | undefined;
+  runtime: number | undefined;
+  overview: string | undefined;
+  backdrop_path: string | undefined;
 }
 
 const AppIntro: FunctionComponent<IProps> = ({
@@ -34,9 +32,7 @@ const AppIntro: FunctionComponent<IProps> = ({
   original_title,
   vote_average,
   release_date,
-  reviews,
   runtime,
-  video,
   overview,
   backdrop_path,
 }) => {
@@ -53,7 +49,6 @@ const AppIntro: FunctionComponent<IProps> = ({
           {vote_average ? <AppRating rating={vote_average} className={b('Rating')} /> : null}
 
           <div className={b('MetaInfo')}>
-            {reviews ? <span className={classnames(b('Reviews'), b('Meta'))}>1,613 Reviews</span> : null}
             {release_date ? (
               <span className={classnames(b('Year'), b('Meta'))}>{new Date(release_date).getUTCFullYear()}</span>
             ) : null}
@@ -65,12 +60,12 @@ const AppIntro: FunctionComponent<IProps> = ({
 
         {overview ? <p className={b('Desc')}>{overview}</p> : null}
 
-        {video ? (
-          <AppButton className={b('Btn')}>
-            <AppIcon className='Btn-Icon' icon='icon-play' width={14} height={14} />
-            Watch trailer
-          </AppButton>
-        ) : null}
+        {/*{video ? (*/}
+        {/*  <AppButton className={b('Btn')}>*/}
+        {/*    <AppIcon className='Btn-Icon' icon='icon-play' width={14} height={14} />*/}
+        {/*    Watch trailer*/}
+        {/*  </AppButton>*/}
+        {/*) : null}*/}
       </div>
 
       {backdrop_path ? (

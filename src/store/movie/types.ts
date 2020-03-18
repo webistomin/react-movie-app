@@ -1,11 +1,11 @@
-import { IGenres } from 'store/genres/types';
+import { IGenre } from 'common/types/genre';
 
 export interface IMovie {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null;
   budget: number;
-  genres: Array<IGenres>;
+  genres: Array<IGenre>;
   homepage: string;
   id: number;
   imdb_id: string;

@@ -1,12 +1,12 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 
 import AppIntro from 'components/ui/AppIntro';
 import AppContent from 'components/ui/AppContent';
-import AppCarousel from 'components/ui/AppCarousel';
+// import AppCarousel from 'components/ui/AppCarousel';
 import AppFooter from 'components/partials/AppFooter';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetailsStart } from 'store/movie/details/actions';
+import { clearMovieDetails, fetchMovieDetailsStart } from 'store/movie/details/actions';
 import { fetchRecommendedMoviesStart } from 'store/movie/recommended/actions';
 import { fetchSimilarMoviesStart } from 'store/movie/similar/actions';
 import { getMovieDetails } from 'store/movie/details/selectors';
@@ -26,7 +26,11 @@ const Movie: FunctionComponent = () => {
     dispatch(fetchMovieDetailsStart(Number(params.id)));
     dispatch(fetchRecommendedMoviesStart(Number(params.id)));
     dispatch(fetchSimilarMoviesStart(Number(params.id)));
-  }, [params, dispatch]);
+
+    return () => {
+      dispatch(clearMovieDetails());
+    };
+  }, [dispatch, params]);
 
   return (
     <>
@@ -38,10 +42,9 @@ const Movie: FunctionComponent = () => {
           original_title={movie?.title}
           release_date={movie?.release_date}
           runtime={movie?.runtime}
-          reviews={movie?.reviews}
-          video={movie?.video}
+          vote_average={movie?.vote_average}
         />
-        <AppCarousel items={recommended.results} />
+        {/*  <AppCarousel items={recommended.results} />*/}
         {/*<AppCarousel />*/}
       </AppContent>
       <AppFooter />

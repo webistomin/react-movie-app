@@ -1,6 +1,6 @@
 export interface ICollection {
-  id: number;
   backdrop_path: string;
+  id: number;
   name: string;
   poster_path: string;
 }

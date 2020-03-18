@@ -1,15 +1,15 @@
 export interface IShow {
+  backdrop_path: string;
+  first_air_date: Date;
+  genre_ids: Array<number>;
   id: number;
   name: string;
-  original_name: string;
-  poster_path: string;
-  popularity: number;
-  backdrop_path: string;
-  vote_average: number;
-  overview: string;
   origin_country: Array<string>;
-  genre_ids: Array<number>;
   original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  vote_average: number;
   vote_count: number;
-  first_air_date: Date;
 }

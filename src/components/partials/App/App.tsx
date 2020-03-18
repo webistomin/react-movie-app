@@ -27,20 +27,20 @@ const App: FunctionComponent = () => {
       <ErrorBoundary className={b()}>
         <AppInitializer />
         <Router>
-          <AppTransitionWrapper>
-            <div className={w()}>
-              <AppNav />
-              <AppSearch />
-              <Suspense fallback={<div>Loading...</div>}>
-                <Switch>
-                  <Route path='/' exact render={() => <Home />} />
-                  <Route path='/movie/:id' exact render={() => <Movie />} />
-                  {/*<Route path='/popular' exact render={() => <PopularMovies />} />*/}
-                  <Route component={Error404} />
-                </Switch>
-              </Suspense>
-            </div>
-          </AppTransitionWrapper>
+          {/*<AppTransitionWrapper>*/}
+          <div className={w()}>
+            <AppNav />
+            <AppSearch />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+                <Route path='/' exact render={() => <Home />} />
+                <Route path='/movie/:id' exact render={() => <Movie />} />
+                {/*<Route path='/popular' exact render={() => <PopularMovies />} />*/}
+                <Route component={Error404} />
+              </Switch>
+            </Suspense>
+          </div>
+          {/*</AppTransitionWrapper>*/}
         </Router>
       </ErrorBoundary>
     </Provider>

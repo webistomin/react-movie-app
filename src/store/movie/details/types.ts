@@ -11,6 +11,7 @@ export enum ActionTypes {
   FETCH_MOVIE_DETAILS_START = '[movie] fetch movie details start',
   FETCH_MOVIE_DETAILS_SUCCESS = '[movie] fetch movie details success',
   FETCH_MOVIE_DETAILS_FAILURE = '[movie] fetch movie details failure',
+  CLEAR_MOVIE_DETAILS = '[movie] clear movie details',
 }
 
 export interface IFetchMovieDetailsStartAction extends Action {
@@ -27,7 +28,12 @@ export interface IFetchMovieDetailsFailureAction extends Action {
   type: ActionTypes.FETCH_MOVIE_DETAILS_FAILURE;
 }
 
+export interface IClearMovieDetailsAction extends Action {
+  type: ActionTypes.CLEAR_MOVIE_DETAILS;
+}
+
 export type IFetchMovieDetailsActions =
   | IFetchMovieDetailsStartAction
   | IFetchMovieDetailsSuccessAction
-  | IFetchMovieDetailsFailureAction;
+  | IFetchMovieDetailsFailureAction
+  | IClearMovieDetailsAction;

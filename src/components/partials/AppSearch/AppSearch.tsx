@@ -22,8 +22,6 @@ const AppSearch: FunctionComponent = () => {
   const searchQuery = useSelector(getSearchQuery);
 
   useEffect(() => {
-    console.log(location);
-    console.log(params);
     if (searchInput?.current) {
       searchInput.current.value = searchQuery;
     }

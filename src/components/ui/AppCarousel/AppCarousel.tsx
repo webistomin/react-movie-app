@@ -52,6 +52,14 @@ class AppCarousel extends Component<IProps> {
                     release_date={card.release_date}
                     title={card.title}
                     vote_average={card.vote_average}
+                    adult={card.adult}
+                    backdrop_path={card.backdrop_path}
+                    original_language={card.original_language}
+                    original_title={card.original_title}
+                    popularity={card.popularity}
+                    video={card.video}
+                    vote_count={card.vote_count}
+                    runtime={card.runtime}
                   />
                 </li>
               );

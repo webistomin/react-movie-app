@@ -12,6 +12,7 @@ export interface IShowDetails extends IShow {
   homepage: string;
   in_production: boolean;
   languages: Array<string>;
+  last_air_date: Date;
   networks: Array<INetwork>;
   number_of_episodes: number;
   number_of_seasons: number;
@@ -19,5 +20,4 @@ export interface IShowDetails extends IShow {
   seasons: Array<ISeason>;
   status: string;
   type: string;
-  last_air_date: Date;
 }

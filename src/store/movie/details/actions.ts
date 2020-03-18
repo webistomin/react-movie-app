@@ -20,3 +20,9 @@ export function fetchMovieDetailsFailure() {
     type: ActionTypes.FETCH_MOVIE_DETAILS_FAILURE,
   };
 }
+
+export function clearMovieDetails() {
+  return {
+    type: ActionTypes.CLEAR_MOVIE_DETAILS,
+  };
+}

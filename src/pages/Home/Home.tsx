@@ -34,7 +34,7 @@ const Home: FunctionComponent = () => {
           runtime={latestMovie?.runtime}
           vote_average={latestMovie?.vote_average}
         />
-        {popularMovies ? <AppCarousel title='Popular movies' items={popularMovies.results} /> : null}
+        {popularMovies ? <AppCarousel title='Popular movies' link='/popular' items={popularMovies.results} /> : null}
       </AppContent>
       <AppFooter />
     </>

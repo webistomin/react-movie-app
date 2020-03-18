@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useCallback, useEffect } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 
 import AppIntro from 'components/ui/AppIntro';
 import AppContent from 'components/ui/AppContent';
-// import AppCarousel from 'components/ui/AppCarousel';
+import AppCarousel from 'components/ui/AppCarousel';
 import AppFooter from 'components/partials/AppFooter';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { fetchRecommendedMoviesStart } from 'store/movie/recommended/actions';
 import { fetchSimilarMoviesStart } from 'store/movie/similar/actions';
 import { getMovieDetails } from 'store/movie/details/selectors';
 import { getRecommendedMovies } from 'store/movie/recommended/selectors';
+import { getSimilarMovies } from 'store/movie/similar/selectors';
 
 interface IRouteParams {
   id: string;
@@ -21,6 +22,7 @@ const Movie: FunctionComponent = () => {
   const params = useParams<IRouteParams>();
   const movie = useSelector(getMovieDetails);
   const recommended = useSelector(getRecommendedMovies);
+  const similar = useSelector(getSimilarMovies);
 
   useEffect(() => {
     dispatch(fetchMovieDetailsStart(Number(params.id)));
@@ -44,8 +46,8 @@ const Movie: FunctionComponent = () => {
           runtime={movie?.runtime}
           vote_average={movie?.vote_average}
         />
-        {/*  <AppCarousel items={recommended.results} />*/}
-        {/*<AppCarousel />*/}
+        {recommended && <AppCarousel title='Recommended movies' items={recommended.results} />}
+        {similar && <AppCarousel title='Similar movies' items={similar.results} />}
       </AppContent>
       <AppFooter />
     </>

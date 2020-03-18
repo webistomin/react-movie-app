@@ -13,6 +13,7 @@ const b = cn('CardCarousel');
 
 interface IProps {
   title: string;
+  link?: string;
   items: Array<IMovie>;
 }
 
@@ -29,15 +30,17 @@ class AppCarousel extends Component<IProps> {
   };
 
   render() {
-    const { title, items } = this.props;
+    const { title, items, link } = this.props;
 
     return (
       <section className={b()}>
         <div className={b('Heading')}>
           <h2 className={classnames(b('Title'), 'Title')}>{title}</h2>
-          <AppLink to='/' color='blue'>
-            Explore all
-          </AppLink>
+          {link && (
+            <AppLink to={link} color='blue'>
+              Explore all
+            </AppLink>
+          )}
         </div>
         <div className={b('Wrapper')}>
           <Flickity className={b('Slider')} options={this.flickityOptions}>
@@ -64,11 +67,13 @@ class AppCarousel extends Component<IProps> {
                 </li>
               );
             })}
-            <li className={b('Item')}>
-              <AppLink to='/' className={b('Explore')} color='white'>
-                Explore all
-              </AppLink>
-            </li>
+            {link && (
+              <li className={b('Item')}>
+                <AppLink to={link} className={b('Explore')} color='white'>
+                  Explore all
+                </AppLink>
+              </li>
+            )}
           </Flickity>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { FetchStatus } from 'common/types/fetch-status';
 import { IGenre } from 'common/types/genre';
 
 export interface IGenresState {
-  genres: Array<IGenre> | null;
+  genres: IGenre[] | null;
   fetchStatus: FetchStatus | null;
 }
 
@@ -19,7 +19,7 @@ export interface IFetchMovieGenresStartAction extends Action {
 
 export interface IFetchMovieGenresSuccessAction extends Action {
   type: ActionTypes.FETCH_MOVIE_GENRES_SUCCESS;
-  payload: Array<IGenre>;
+  payload: IGenre[];
 }
 
 export interface IFetchMovieGenresFailureAction extends Action {

@@ -12,17 +12,21 @@ import { getPopularMovies } from 'store/movie/popular/selectors';
 import { getLatestMovie } from 'store/movie/latest/selectors';
 import { getNowPlayingMovies } from 'store/movie/now-playing/selectors';
 import { fetchNowPlayingMoviesStart } from 'store/movie/now-playing/actions';
+import { getTopRatedMovies } from 'store/movie/top-rated/selectors';
+import { fetchTopRatedMoviesStart } from 'store/movie/top-rated/actions';
 
 const Home: FunctionComponent = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(getPopularMovies);
   const nowPlayingMovies = useSelector(getNowPlayingMovies);
+  const topRatedMovies = useSelector(getTopRatedMovies);
   const latestMovie = useSelector(getLatestMovie);
 
   useEffect(() => {
     document.title = 'Home, sweet home :: 💚';
     dispatch(fetchLatestMovieStart());
     dispatch(fetchPopularMoviesStart());
+    dispatch(fetchTopRatedMoviesStart());
     dispatch(fetchNowPlayingMoviesStart());
   }, [dispatch]);
 
@@ -41,6 +45,9 @@ const Home: FunctionComponent = () => {
         {popularMovies ? <AppCarousel title='Popular movies' link='/popular' items={popularMovies.results} /> : null}
         {nowPlayingMovies ? (
           <AppCarousel title='Now playing movies' link='/now-playing' items={nowPlayingMovies.results} />
+        ) : null}
+        {topRatedMovies ? (
+          <AppCarousel title='Top rated movies' link='/top-rated' items={topRatedMovies.results} />
         ) : null}
       </AppContent>
       <AppFooter />

@@ -1,3 +1,7 @@
+import { ISearch } from 'common/types/search';
+import { IMovie } from 'common/types/movie';
+import { IGenre } from 'common/types/genre';
+
 export default class TMDb {
   private readonly API_BASE = process.env.REACT_APP_TMDB_URL || process.env.react_app_tmdb_url;
   private readonly IMG_BASE = process.env.REACT_APP_API_IMAGE_URL || process.env.react_app_api_image_url;
@@ -9,7 +13,7 @@ export default class TMDb {
     return response.json();
   };
 
-  public getGenres = async () => {
+  public getGenres = async (): Promise<IGenre[]> => {
     return await this.fetchJSON(
       `${this.API_BASE}genre/movie/list?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
     );
@@ -21,7 +25,7 @@ export default class TMDb {
     );
   };
 
-  public getMovieDetails = async (id: number) => {
+  public getMovieDetails = async (id: number): Promise<IMovie> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
     );
@@ -33,45 +37,45 @@ export default class TMDb {
     );
   };
 
-  public getMovieRecommendations = async (id: number) => {
+  public getMovieRecommendations = async (id: number): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}/recommendations?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
     );
   };
 
-  public getMovieSimilar = async (id: number, page = 1) => {
+  public getMovieSimilar = async (id: number, page = 1): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}/similar?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 
-  public getLatestMovie = async () => {
+  public getLatestMovie = async (): Promise<IMovie> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/latest?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&include_adult=false`
     );
   };
 
-  public getNowPlayingMovies = async (page = 1) => {
+  public getNowPlayingMovies = async (page = 1): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/now_playing?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 
-  public getPopularMovies = async (page = 1) => {
+  public getPopularMovies = async (page = 1): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/popular?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 
-  public getTopRatedMovies = async (id: number, page: number) => {
+  public getTopRatedMovies = async (page = 1): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
-      `${this.API_BASE}movie/${id}/top_rated?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+      `${this.API_BASE}movie/top_rated?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 
-  public getUpcomingMovies = async (id: number, page: number) => {
+  public getUpcomingMovies = async (page = 1): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
-      `${this.API_BASE}movie/${id}/upcoming?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+      `${this.API_BASE}movie/upcoming?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 }

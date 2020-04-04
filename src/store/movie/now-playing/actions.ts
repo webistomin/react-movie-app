@@ -1,5 +1,6 @@
 import { ActionTypes } from 'store/movie/now-playing/types';
 import { IMovie } from 'common/types/movie';
+import { ISearch } from 'common/types/search';
 
 export function fetchNowPlayingMoviesStart() {
   return {
@@ -7,7 +8,7 @@ export function fetchNowPlayingMoviesStart() {
   };
 }
 
-export function fetchNowPlayingMoviesSuccess(payload: IMovie) {
+export function fetchNowPlayingMoviesSuccess(payload: ISearch<IMovie>) {
   return {
     type: ActionTypes.FETCH_NOW_PLAYING_MOVIES_SUCCESS,
     payload,

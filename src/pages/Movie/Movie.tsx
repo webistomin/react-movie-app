@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 
 import AppIntro from 'components/ui/AppIntro';
 import AppContent from 'components/ui/AppContent';
@@ -12,6 +12,7 @@ import { fetchSimilarMoviesStart } from 'store/movie/similar/actions';
 import { getMovieDetails } from 'store/movie/details/selectors';
 import { getRecommendedMovies } from 'store/movie/recommended/selectors';
 import { getSimilarMovies } from 'store/movie/similar/selectors';
+import AppTabs from 'components/ui/AppTabs/AppTabs';
 
 interface IRouteParams {
   id: string;
@@ -34,6 +35,18 @@ const Movie: FunctionComponent = () => {
     };
   }, [dispatch, params]);
 
+  const renderMovieOverview = useCallback(() => {
+    return <div>Overview</div>;
+  }, []);
+
+  const renderMovieVideos = useCallback(() => {
+    return <div>Videos</div>;
+  }, []);
+
+  const renderMoviePhotos = useCallback(() => {
+    return <div>Photos</div>;
+  }, []);
+
   return (
     <>
       <AppContent>
@@ -45,6 +58,25 @@ const Movie: FunctionComponent = () => {
           release_date={movie?.release_date}
           runtime={movie?.runtime}
           vote_average={movie?.vote_average}
+        />
+        <AppTabs
+          tabs={[
+            {
+              id: 'movie-overview',
+              title: 'Overview',
+              component: renderMovieOverview(),
+            },
+            {
+              id: 'movie-videos',
+              title: 'Videos',
+              component: renderMovieVideos(),
+            },
+            {
+              id: 'movie-photos',
+              title: 'Photos',
+              component: renderMoviePhotos(),
+            },
+          ]}
         />
         {recommended && <AppCarousel title='Recommended movies' items={recommended.results} />}
         {similar && <AppCarousel title='Similar movies' items={similar.results} />}

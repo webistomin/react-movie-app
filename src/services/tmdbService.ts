@@ -51,9 +51,9 @@ export default class TMDb {
     );
   };
 
-  public getNowPlayingMovies = async (id: number, page: number) => {
+  public getNowPlayingMovies = async (page = 1) => {
     return await this.fetchJSON(
-      `${this.API_BASE}movie/${id}/now_playing?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+      `${this.API_BASE}movie/now_playing?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
     );
   };
 

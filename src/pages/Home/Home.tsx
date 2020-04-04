@@ -14,12 +14,15 @@ import { getNowPlayingMovies } from 'store/movie/now-playing/selectors';
 import { fetchNowPlayingMoviesStart } from 'store/movie/now-playing/actions';
 import { getTopRatedMovies } from 'store/movie/top-rated/selectors';
 import { fetchTopRatedMoviesStart } from 'store/movie/top-rated/actions';
+import { getUpcomingMovies } from 'store/movie/upcoming/selectors';
+import { fetchUpcomingMoviesStart } from 'store/movie/upcoming/actions';
 
 const Home: FunctionComponent = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(getPopularMovies);
   const nowPlayingMovies = useSelector(getNowPlayingMovies);
   const topRatedMovies = useSelector(getTopRatedMovies);
+  const upcomingMovies = useSelector(getUpcomingMovies);
   const latestMovie = useSelector(getLatestMovie);
 
   useEffect(() => {
@@ -28,6 +31,7 @@ const Home: FunctionComponent = () => {
     dispatch(fetchPopularMoviesStart());
     dispatch(fetchTopRatedMoviesStart());
     dispatch(fetchNowPlayingMoviesStart());
+    dispatch(fetchUpcomingMoviesStart());
   }, [dispatch]);
 
   return (
@@ -42,9 +46,12 @@ const Home: FunctionComponent = () => {
           runtime={latestMovie?.runtime}
           vote_average={latestMovie?.vote_average}
         />
-        {popularMovies ? <AppCarousel title='Popular movies' link='/popular' items={popularMovies.results} /> : null}
         {nowPlayingMovies ? (
           <AppCarousel title='Now playing movies' link='/now-playing' items={nowPlayingMovies.results} />
+        ) : null}
+        {popularMovies ? <AppCarousel title='Popular movies' link='/popular' items={popularMovies.results} /> : null}
+        {upcomingMovies ? (
+          <AppCarousel title='Upcoming movies' link='/upcoming' items={upcomingMovies.results} />
         ) : null}
         {topRatedMovies ? (
           <AppCarousel title='Top rated movies' link='/top-rated' items={topRatedMovies.results} />

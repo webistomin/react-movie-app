@@ -25,7 +25,12 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
       <Link to={`/movie/${id}`} className={b('Link')}>
         <figure className={b('Figure')}>
           <picture className={b('Picture')}>
-            <AppLazyImage image={buildImagePath(poster_path, PosterSizes.w342)} className={b('Img')} />
+            <AppLazyImage
+              image={buildImagePath(poster_path, PosterSizes.w342)}
+              className={b('Img')}
+              width={240}
+              height={360}
+            />
           </picture>
         </figure>
         <h2 className={b('Name')}>{title}</h2>

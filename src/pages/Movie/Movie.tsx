@@ -13,6 +13,10 @@ import { getMovieDetails } from 'store/movie/details/selectors';
 import { getRecommendedMovies } from 'store/movie/recommended/selectors';
 import { getSimilarMovies } from 'store/movie/similar/selectors';
 import AppTabs from 'components/ui/AppTabs/AppTabs';
+import AppDetails from 'components/ui/AppDetails/AppDetails';
+import { parseMovieDetails } from 'components/ui/AppDetails/parseMovieDetails';
+import { getMovieCredits } from 'store/movie/credits/selectors';
+import { fetchMovieCreditsStart } from 'store/movie/credits/actions';
 
 interface IRouteParams {
   id: string;
@@ -22,11 +26,13 @@ const Movie: FunctionComponent = () => {
   const dispatch = useDispatch();
   const params = useParams<IRouteParams>();
   const movie = useSelector(getMovieDetails);
+  const credits = useSelector(getMovieCredits);
   const recommended = useSelector(getRecommendedMovies);
   const similar = useSelector(getSimilarMovies);
 
   useEffect(() => {
     dispatch(fetchMovieDetailsStart(Number(params.id)));
+    dispatch(fetchMovieCreditsStart(Number(params.id)));
     dispatch(fetchRecommendedMoviesStart(Number(params.id)));
     dispatch(fetchSimilarMoviesStart(Number(params.id)));
 
@@ -36,8 +42,18 @@ const Movie: FunctionComponent = () => {
   }, [dispatch, params]);
 
   const renderMovieOverview = useCallback(() => {
-    return <div>Overview</div>;
-  }, []);
+    if (!movie) {
+      return null;
+    }
+
+    const parsedDetails = parseMovieDetails(movie);
+    return (
+      <>
+        <AppDetails title='Storyline' poster={movie?.poster_path} overview={movie?.overview} details={parsedDetails} />
+        {credits && <AppCarousel title='Cast' cast={credits.cast} />}
+      </>
+    );
+  }, [credits, movie]);
 
   const renderMovieVideos = useCallback(() => {
     return <div>Videos</div>;

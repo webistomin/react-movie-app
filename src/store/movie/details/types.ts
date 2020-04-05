@@ -1,9 +1,9 @@
 import { Action } from 'redux';
 import { FetchStatus } from 'common/types/fetch-status';
-import { IMovie } from 'common/types/movie';
+import { IMovieDetails } from 'common/types/movie-details';
 
 export interface IMovieDetailsState {
-  movieDetails: IMovie | null;
+  movieDetails: IMovieDetails | null;
   fetchStatus: FetchStatus | null;
 }
 
@@ -21,7 +21,7 @@ export interface IFetchMovieDetailsStartAction extends Action {
 
 export interface IFetchMovieDetailsSuccessAction extends Action {
   type: ActionTypes.FETCH_MOVIE_DETAILS_SUCCESS;
-  payload: IMovie;
+  payload: IMovieDetails;
 }
 
 export interface IFetchMovieDetailsFailureAction extends Action {

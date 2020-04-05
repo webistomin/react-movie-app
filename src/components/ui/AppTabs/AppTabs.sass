@@ -1,4 +1,6 @@
 +b('Tabs')
+  position: relative
+  overflow: hidden
 
   +media($screen-lg)
     margin-top: 25px
@@ -67,6 +69,16 @@
           width: 100%
 
   +e('Content')
-    margin: 25px 15px
+    padding: 25px 15px
+
+    .CardCarousel
+      padding: 0
+
+    +media($screen-lg)
+      padding-left: 50px
+      padding-right: 50px
+
+      .CardCarousel
+        width: calc(100% + 50px)
 
 

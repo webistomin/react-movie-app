@@ -1,6 +1,8 @@
 import { ISearch } from 'common/types/search';
 import { IMovie } from 'common/types/movie';
 import { IGenre } from 'common/types/genre';
+import { IMovieCredits } from 'common/types/movie-credits';
+import { IMovieDetails } from 'common/types/movie-details';
 
 export default class TMDb {
   private readonly API_BASE = process.env.REACT_APP_TMDB_URL || process.env.react_app_tmdb_url;
@@ -25,7 +27,7 @@ export default class TMDb {
     );
   };
 
-  public getMovieDetails = async (id: number): Promise<IMovie> => {
+  public getMovieDetails = async (id: number): Promise<IMovieDetails> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
     );
@@ -76,6 +78,12 @@ export default class TMDb {
   public getUpcomingMovies = async (page = 1): Promise<ISearch<IMovie>> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/upcoming?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&page=${page}`
+    );
+  };
+
+  public getMovieCredits = async (id: number): Promise<IMovieCredits> => {
+    return await this.fetchJSON(
+      `${this.API_BASE}movie/${id}/credits?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
     );
   };
 }

@@ -8,12 +8,14 @@ import './AppLazyImage.sass';
 const b = cn('Lazyload');
 
 interface IProps {
-  className: string;
+  className?: string;
   scrollPosition: ScrollPosition;
+  width?: number;
+  height?: number;
   image?: string;
 }
 
-const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, image }) => {
+const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, image, width, height }) => {
   const [isLoaded, setLoadingState] = useState(false);
 
   const afterLoad = () => {
@@ -24,8 +26,8 @@ const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, im
     <LazyLoadImage
       src={image}
       alt='#'
-      width='600'
-      height='100'
+      width={width}
+      height={height}
       afterLoad={afterLoad}
       scrollPosition={scrollPosition}
       className={classnames(b({ loaded: isLoaded }), className)}

@@ -9,6 +9,7 @@ import nowPlayingMoviesSaga from 'store/movie/now-playing/saga';
 import topRatedMoviesSaga from 'store/movie/top-rated/saga';
 import upcomingMoviesSaga from 'store/movie/upcoming/saga';
 import movieDetailsSaga from 'store/movie/details/saga';
+import movieCreditsSaga from 'store/movie/credits/saga';
 import genresSaga from 'store/genres/saga';
 import initializeAppSaga from 'store/init/saga';
 
@@ -19,6 +20,7 @@ export default function* rootSaga() {
     popularMoviesSaga(),
     genresSaga(),
     movieDetailsSaga(),
+    movieCreditsSaga(),
     recommendedMoviesSaga(),
     nowPlayingMoviesSaga(),
     upcomingMoviesSaga(),

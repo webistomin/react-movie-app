@@ -1,5 +1,5 @@
 import { ActionTypes } from 'store/movie/details/types';
-import { IMovie } from 'common/types/movie';
+import { IMovieDetails } from 'common/types/movie-details';
 
 export function fetchMovieDetailsStart(payload: number) {
   return {
@@ -8,7 +8,7 @@ export function fetchMovieDetailsStart(payload: number) {
   };
 }
 
-export function fetchMovieDetailsSuccess(payload: IMovie) {
+export function fetchMovieDetailsSuccess(payload: IMovieDetails) {
   return {
     type: ActionTypes.FETCH_MOVIE_DETAILS_SUCCESS,
     payload,

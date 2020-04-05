@@ -22,6 +22,8 @@ import { getMovieVideos } from 'store/movie/videos/selectors';
 import AppCardList from 'components/ui/AppCardList';
 import { getMovieImages } from 'store/movie/images/selectors';
 import { fetchMovieImagesStart } from 'store/movie/images/actions';
+import { IVideo } from 'common/types/videos';
+import { IImage } from 'common/types/images';
 
 interface IRouteParams {
   id: string;
@@ -69,7 +71,7 @@ const Movie: FunctionComponent = () => {
       return null;
     }
 
-    const youTubeVideos = videos.results.filter((video) => video.site === 'YouTube');
+    const youTubeVideos = videos.results.filter((video: IVideo) => video.site === 'YouTube');
 
     return (
       <>
@@ -83,7 +85,7 @@ const Movie: FunctionComponent = () => {
       return null;
     }
 
-    const sortedBackdrops = images.backdrops.sort((a, b) => b.vote_average - a.vote_average);
+    const sortedBackdrops = images.backdrops.sort((a: IImage, b: IImage) => b.vote_average - a.vote_average);
 
     return (
       <>

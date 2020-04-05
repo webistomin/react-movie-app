@@ -25,7 +25,7 @@ export default class TMDb {
 
   public getContentBySearchQuery = async (query: string, page = 1) => {
     return await this.fetchJSON(
-      `${this.API_BASE}search/multi?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&query=${query}&page=${page}&include_adult=false`
+      `${this.API_BASE}search/movie?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&query=${query}&page=${page}&include_adult=false`
     );
   };
 

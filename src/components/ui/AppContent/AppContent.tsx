@@ -1,12 +1,18 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
 
 import './AppContent.sass';
+import { classnames } from '@bem-react/classnames';
 
-const b = cn('PageContent');
+export const b = cn('PageContent');
 
-const AppContent: FunctionComponent = (props) => {
-  return <main className={b()}>{props.children}</main>;
+interface IProps {
+  className?: string;
+  children?: ReactNode;
+}
+
+const AppContent: FunctionComponent<IProps> = ({ className, children }) => {
+  return <main className={classnames(b(), className)}>{children}</main>;
 };
 
 export default AppContent;

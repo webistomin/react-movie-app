@@ -1,8 +1,10 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { connectRouter } from 'connected-react-router';
 import { StateType } from 'typesafe-actions';
+import { createBrowserHistory } from 'history';
 
-import { sagaMiddleware } from 'store/middlewares';
+import { sagaMiddleware, connectedRouterMiddleware } from 'store/middlewares';
 import rootSaga from 'store/saga';
 import { IS_DEV } from 'utils/env';
 
@@ -34,15 +36,20 @@ const movieReducers = combineReducers({
   upcomingMovies: upcomingMoviesReducer,
 });
 
+export const history = createBrowserHistory();
+
 const rootReducers = combineReducers({
+  router: connectRouter(history),
   search: searchReducer,
   movies: movieReducers,
   genres: genresReducer,
 });
 
+const middlewares = [sagaMiddleware, connectedRouterMiddleware(history)];
+
 export function configureStore(initialState = {}) {
   const enhancer = (IS_DEV ? composeWithDevTools : compose) as typeof compose;
-  const composeMiddlewares = enhancer(applyMiddleware(sagaMiddleware));
+  const composeMiddlewares = enhancer(applyMiddleware(...middlewares));
   const store = createStore(rootReducers, initialState, composeMiddlewares);
 
   sagaMiddleware.run(rootSaga);

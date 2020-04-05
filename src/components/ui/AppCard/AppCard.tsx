@@ -13,7 +13,12 @@ import { PosterSizes } from 'common/types/images-sizes';
 
 const b = cn('Card');
 
-type IProps = IMovie;
+interface IProps {
+  title: IMovie['title'];
+  poster_path: IMovie['poster_path'];
+  id: IMovie['id'];
+  vote_average: IMovie['vote_average'];
+}
 
 // eslint-disable-next-line @typescript-eslint/camelcase
 const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_average }) => {

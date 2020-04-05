@@ -1,5 +1,6 @@
-import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { all, call, put, debounce } from 'redux-saga/effects';
 import { ActionTypes, ISearchQueryAction } from 'store/search/types';
+import { push } from 'connected-react-router';
 import TMDbService from '~/services/tmdbService';
 import { fetchSearchContentFailure, fetchSearchContentStart, fetchSearchContentSuccess } from 'store/search/actions';
 
@@ -13,6 +14,7 @@ function* searchQuerySaga(action: ISearchQueryAction) {
     try {
       const searchResult = yield call(API.getContentBySearchQuery, query, 1);
       yield put(fetchSearchContentSuccess(searchResult));
+      yield put(push('/search'));
     } catch (error) {
       yield put(fetchSearchContentFailure());
     }
@@ -20,5 +22,5 @@ function* searchQuerySaga(action: ISearchQueryAction) {
 }
 
 export default function*() {
-  yield all([takeLatest(ActionTypes.SET_SEARCH_QUERY, searchQuerySaga)]);
+  yield all([debounce(300, ActionTypes.SET_SEARCH_QUERY, searchQuerySaga)]);
 }

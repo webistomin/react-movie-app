@@ -63,20 +63,9 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
                   <li className={b('Item')} key={card.id}>
                     <AppCard
                       id={card.id}
-                      genre_ids={card.genre_ids}
-                      overview={card.overview}
                       poster_path={card.poster_path}
-                      release_date={card.release_date}
                       title={card.title}
                       vote_average={card.vote_average}
-                      adult={card.adult}
-                      backdrop_path={card.backdrop_path}
-                      original_language={card.original_language}
-                      original_title={card.original_title}
-                      popularity={card.popularity}
-                      video={card.video}
-                      vote_count={card.vote_count}
-                      runtime={card.runtime}
                     />
                   </li>
                 );

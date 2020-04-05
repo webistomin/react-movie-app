@@ -7,14 +7,11 @@ import { getSearchQuery } from 'store/search/selectors';
 
 const API = new TMDbService();
 
-function* searchQuerySaga(action: ISearchQueryAction) {
-  const query = action.payload;
-
+function* saveMovies(query: string, page = 1, shouldConcat = false) {
   if (query) {
     yield put(fetchSearchContentStart());
     try {
-      const searchResult = yield call(API.getContentBySearchQuery, query, 1);
-      const shouldConcat = false;
+      const searchResult = yield call(API.getContentBySearchQuery, query, page);
       yield put(fetchSearchContentSuccess({ movies: searchResult, shouldConcat }));
       yield put(push('/search'));
     } catch (error) {
@@ -23,21 +20,17 @@ function* searchQuerySaga(action: ISearchQueryAction) {
   }
 }
 
+function* searchQuerySaga(action: ISearchQueryAction) {
+  const query = action.payload;
+
+  yield saveMovies(query, 1, false);
+}
+
 function* searchQueryWithPageSaga(action: ISearchPageAction) {
   const query = yield select(getSearchQuery);
   const page = action.payload;
 
-  if (query) {
-    yield put(fetchSearchContentStart());
-    try {
-      const searchResult = yield call(API.getContentBySearchQuery, query, page);
-      const shouldConcat = true;
-      yield put(fetchSearchContentSuccess({ movies: searchResult, shouldConcat }));
-      yield put(push('/search'));
-    } catch (error) {
-      yield put(fetchSearchContentFailure());
-    }
-  }
+  yield saveMovies(query, page, true);
 }
 
 export default function*() {

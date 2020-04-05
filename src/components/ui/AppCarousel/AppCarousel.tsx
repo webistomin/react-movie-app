@@ -34,6 +34,7 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
   private flickityOptions = {
     freeScroll: true,
     contain: true,
+    cellAlign: 'left',
     prevNextButtons: true,
     pageDots: false,
     freeScrollFriction: 0.2,

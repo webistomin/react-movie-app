@@ -125,8 +125,10 @@ const Movie: FunctionComponent = () => {
             },
           ]}
         />
-        {recommended && <AppCarousel title='Recommended movies' items={recommended.results} />}
-        {similar && <AppCarousel title='Similar movies' items={similar.results} />}
+        {recommended && Boolean(recommended.total_results) && (
+          <AppCarousel title='Recommended movies' items={recommended.results} />
+        )}
+        {similar && Boolean(similar.total_results) && <AppCarousel title='Similar movies' items={similar.results} />}
       </AppContent>
       <AppFooter />
     </>

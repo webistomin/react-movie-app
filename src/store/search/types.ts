@@ -5,6 +5,7 @@ import { FetchStatus } from 'common/types/fetch-status';
 
 export interface ISearchState {
   searchQuery: string;
+  searchPage: number;
   isSearchBarVisible: boolean;
   searchResult: ISearch<IMovie> | null;
   fetchStatus: FetchStatus | null;
@@ -12,6 +13,7 @@ export interface ISearchState {
 
 export enum ActionTypes {
   SET_SEARCH_QUERY = '[search] set search query',
+  SET_SEARCH_PAGE = '[search] set search page',
   SET_SEARCH_BAR_VISIBILITY = '[search] set search bar visibility',
   FETCH_SEARCH_CONTENT_START = '[search] fetch search content start',
   FETCH_SEARCH_CONTENT_SUCCESS = '[search] fetch search content success',
@@ -21,6 +23,11 @@ export enum ActionTypes {
 export interface ISearchQueryAction extends Action {
   type: ActionTypes.SET_SEARCH_QUERY;
   payload: string;
+}
+
+export interface ISearchPageAction extends Action {
+  type: ActionTypes.SET_SEARCH_PAGE;
+  payload: number;
 }
 
 export interface ISearchBarAction extends Action {
@@ -34,7 +41,10 @@ export interface IFetchSearchContentStartAction extends Action {
 
 export interface IFetchSearchContentSuccessAction extends Action {
   type: ActionTypes.FETCH_SEARCH_CONTENT_SUCCESS;
-  payload: ISearch<IMovie>;
+  payload: {
+    movies: ISearch<IMovie>;
+    shouldConcat: boolean;
+  };
 }
 
 export interface IFetchSearchContentFailureAction extends Action {
@@ -43,6 +53,7 @@ export interface IFetchSearchContentFailureAction extends Action {
 
 export type ISearchActions =
   | ISearchQueryAction
+  | ISearchPageAction
   | ISearchBarAction
   | IFetchSearchContentStartAction
   | IFetchSearchContentSuccessAction

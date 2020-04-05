@@ -1,27 +1,40 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 
 import AppContent from 'components/ui/AppContent';
 import AppFooter from 'components/partials/AppFooter';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSearchContent } from 'store/search/selectors';
-import AppCardList from 'components/ui/AppCardList';
-import { toggleSearchBarVisibility } from 'store/search/actions';
+import { getSearchContent, getSearchPage, getSearchStatus, hasMorePages } from 'store/search/selectors';
+import { AppCardInfinityList } from 'components/ui/AppCardList';
 import { b } from 'components/ui/AppContent/AppContent';
+import { FetchStatus } from 'common/types/fetch-status';
+import { setSearchPage } from 'store/search/actions';
 
 const Search: FunctionComponent = () => {
   const searchResult = useSelector(getSearchContent);
   const dispatch = useDispatch();
+  const hasMoreElements = useSelector(hasMorePages);
+  const currentPage = useSelector(getSearchPage);
+  const requestStatus = useSelector(getSearchStatus);
 
-  useEffect(() => {
-    return () => {
-      dispatch(toggleSearchBarVisibility(false));
-    };
-  });
+  const loadMoreCards = useCallback(() => {
+    if (requestStatus !== FetchStatus.PENDING) {
+      const nextPage = currentPage + 1;
+      dispatch(setSearchPage(nextPage));
+    }
+  }, [dispatch, requestStatus, currentPage]);
 
   return (
     <>
       <AppContent className={b({ withPaddings: true })}>
-        {searchResult?.results && <AppCardList title='Search Result' movies={searchResult.results} />}
+        {searchResult?.results && (
+          <AppCardInfinityList
+            currentPage={currentPage}
+            hasMoreElements={hasMoreElements}
+            title='Search Result'
+            movies={searchResult.results}
+            onLoadHandler={loadMoreCards}
+          />
+        )}
       </AppContent>
       <AppFooter />
     </>

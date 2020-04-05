@@ -16,13 +16,20 @@ export function setSearchQuery(payload: string) {
   };
 }
 
+export function setSearchPage(payload: number) {
+  return {
+    type: ActionTypes.SET_SEARCH_PAGE,
+    payload,
+  };
+}
+
 export function fetchSearchContentStart() {
   return {
     type: ActionTypes.FETCH_SEARCH_CONTENT_START,
   };
 }
 
-export function fetchSearchContentSuccess(payload: ISearch<IMovie>) {
+export function fetchSearchContentSuccess(payload: { movies: ISearch<IMovie>; shouldConcat: boolean }) {
   return {
     type: ActionTypes.FETCH_SEARCH_CONTENT_SUCCESS,
     payload,

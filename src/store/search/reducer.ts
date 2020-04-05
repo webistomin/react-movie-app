@@ -3,6 +3,7 @@ import { FetchStatus } from 'common/types/fetch-status';
 
 const initialState: ISearchState = {
   searchQuery: '',
+  searchPage: 1,
   isSearchBarVisible: false,
   searchResult: null,
   fetchStatus: null,
@@ -15,6 +16,11 @@ function reducer(state: ISearchState = initialState, action: ISearchActions): IS
         ...state,
         searchQuery: action.payload,
       };
+    case ActionTypes.SET_SEARCH_PAGE:
+      return {
+        ...state,
+        searchPage: action.payload,
+      };
     case ActionTypes.SET_SEARCH_BAR_VISIBILITY:
       return {
         ...state,
@@ -26,11 +32,25 @@ function reducer(state: ISearchState = initialState, action: ISearchActions): IS
         fetchStatus: FetchStatus.PENDING,
       };
     case ActionTypes.FETCH_SEARCH_CONTENT_SUCCESS:
+      const { shouldConcat } = action.payload;
+
+      if (shouldConcat && state.searchResult) {
+        return {
+          ...state,
+          searchResult: {
+            ...action.payload.movies,
+            results: [...state.searchResult.results, ...action.payload.movies.results],
+          },
+          fetchStatus: FetchStatus.SUCCESS,
+        };
+      }
+
       return {
         ...state,
-        searchResult: action.payload,
+        searchResult: action.payload.movies,
         fetchStatus: FetchStatus.SUCCESS,
       };
+
     default:
       return state;
   }

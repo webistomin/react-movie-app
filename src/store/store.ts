@@ -16,6 +16,7 @@ import similarMoviesReducer from 'store/movie/similar/reducer';
 import nowPlatingMoviesReducer from 'store/movie/now-playing/reducer';
 import topRatedMoviesReducer from 'store/movie/top-rated/reducer';
 import upcomingMoviesReducer from 'store/movie/upcoming/reducer';
+import movieVideosReducer from 'store/movie/videos/reducer';
 import genresReducer from 'store/genres/reducer';
 
 const movieReducers = combineReducers({
@@ -23,6 +24,7 @@ const movieReducers = combineReducers({
   popularMovies: popularMoviesReducer,
   movieDetails: movieDetailsReducer,
   movieCredits: movieCreditsReducer,
+  movieVideos: movieVideosReducer,
   recommendedMovies: recommendedMoviesReducer,
   similarMovies: similarMoviesReducer,
   nowPlatingMovies: nowPlatingMoviesReducer,

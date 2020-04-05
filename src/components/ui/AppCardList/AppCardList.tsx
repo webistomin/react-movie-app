@@ -1,88 +1,48 @@
 import React, { FunctionComponent } from 'react';
-import InfiniteScroll from 'react-infinite-scroller';
 import { cn } from '@bem-react/classname';
 
-import AppCard from 'components/ui/AppCard';
+import { AppVideoCard } from 'components/ui/AppCard';
+import { IVideo } from 'common/types/videos';
 
 import './AppCardList.sass';
 
 const b = cn('CardList');
 
-const AppCardList: FunctionComponent = () => {
-  let counter = 0;
+interface IVideoList extends IProps {
+  images?: never;
+  videos: IVideo[];
+}
 
-  const items = [
-    1,
-    2,
-    3,
-    45,
-    5,
-    6,
-    7,
-    8,
-    9,
-    1,
-    2,
-    312,
-    3,
-    3,
-    2,
-    2,
-    4,
-    5,
-    6,
-    6,
-    5,
-    3,
-    45,
-    5,
-    6,
-    4,
-    2,
-    4,
-    5,
-    6,
-    4,
-    3,
-    2,
-    4,
-    4,
-    56,
-    2,
-  ].map((item, index) => {
-    return (
-      <li className={b('Item')} key={index}>
-        {/*<AppCard />*/}
-      </li>
-    );
-  });
+interface IImageList extends IProps {
+  images: [];
+  videos?: never;
+}
 
-  const hasMoreItems = true;
+interface IProps {
+  title: string;
+}
 
-  const loadItems = () => {
-    [1, 2, 3].map((item, index) => {
-      return items.push(
-        <li className={b('Item')} key={counter++}>
-          {/*<AppCard />*/}
-        </li>
-      );
-    });
-  };
+type ConditionalListProps = IVideoList | IImageList;
 
-  const loader = (
-    <div className='Loader' key={'fsdfds'}>
-      Loading ...
-    </div>
-  );
-
+const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, images }) => {
   return (
     <div className={b()}>
       <div className={b('Heading')}>
-        <h2 className={b('Title')}>Popular movies</h2>
+        <h2 className={b('Title')}>{title}</h2>
+        <strong className={b('Counter')}>{videos?.length || images?.length} items</strong>
       </div>
-      <InfiniteScroll hasMore={hasMoreItems} className={b('List')} element='ul' loadMore={loadItems} loader={loader}>
-        {items}
-      </InfiniteScroll>
+      <div className={b('Content')}>
+        <ul className={b('List', { '3items': Boolean(videos), '6items': Boolean(images) })}>
+          {videos &&
+            videos.map((video) => {
+              return (
+                <li className={b('Item')} key={video.id}>
+                  <AppVideoCard id={video.id} name={video.name} type={video.type} ytKey={video.key} />
+                </li>
+              );
+            })}
+        </ul>
+      </div>
     </div>
   );
 };

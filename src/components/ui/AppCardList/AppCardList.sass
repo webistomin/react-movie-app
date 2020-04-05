@@ -3,12 +3,50 @@
   flex-direction: column
   overflow: hidden
 
+  +e('Title')
+    font-size: 18px
+    line-height: 28px
+    font-weight: 400
+    margin: 0
+
+    +media($screen-lg)
+      font-size: 24px
+      line-height: 38px
+
+  +e('Counter')
+    display: inline-block
+    font-weight: 400
+    font-size: 12px
+    line-height: 1.6
+    color: $color-grey
+    letter-spacing: 0.4px
+    margin-bottom: 10px
+
+    +media($screen-lg)
+      font-size: 14px
+      margin-bottom: 30px
+
   +e('List')
     display: flex
     flex-wrap: wrap
-    margin-right: -.4rem
-    margin-left: -.4rem
 
-  +e('Item')
-    width: 33.3333333%
-    margin: 0 0.4rem
+    .Card-Img
+      width: 100%
+
+    .Card-Figure
+      padding-top: 56.25%
+
+    +m('3items')
+      +media($screen-sm)
+        justify-content: space-between
+
+      .CardList-Item
+        width: 100%
+        margin-bottom: 20px
+
+        +media($screen-sm)
+          width: 48.5%
+
+        +media($screen-lg)
+          width: 32%
+          margin-bottom: 30px

@@ -3,6 +3,7 @@ import { IMovie } from 'common/types/movie';
 import { IGenre } from 'common/types/genre';
 import { IMovieCredits } from 'common/types/movie-credits';
 import { IMovieDetails } from 'common/types/movie-details';
+import { IVideos } from 'common/types/videos';
 
 export default class TMDb {
   private readonly API_BASE = process.env.REACT_APP_TMDB_URL || process.env.react_app_tmdb_url;
@@ -84,6 +85,12 @@ export default class TMDb {
   public getMovieCredits = async (id: number): Promise<IMovieCredits> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}/credits?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
+    );
+  };
+
+  public getMovieVideos = async (id: number): Promise<IVideos> => {
+    return await this.fetchJSON(
+      `${this.API_BASE}movie/${id}/videos?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
     );
   };
 }

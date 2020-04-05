@@ -17,6 +17,9 @@ import AppDetails from 'components/ui/AppDetails/AppDetails';
 import { parseMovieDetails } from 'components/ui/AppDetails/parseMovieDetails';
 import { getMovieCredits } from 'store/movie/credits/selectors';
 import { fetchMovieCreditsStart } from 'store/movie/credits/actions';
+import { fetchMovieVideosStart } from 'store/movie/videos/actions';
+import { getMovieVideos } from 'store/movie/videos/selectors';
+import AppCardList from 'components/ui/AppCardList';
 
 interface IRouteParams {
   id: string;
@@ -27,6 +30,7 @@ const Movie: FunctionComponent = () => {
   const params = useParams<IRouteParams>();
   const movie = useSelector(getMovieDetails);
   const credits = useSelector(getMovieCredits);
+  const videos = useSelector(getMovieVideos);
   const recommended = useSelector(getRecommendedMovies);
   const similar = useSelector(getSimilarMovies);
 
@@ -35,6 +39,7 @@ const Movie: FunctionComponent = () => {
     dispatch(fetchMovieCreditsStart(Number(params.id)));
     dispatch(fetchRecommendedMoviesStart(Number(params.id)));
     dispatch(fetchSimilarMoviesStart(Number(params.id)));
+    dispatch(fetchMovieVideosStart(Number(params.id)));
 
     return () => {
       dispatch(clearMovieDetails());
@@ -49,15 +54,25 @@ const Movie: FunctionComponent = () => {
     const parsedDetails = parseMovieDetails(movie);
     return (
       <>
-        <AppDetails title='Storyline' poster={movie?.poster_path} overview={movie?.overview} details={parsedDetails} />
+        <AppDetails title='Storyline' poster={movie.poster_path} overview={movie.overview} details={parsedDetails} />
         {credits && <AppCarousel title='Cast' cast={credits.cast} />}
       </>
     );
   }, [credits, movie]);
 
   const renderMovieVideos = useCallback(() => {
-    return <div>Videos</div>;
-  }, []);
+    if (!videos) {
+      return null;
+    }
+
+    const youTubeVideos = videos.results.filter((video) => video.site === 'YouTube');
+
+    return (
+      <>
+        <AppCardList title='Videos' videos={youTubeVideos} />
+      </>
+    );
+  }, [videos]);
 
   const renderMoviePhotos = useCallback(() => {
     return <div>Photos</div>;

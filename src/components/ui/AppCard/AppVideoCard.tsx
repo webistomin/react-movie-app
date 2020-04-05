@@ -3,7 +3,7 @@ import { cn } from '@bem-react/classname';
 
 import { Link } from 'react-router-dom';
 import { buildImagePath } from 'utils/buildImagePath';
-import { PosterSizes } from 'common/types/images';
+import { PosterSizes } from 'common/types/images-sizes';
 import AppLazyImage from 'components/ui/AppLazyImage';
 
 import './AppCard.sass';

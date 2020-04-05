@@ -11,6 +11,7 @@ import upcomingMoviesSaga from 'store/movie/upcoming/saga';
 import movieDetailsSaga from 'store/movie/details/saga';
 import movieCreditsSaga from 'store/movie/credits/saga';
 import movieVideosSaga from 'store/movie/videos/saga';
+import movieImagesSaga from 'store/movie/images/saga';
 import genresSaga from 'store/genres/saga';
 import initializeAppSaga from 'store/init/saga';
 
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     topRatedMoviesSaga(),
     similarMoviesSaga(),
     movieVideosSaga(),
+    movieImagesSaga(),
     initializeAppSaga(),
   ]);
 }

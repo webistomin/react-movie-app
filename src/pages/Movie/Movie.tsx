@@ -20,6 +20,8 @@ import { fetchMovieCreditsStart } from 'store/movie/credits/actions';
 import { fetchMovieVideosStart } from 'store/movie/videos/actions';
 import { getMovieVideos } from 'store/movie/videos/selectors';
 import AppCardList from 'components/ui/AppCardList';
+import { getMovieImages } from 'store/movie/images/selectors';
+import { fetchMovieImagesStart } from 'store/movie/images/actions';
 
 interface IRouteParams {
   id: string;
@@ -31,6 +33,7 @@ const Movie: FunctionComponent = () => {
   const movie = useSelector(getMovieDetails);
   const credits = useSelector(getMovieCredits);
   const videos = useSelector(getMovieVideos);
+  const images = useSelector(getMovieImages);
   const recommended = useSelector(getRecommendedMovies);
   const similar = useSelector(getSimilarMovies);
 
@@ -40,6 +43,7 @@ const Movie: FunctionComponent = () => {
     dispatch(fetchRecommendedMoviesStart(Number(params.id)));
     dispatch(fetchSimilarMoviesStart(Number(params.id)));
     dispatch(fetchMovieVideosStart(Number(params.id)));
+    dispatch(fetchMovieImagesStart(Number(params.id)));
 
     return () => {
       dispatch(clearMovieDetails());
@@ -75,8 +79,18 @@ const Movie: FunctionComponent = () => {
   }, [videos]);
 
   const renderMoviePhotos = useCallback(() => {
-    return <div>Photos</div>;
-  }, []);
+    if (!images) {
+      return null;
+    }
+
+    const sortedBackdrops = images.backdrops.sort((a, b) => b.vote_average - a.vote_average);
+
+    return (
+      <>
+        <AppCardList title='Images' images={sortedBackdrops} />
+      </>
+    );
+  }, [images]);
 
   return (
     <>

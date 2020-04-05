@@ -29,6 +29,7 @@ const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, im
       width={width}
       height={height}
       afterLoad={afterLoad}
+      threshold={0}
       scrollPosition={scrollPosition}
       className={classnames(b({ loaded: isLoaded }), className)}
     />

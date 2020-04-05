@@ -5,7 +5,7 @@ import { classnames } from '@bem-react/classnames';
 import { ISocials } from 'common/types/socials';
 import AppLazyImage from 'components/ui/AppLazyImage/AppLazyImage';
 import { buildImagePath } from 'utils/buildImagePath';
-import { PosterSizes } from 'common/types/images';
+import { PosterSizes } from 'common/types/images-sizes';
 
 import './AppDetails.sass';
 

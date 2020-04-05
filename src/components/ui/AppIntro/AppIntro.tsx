@@ -11,7 +11,7 @@ import AppLazyImage from 'components/ui/AppLazyImage';
 
 import { minutesToHoursAndMinutes } from 'utils/minutesToHoursAndMinutes';
 import { buildImagePath } from 'utils/buildImagePath';
-import { BackdropSizes } from 'common/types/images';
+import { BackdropSizes } from 'common/types/images-sizes';
 
 import './AppIntro.sass';
 

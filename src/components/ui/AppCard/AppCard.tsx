@@ -9,7 +9,7 @@ import AppIcon from 'components/ui/AppIcon';
 import './AppCard.sass';
 import { IMovie } from 'common/types/movie';
 import { buildImagePath } from 'utils/buildImagePath';
-import { PosterSizes } from 'common/types/images';
+import { PosterSizes } from 'common/types/images-sizes';
 
 const b = cn('Card');
 

@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { cn } from '@bem-react/classname';
 
-import { AppVideoCard } from 'components/ui/AppCard';
+import { AppImageCard, AppVideoCard } from 'components/ui/AppCard';
 import { IVideo } from 'common/types/videos';
+import { IImage } from 'common/types/images';
 
 import './AppCardList.sass';
 
@@ -14,7 +15,7 @@ interface IVideoList extends IProps {
 }
 
 interface IImageList extends IProps {
-  images: [];
+  images: IImage[];
   videos?: never;
 }
 
@@ -38,6 +39,14 @@ const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, i
               return (
                 <li className={b('Item')} key={video.id}>
                   <AppVideoCard id={video.id} name={video.name} type={video.type} ytKey={video.key} />
+                </li>
+              );
+            })}
+          {images &&
+            images.map((image) => {
+              return (
+                <li className={b('Item')} key={image.file_path}>
+                  <AppImageCard file_path={image.file_path} />
                 </li>
               );
             })}

@@ -1,4 +1,4 @@
-import { ImageSizes } from 'common/types/images';
+import { ImageSizes } from 'common/types/images-sizes';
 
 export const buildImagePath = (url: string | null | undefined, width: ImageSizes) => {
   if (url) {

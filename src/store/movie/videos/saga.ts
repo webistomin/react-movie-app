@@ -7,8 +7,8 @@ const API = new TMDbService();
 
 function* fetchMovieVideosSaga(action: IFetchMovieVideosStartAction) {
   try {
-    const movieCredits = yield call(API.getMovieVideos, action.payload);
-    yield put(fetchMovieVideosSuccess(movieCredits));
+    const movieVideos = yield call(API.getMovieVideos, action.payload);
+    yield put(fetchMovieVideosSuccess(movieVideos));
   } catch (error) {
     yield put(fetchMovieVideosFailure());
   }

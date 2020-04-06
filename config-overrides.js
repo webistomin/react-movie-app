@@ -21,6 +21,17 @@ module.exports = override(
   addBundleVisualizer({}, true),
   ...addBabelPlugins('@babel/plugin-proposal-nullish-coalescing-operator', '@babel/plugin-proposal-optional-chaining'),
   addWebpackModuleRule({
+    test: /\.(png|jp(e*)g|svg|gif)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: 'images/[hash]-[name].[ext]',
+        },
+      },
+    ],
+  }),
+  addWebpackModuleRule({
     test: /\.sass$/,
     use: [
       'style-loader',
@@ -36,6 +47,7 @@ module.exports = override(
   }),
   addWebpackModuleRule({
     test: /\.svg$/,
+    include: [path.resolve(__dirname, 'src/assets/img/icons')],
     use: ['svg-sprite-loader', 'svgo-loader'],
   })
 );

@@ -14,6 +14,7 @@ export interface ISearchState {
 export enum ActionTypes {
   SET_SEARCH_QUERY = '[search] set search query',
   SET_SEARCH_PAGE = '[search] set search page',
+  CLEAR_SEARCH_PAGE = '[search] clear search page',
   SET_SEARCH_BAR_VISIBILITY = '[search] set search bar visibility',
   FETCH_SEARCH_CONTENT_START = '[search] fetch search content start',
   FETCH_SEARCH_CONTENT_SUCCESS = '[search] fetch search content success',
@@ -28,6 +29,10 @@ export interface ISearchQueryAction extends Action {
 export interface ISearchPageAction extends Action {
   type: ActionTypes.SET_SEARCH_PAGE;
   payload: number;
+}
+
+export interface IClearPageAction extends Action {
+  type: ActionTypes.CLEAR_SEARCH_PAGE;
 }
 
 export interface ISearchBarAction extends Action {
@@ -54,6 +59,7 @@ export interface IFetchSearchContentFailureAction extends Action {
 export type ISearchActions =
   | ISearchQueryAction
   | ISearchPageAction
+  | IClearPageAction
   | ISearchBarAction
   | IFetchSearchContentStartAction
   | IFetchSearchContentSuccessAction

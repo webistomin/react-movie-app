@@ -2,18 +2,34 @@ import { all, call, put, debounce, select, takeLatest } from 'redux-saga/effects
 import { ActionTypes, ISearchPageAction, ISearchQueryAction } from 'store/search/types';
 import { push } from 'connected-react-router';
 import TMDbService from '~/services/tmdbService';
-import { fetchSearchContentFailure, fetchSearchContentStart, fetchSearchContentSuccess } from 'store/search/actions';
-import { getSearchQuery } from 'store/search/selectors';
+import {
+  clearSearchPage,
+  fetchSearchContentFailure,
+  fetchSearchContentStart,
+  fetchSearchContentSuccess,
+} from 'store/search/actions';
+import { getSearchPage, getSearchQuery } from 'store/search/selectors';
+import { getCurrentLocation } from 'store/router/selectors';
 
 const API = new TMDbService();
 
 function* saveMovies(query: string, page = 1, shouldConcat = false) {
+  const location = yield select(getCurrentLocation);
+  const currentPage = yield select(getSearchPage);
+
   if (query) {
     yield put(fetchSearchContentStart());
     try {
       const searchResult = yield call(API.getContentBySearchQuery, query, page);
       yield put(fetchSearchContentSuccess({ movies: searchResult, shouldConcat }));
-      yield put(push('/search'));
+
+      if (currentPage !== 1 && !shouldConcat) {
+        yield put(clearSearchPage());
+      }
+
+      if (location.pathname !== '/search') {
+        yield put(push('/search'));
+      }
     } catch (error) {
       yield put(fetchSearchContentFailure());
     }

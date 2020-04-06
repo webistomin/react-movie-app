@@ -21,6 +21,11 @@ function reducer(state: ISearchState = initialState, action: ISearchActions): IS
         ...state,
         searchPage: action.payload,
       };
+    case ActionTypes.CLEAR_SEARCH_PAGE:
+      return {
+        ...state,
+        searchPage: 1,
+      };
     case ActionTypes.SET_SEARCH_BAR_VISIBILITY:
       return {
         ...state,

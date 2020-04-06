@@ -23,6 +23,12 @@ export function setSearchPage(payload: number) {
   };
 }
 
+export function clearSearchPage() {
+  return {
+    type: ActionTypes.CLEAR_SEARCH_PAGE,
+  };
+}
+
 export function fetchSearchContentStart() {
   return {
     type: ActionTypes.FETCH_SEARCH_CONTENT_START,

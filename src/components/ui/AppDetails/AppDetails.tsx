@@ -49,7 +49,7 @@ export const AppDetails: FunctionComponent<IProps> = ({ poster, title, overview,
                 return (
                   <tr className={classnames(b('TableRow'))} key={detail.detailName}>
                     <td className={classnames(b('TableData'))}>{detail.detailName}</td>
-                    <td className={classnames(b('TableData'))}>{detail.detailValue}</td>
+                    <td className={classnames(b('TableData'))}>{detail.detailValue || 'Unknown'}</td>
                   </tr>
                 );
               })}

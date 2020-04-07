@@ -12,7 +12,7 @@ import { fetchSimilarMoviesStart } from 'store/movie/similar/actions';
 import { getMovieDetails } from 'store/movie/details/selectors';
 import { getRecommendedMovies } from 'store/movie/recommended/selectors';
 import { getSimilarMovies } from 'store/movie/similar/selectors';
-import AppTabs from 'components/ui/AppTabs/AppTabs';
+import AppTabs, { ITab } from 'components/ui/AppTabs/AppTabs';
 import AppDetails from 'components/ui/AppDetails/AppDetails';
 import { parseMovieDetails } from 'components/ui/AppDetails/parseMovieDetails';
 import { getMovieCredits } from 'store/movie/credits/selectors';
@@ -59,6 +59,34 @@ const Movie: FunctionComponent = () => {
 
     document.title = `${movie.original_title} – ${new Date(movie.release_date).getUTCFullYear()}`;
   }, [movie]);
+
+  const getAvailableTabs = (): ITab[] => {
+    const tabs = [
+      {
+        id: 'movie-overview',
+        title: 'Overview',
+        component: renderMovieOverview(),
+      },
+    ];
+
+    if (videos?.results?.length) {
+      tabs.push({
+        id: 'movie-videos',
+        title: 'Videos',
+        component: renderMovieVideos(),
+      });
+    }
+
+    if (images?.backdrops?.length) {
+      tabs.push({
+        id: 'movie-photos',
+        title: 'Photos',
+        component: renderMoviePhotos(),
+      });
+    }
+
+    return tabs;
+  };
 
   const renderMovieOverview = useCallback(() => {
     if (!movie) {
@@ -114,25 +142,7 @@ const Movie: FunctionComponent = () => {
           runtime={movie?.runtime}
           vote_average={movie?.vote_average}
         />
-        <AppTabs
-          tabs={[
-            {
-              id: 'movie-overview',
-              title: 'Overview',
-              component: renderMovieOverview(),
-            },
-            {
-              id: 'movie-videos',
-              title: 'Videos',
-              component: renderMovieVideos(),
-            },
-            {
-              id: 'movie-photos',
-              title: 'Photos',
-              component: renderMoviePhotos(),
-            },
-          ]}
-        />
+        <AppTabs tabs={getAvailableTabs()} />
         {recommended && Boolean(recommended.total_results) && (
           <AppCarousel title='Recommended movies' items={recommended.results} />
         )}

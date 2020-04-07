@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom';
 import AppIcon from 'components/ui/AppIcon';
 
 import './AppNav.sass';
+import { getCurrentLocation } from 'store/router/selectors';
 
 const b = cn('MainNav');
 
 const AppNav: FunctionComponent = () => {
+  const pathname = useSelector(getCurrentLocation)?.pathname;
   const dispatch = useDispatch();
   const isSearchBarVisible = useSelector(getSearchBarVisibility);
 
@@ -27,11 +29,6 @@ const AppNav: FunctionComponent = () => {
       icon: 'icon-home',
     },
     {
-      name: 'Account',
-      link: '/',
-      icon: 'icon-user',
-    },
-    {
       name: 'Favorite list',
       link: '/favorite',
       icon: 'icon-heart',
@@ -39,6 +36,7 @@ const AppNav: FunctionComponent = () => {
     {
       name: 'Search',
       icon: 'icon-search',
+      link: '/search',
       isButton: true,
       action: onToggleSearchBarVisibility,
     },
@@ -59,7 +57,11 @@ const AppNav: FunctionComponent = () => {
       if (item.isButton) {
         return (
           <li className={b('Item')} key={item.name}>
-            <button type='button' className={b('Link')} title={item.name} onClick={item.action}>
+            <button
+              type='button'
+              className={b('Link', { active: item.link === pathname })}
+              title={item.name}
+              onClick={item.action}>
               {item.name}
               <AppIcon icon={item.icon} width={24} height={24} className={b('Icon')} />
             </button>
@@ -68,7 +70,7 @@ const AppNav: FunctionComponent = () => {
       } else {
         return (
           <li className={b('Item')} key={item.name}>
-            <Link to={item.link || ''} className={b('Link')} title={item.name}>
+            <Link to={item.link || ''} className={b('Link', { active: item.link === pathname })} title={item.name}>
               {item.name}
               <AppIcon icon={item.icon} width={24} height={24} className={b('Icon')} />
             </Link>

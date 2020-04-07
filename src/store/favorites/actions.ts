@@ -1,6 +1,6 @@
-import { ActionTypes } from 'store/favorites/types';
+import { ActionTypes, IFavoriteMovie } from 'store/favorites/types';
 
-export function saveFavoriteMovie(payload: number) {
+export function saveFavoriteMovie(payload: IFavoriteMovie) {
   return {
     type: ActionTypes.SAVE_FAVORITE_MOVIE,
     payload,

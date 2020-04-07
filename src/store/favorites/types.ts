@@ -1,7 +1,15 @@
 import { Action } from 'redux';
+import { IMovie } from 'common/types/movie';
+
+export interface IFavoriteMovie {
+  title: IMovie['title'];
+  poster_path: IMovie['poster_path'];
+  id: IMovie['id'];
+  vote_average: IMovie['vote_average'];
+}
 
 export interface IFavoritesState {
-  favoriteMoviesIds: number[];
+  favoriteMovies: IFavoriteMovie[];
 }
 
 export enum ActionTypes {
@@ -11,7 +19,7 @@ export enum ActionTypes {
 
 export interface ISaveFavoriteMovieActions extends Action {
   type: ActionTypes.SAVE_FAVORITE_MOVIE;
-  payload: number;
+  payload: IFavoriteMovie;
 }
 
 export interface IDeleteFavoriteMovieActions extends Action {

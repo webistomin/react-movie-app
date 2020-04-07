@@ -11,8 +11,9 @@ import { IMovie } from 'common/types/movie';
 import { buildImagePath } from 'utils/buildImagePath';
 import { PosterSizes } from 'common/types/images-sizes';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavoriteMovieIds } from 'store/favorites/selectors';
+import { getFavoriteMovies } from 'store/favorites/selectors';
 import { deleteFavoriteMovie, saveFavoriteMovie } from 'store/favorites/actions';
+import { IFavoriteMovie } from 'store/favorites/types';
 
 const b = cn('Card');
 
@@ -25,19 +26,28 @@ interface IProps {
 
 // eslint-disable-next-line @typescript-eslint/camelcase
 const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_average }) => {
-  const favoriteMovies = useSelector(getFavoriteMovieIds);
+  const favoriteMovies = useSelector(getFavoriteMovies);
   const dispatch = useDispatch();
 
   const toggleFavoriteState = () => {
-    if (favoriteMovies && favoriteMovies.indexOf(id) !== -1) {
+    if (favoriteMovies && favoriteMovies.findIndex((movie: IFavoriteMovie) => movie.id === id) !== -1) {
       dispatch(deleteFavoriteMovie(id));
     } else {
-      dispatch(saveFavoriteMovie(id));
+      dispatch(
+        saveFavoriteMovie({
+          title,
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          poster_path,
+          id,
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          vote_average,
+        })
+      );
     }
   };
 
   const isInFavoriteList = () => {
-    return favoriteMovies && favoriteMovies.indexOf(id) !== -1;
+    return favoriteMovies && favoriteMovies.findIndex((movie: IFavoriteMovie) => movie.id === id) !== -1;
   };
 
   return (

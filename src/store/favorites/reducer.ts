@@ -1,7 +1,7 @@
 import { ActionTypes, IFavoriteMovieActions, IFavoritesState } from 'store/favorites/types';
 
 const initialState: IFavoritesState = {
-  favoriteMoviesIds: [],
+  favoriteMovies: [],
 };
 
 function reducer(state: IFavoritesState = initialState, action: IFavoriteMovieActions): IFavoritesState {
@@ -9,15 +9,16 @@ function reducer(state: IFavoritesState = initialState, action: IFavoriteMovieAc
     case ActionTypes.SAVE_FAVORITE_MOVIE:
       return {
         ...state,
-        favoriteMoviesIds: [...state.favoriteMoviesIds, action.payload],
+        favoriteMovies: [...state.favoriteMovies, action.payload],
       };
     case ActionTypes.DELETE_FAVORITE_MOVIE:
-      const newFavoriteMoviesIds = [...state.favoriteMoviesIds];
-      newFavoriteMoviesIds.splice(newFavoriteMoviesIds.indexOf(action.payload), 1);
+      const newFavoriteMovies = [...state.favoriteMovies];
+      const movieIndex = newFavoriteMovies.findIndex((movie) => movie.id === action.payload);
+      newFavoriteMovies.splice(movieIndex, 1);
 
       return {
         ...state,
-        favoriteMoviesIds: newFavoriteMoviesIds,
+        favoriteMovies: newFavoriteMovies,
       };
     default:
       return state;

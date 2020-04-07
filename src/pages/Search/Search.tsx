@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 
 import AppContent from 'components/ui/AppContent';
 import AppFooter from 'components/partials/AppFooter';
@@ -7,7 +7,7 @@ import { getSearchContent, getSearchPage, getSearchStatus, hasMorePages } from '
 import { AppCardInfinityList } from 'components/ui/AppCardList';
 import { b } from 'components/ui/AppContent/AppContent';
 import { FetchStatus } from 'common/types/fetch-status';
-import { setSearchPage } from 'store/search/actions';
+import { clearSearchPage, setSearchPage, setSearchQuery, toggleSearchBarVisibility } from 'store/search/actions';
 
 const Search: FunctionComponent = () => {
   const searchResult = useSelector(getSearchContent);
@@ -22,6 +22,14 @@ const Search: FunctionComponent = () => {
       dispatch(setSearchPage(nextPage));
     }
   }, [dispatch, requestStatus, currentPage]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearSearchPage());
+      dispatch(setSearchQuery(''));
+      dispatch(toggleSearchBarVisibility(false));
+    };
+  }, [dispatch]);
 
   return (
     <>

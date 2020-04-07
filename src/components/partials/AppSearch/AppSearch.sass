@@ -7,9 +7,11 @@
   background-color: $color-darkgrey
   transition: all 0.3s ease-out
   transform: translateY(-100%)
+  visibility: hidden
 
   +m('visible')
     transform: none
+    visibility: visible
 
   +media($screen-lg)
     left: 100px

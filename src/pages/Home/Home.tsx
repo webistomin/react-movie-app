@@ -4,6 +4,7 @@ import AppIntro from 'components/ui/AppIntro';
 import AppCarousel from 'components/ui/AppCarousel';
 import AppContent from 'components/ui/AppContent';
 import AppFooter from 'components/partials/AppFooter';
+import AppSpin from 'components/ui/AppSpin/AppSpin';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLatestMovieStart } from 'store/movie/latest/actions';
@@ -48,14 +49,24 @@ const Home: FunctionComponent = () => {
         />
         {nowPlayingMovies ? (
           <AppCarousel title='Now playing movies' link='/now-playing' items={nowPlayingMovies.results} />
-        ) : null}
-        {popularMovies ? <AppCarousel title='Popular movies' link='/popular' items={popularMovies.results} /> : null}
+        ) : (
+          <AppSpin minHeight={563} />
+        )}
+        {popularMovies ? (
+          <AppCarousel title='Popular movies' link='/popular' items={popularMovies.results} />
+        ) : (
+          <AppSpin minHeight={563} />
+        )}
         {upcomingMovies ? (
           <AppCarousel title='Upcoming movies' link='/upcoming' items={upcomingMovies.results} />
-        ) : null}
+        ) : (
+          <AppSpin minHeight={563} />
+        )}
         {topRatedMovies ? (
           <AppCarousel title='Top rated movies' link='/top-rated' items={topRatedMovies.results} />
-        ) : null}
+        ) : (
+          <AppSpin minHeight={563} />
+        )}
       </AppContent>
       <AppFooter />
     </>

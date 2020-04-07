@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { cn } from '@bem-react/classname';
 
-import { AppImageCard, AppVideoCard } from 'components/ui/AppCard';
+import AppCard, { AppImageCard, AppVideoCard } from 'components/ui/AppCard';
 import { IVideo } from 'common/types/videos';
 import { IImage } from 'common/types/images';
+import { IMovie } from 'common/types/movie';
+import { IFavoriteMovie } from 'store/favorites/types';
 
 import './AppCardList.sass';
 
@@ -21,21 +23,27 @@ interface IImageList extends IProps {
   movies?: never;
 }
 
+interface IMovieList extends IProps {
+  movies: (IMovie | IFavoriteMovie)[];
+  videos?: never;
+  images?: never;
+}
+
 interface IProps {
   title: string;
 }
 
-type ConditionalListProps = IVideoList | IImageList;
+type ConditionalListProps = IVideoList | IImageList | IMovieList;
 
-const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, images }) => {
+const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, images, movies }) => {
   return (
     <div className={b()}>
       <div className={b('Heading')}>
         <h2 className={b('Title')}>{title}</h2>
-        <strong className={b('Counter')}>{videos?.length || images?.length} items</strong>
+        <strong className={b('Counter')}>{videos?.length || images?.length || movies?.length} items</strong>
       </div>
       <div className={b('Content')}>
-        <ul className={b('List', { '3items': Boolean(videos), '6items': Boolean(images) })}>
+        <ul className={b('List', { '3items': Boolean(videos), '6items': Boolean(images) || Boolean(movies) })}>
           {videos &&
             videos.map((video) => {
               return (
@@ -49,6 +57,19 @@ const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, i
               return (
                 <li className={b('Item')} key={image.file_path}>
                   <AppImageCard file_path={image.file_path} />
+                </li>
+              );
+            })}
+          {movies &&
+            movies.map((movie) => {
+              return (
+                <li className={b('Item')} key={movie.id}>
+                  <AppCard
+                    id={movie.id}
+                    poster_path={movie.poster_path}
+                    title={movie.title}
+                    vote_average={movie.vote_average}
+                  />
                 </li>
               );
             })}

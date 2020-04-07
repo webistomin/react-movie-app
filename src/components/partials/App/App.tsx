@@ -17,6 +17,7 @@ const Movie = lazy(() => import('pages/Movie'));
 const Error404 = lazy(() => import('pages/Error404'));
 const Search = lazy(() => import('pages/Search'));
 const PopularMovies = lazy(() => import('pages/PopularMovies'));
+const FavoriteMovies = lazy(() => import('pages/Favorite'));
 
 const b = cn('App');
 const w = cn('Wrapper');
@@ -39,6 +40,7 @@ const App: FunctionComponent = () => {
                   <Route path='/movie/:id' exact render={() => <Movie />} />
                   <Route path='/search' exact render={() => <Search />} />
                   <Route path='/popular' exact render={() => <PopularMovies />} />
+                  <Route path='/favorite' exact render={() => <FavoriteMovies />} />
                   <Route component={Error404} />
                 </Switch>
               </Suspense>

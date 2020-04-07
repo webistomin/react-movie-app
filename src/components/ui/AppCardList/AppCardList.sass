@@ -77,24 +77,24 @@
       @supports (display: grid)
         width: 100%
         display: grid
-        grid-template-columns: repeat(auto-fit, minmax(45%, 1fr))
+        grid-template-columns: repeat(auto-fill, minmax(45%, 1fr))
         grid-gap: 20px
 
       +media($screen-sm)
         @supports (display: grid)
-          grid-template-columns: repeat(auto-fit, minmax(30%, 1fr))
+          grid-template-columns: repeat(auto-fill, minmax(30%, 1fr))
 
       +media($screen-lg)
         @supports (display: grid)
-          grid-template-columns: repeat(auto-fit, minmax(23%, 1fr))
+          grid-template-columns: repeat(auto-fill, minmax(23%, 1fr))
 
       +media($screen-xl)
         @supports (display: grid)
-          grid-template-columns: repeat(auto-fit, minmax(18%, 1fr))
+          grid-template-columns: repeat(auto-fill, minmax(18%, 1fr))
 
       +media($screen-xxl)
         @supports (display: grid)
-          grid-template-columns: repeat(auto-fit, minmax(15%, 1fr))
+          grid-template-columns: repeat(auto-fill, minmax(15%, 1fr))
 
       .CardList-Item
         width: 48%

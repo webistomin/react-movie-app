@@ -33,7 +33,7 @@ const AppNav: FunctionComponent = () => {
     },
     {
       name: 'Favorite list',
-      link: '/',
+      link: '/favorite',
       icon: 'icon-heart',
     },
     {

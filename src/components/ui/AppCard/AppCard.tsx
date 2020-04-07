@@ -10,6 +10,9 @@ import './AppCard.sass';
 import { IMovie } from 'common/types/movie';
 import { buildImagePath } from 'utils/buildImagePath';
 import { PosterSizes } from 'common/types/images-sizes';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFavoriteMovieIds } from 'store/favorites/selectors';
+import { deleteFavoriteMovie, saveFavoriteMovie } from 'store/favorites/actions';
 
 const b = cn('Card');
 
@@ -22,10 +25,29 @@ interface IProps {
 
 // eslint-disable-next-line @typescript-eslint/camelcase
 const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_average }) => {
+  const favoriteMovies = useSelector(getFavoriteMovieIds);
+  const dispatch = useDispatch();
+
+  const toggleFavoriteState = () => {
+    if (favoriteMovies && favoriteMovies.indexOf(id) !== -1) {
+      dispatch(deleteFavoriteMovie(id));
+    } else {
+      dispatch(saveFavoriteMovie(id));
+    }
+  };
+
+  const isInFavoriteList = () => {
+    return favoriteMovies && favoriteMovies.indexOf(id) !== -1;
+  };
+
   return (
     <article className={b()}>
-      <button type='button' className={b('Like')}>
-        <AppIcon className='Icon_heart' icon='icon-heart' width={24} height={24} />
+      <button onClick={toggleFavoriteState} type='button' className={b('Like')}>
+        {isInFavoriteList() ? (
+          <AppIcon className='Icon_heart' icon='icon-heart-filled' width={24} height={24} />
+        ) : (
+          <AppIcon className='Icon_heart' icon='icon-heart' width={24} height={24} />
+        )}
       </button>
       <Link to={`/movie/${id}`} className={b('Link')}>
         <figure className={b('Figure')}>

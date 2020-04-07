@@ -52,6 +52,14 @@ const Movie: FunctionComponent = () => {
     };
   }, [dispatch, params]);
 
+  useEffect(() => {
+    if (!movie) {
+      return;
+    }
+
+    document.title = `${movie.original_title} – ${new Date(movie.release_date).getUTCFullYear()}`;
+  }, [movie]);
+
   const renderMovieOverview = useCallback(() => {
     if (!movie) {
       return null;

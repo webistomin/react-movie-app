@@ -4,6 +4,10 @@
   &:hover .Card-Img.Lazyload_loaded
     transform: scale(1.05)
 
+  &:hover .Card-LightboxBtn
+    opacity: 1
+    visibility: visible
+
   @media (pointer: fine)
     &:hover
       .Card-Like
@@ -100,4 +104,23 @@
 
     +media($screen-lg)
       font-size: 14px
+
+  +e('LightboxBtn')
+    opacity: 0
+    visibility: hidden
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background-color: rgba($color-blue, 0.5)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: all 0.3s ease-in-out
+    z-index: 1
+    color: $color-white
+
+    .Icon
+      stroke: none
 

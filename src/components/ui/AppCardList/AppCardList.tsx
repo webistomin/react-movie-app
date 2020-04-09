@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { cn } from '@bem-react/classname';
 
 import AppCard, { AppImageCard, AppVideoCard } from 'components/ui/AppCard';
@@ -8,6 +8,7 @@ import { IMovie } from 'common/types/movie';
 import { IFavoriteMovie } from 'store/favorites/types';
 
 import './AppCardList.sass';
+import AppLightbox from 'components/ui/AppLightbox/AppLightbox';
 
 const b = cn('CardList');
 
@@ -36,6 +37,15 @@ interface IProps {
 type ConditionalListProps = IVideoList | IImageList | IMovieList;
 
 const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, images, movies }) => {
+  const [isLightboxVisible, setLightboxVisibility] = useState(false);
+  const [currentPhotoIndex, setIndex] = useState(0);
+
+  const handleImageCardClick = (path: IImage['file_path']) => {
+    setLightboxVisibility(true);
+    const newIndex = images?.findIndex((image) => image.file_path === path) || 0;
+    setIndex(newIndex);
+  };
+
   return (
     <div className={b()}>
       <div className={b('Heading')}>
@@ -52,14 +62,19 @@ const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, i
                 </li>
               );
             })}
+
           {images &&
             images.map((image) => {
               return (
                 <li className={b('Item')} key={image.file_path}>
-                  <AppImageCard file_path={image.file_path} />
+                  <AppImageCard file_path={image.file_path} onClick={(path) => handleImageCardClick(path)} />
                 </li>
               );
             })}
+          {images && isLightboxVisible && (
+            <AppLightbox images={images} startIndex={currentPhotoIndex} onClose={() => setLightboxVisibility(false)} />
+          )}
+
           {movies &&
             movies.map((movie) => {
               return (

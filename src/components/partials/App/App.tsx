@@ -11,6 +11,7 @@ import AppNav from 'components/partials/AppNav';
 import AppSearch from 'components/partials/AppSearch';
 import ErrorBoundary from 'components/partials/AppErrorBoundary';
 import AppInitializer from 'components/partials/AppInitializer';
+import AppNotifications from 'components/partials/AppNotifications/AppNotifications';
 
 const Home = lazy(() => import('pages/Home'));
 const Movie = lazy(() => import('pages/Movie'));
@@ -33,6 +34,7 @@ const App: FunctionComponent = () => {
       <PersistGate loading={null} persistor={persistor}>
         <ErrorBoundary className={b()}>
           <AppInitializer />
+          <AppNotifications />
           <ConnectedRouter history={history}>
             <div className={w()}>
               <AppNav />

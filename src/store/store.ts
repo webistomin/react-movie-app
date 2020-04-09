@@ -5,6 +5,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { StateType } from 'typesafe-actions';
 import { createBrowserHistory } from 'history';
+import { reducer as notifications } from 'react-notification-system-redux';
 
 import { sagaMiddleware, connectedRouterMiddleware } from 'store/middlewares';
 import rootSaga from 'store/saga';
@@ -47,6 +48,7 @@ const rootReducers = combineReducers({
   movies: movieReducers,
   genres: genresReducer,
   favoriteMovies: favoriteMoviesReducer,
+  notifications: notifications,
 });
 
 const persistConfig = {

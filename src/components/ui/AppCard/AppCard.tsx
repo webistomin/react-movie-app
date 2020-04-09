@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { cn } from '@bem-react/classname';
+import Notifications from 'react-notification-system-redux';
 
 import { Link } from 'react-router-dom';
 import AppLazyImage from 'components/ui/AppLazyImage';
@@ -29,9 +30,22 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
   const favoriteMovies = useSelector(getFavoriteMovies);
   const dispatch = useDispatch();
 
+  const addToFavoriteMessage = {
+    title,
+    message: 'has been added to favorite list',
+    autoDismiss: 3,
+  };
+
+  const removeFromFavoriteMessage = {
+    title,
+    message: 'has been removed from favorite list',
+    autoDismiss: 3,
+  };
+
   const toggleFavoriteState = () => {
     if (favoriteMovies && favoriteMovies.findIndex((movie: IFavoriteMovie) => movie.id === id) !== -1) {
       dispatch(deleteFavoriteMovie(id));
+      dispatch(Notifications.success(removeFromFavoriteMessage));
     } else {
       dispatch(
         saveFavoriteMovie({
@@ -43,6 +57,7 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
           vote_average,
         })
       );
+      dispatch(Notifications.success(addToFavoriteMessage));
     }
   };
 

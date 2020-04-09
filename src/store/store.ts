@@ -17,7 +17,7 @@ import movieDetailsReducer from 'store/movie/details/reducer';
 import movieCreditsReducer from 'store/movie/credits/reducer';
 import recommendedMoviesReducer from 'store/movie/recommended/reducer';
 import similarMoviesReducer from 'store/movie/similar/reducer';
-import nowPlatingMoviesReducer from 'store/movie/now-playing/reducer';
+import nowPlayingMoviesReducer from 'store/movie/now-playing/reducer';
 import topRatedMoviesReducer from 'store/movie/top-rated/reducer';
 import upcomingMoviesReducer from 'store/movie/upcoming/reducer';
 import movieVideosReducer from 'store/movie/videos/reducer';
@@ -34,7 +34,7 @@ const movieReducers = combineReducers({
   movieImages: movieImagesReducer,
   recommendedMovies: recommendedMoviesReducer,
   similarMovies: similarMoviesReducer,
-  nowPlatingMovies: nowPlatingMoviesReducer,
+  nowPlayingMovies: nowPlayingMoviesReducer,
   topRatedMovies: topRatedMoviesReducer,
   upcomingMovies: upcomingMoviesReducer,
 });

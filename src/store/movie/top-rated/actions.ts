@@ -8,7 +8,7 @@ export function fetchTopRatedMoviesStart() {
   };
 }
 
-export function fetchTopRatedMoviesSuccess(payload: ISearch<IMovie>) {
+export function fetchTopRatedMoviesSuccess(payload: { movies: ISearch<IMovie>; shouldConcat?: boolean }) {
   return {
     type: ActionTypes.FETCH_TOP_RATED_MOVIES_SUCCESS,
     payload,
@@ -18,5 +18,18 @@ export function fetchTopRatedMoviesSuccess(payload: ISearch<IMovie>) {
 export function fetchTopRatedMoviesFailure() {
   return {
     type: ActionTypes.FETCH_TOP_RATED_MOVIES_FAILURE,
+  };
+}
+
+export function clearTopRatedSearchPage() {
+  return {
+    type: ActionTypes.CLEAR_TOP_RATED_SEARCH_PAGE,
+  };
+}
+
+export function setTopRatedSearchPage(payload: number) {
+  return {
+    type: ActionTypes.SET_TOP_RATED_SEARCH_PAGE,
+    payload,
   };
 }

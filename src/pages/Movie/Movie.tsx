@@ -97,7 +97,7 @@ const Movie: FunctionComponent = () => {
     return (
       <>
         <AppDetails title='Storyline' poster={movie.poster_path} overview={movie.overview} details={parsedDetails} />
-        {credits && <AppCarousel title='Cast' cast={credits.cast} />}
+        {credits?.cast?.length ? <AppCarousel title='Cast' cast={credits.cast} /> : null}
       </>
     );
   }, [credits, movie]);

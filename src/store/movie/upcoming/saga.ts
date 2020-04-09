@@ -1,19 +1,37 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { ActionTypes, IFetchUpcomingMoviesStartAction } from 'store/movie/upcoming/types';
+import { all, call, debounce, put, takeLatest } from 'redux-saga/effects';
+import { ActionTypes, IFetchUpcomingMoviesStartAction, ISetUpcomingSearchPage } from 'store/movie/upcoming/types';
 import TMDbService from '~/services/tmdbService';
-import { fetchUpcomingMoviesSuccess, fetchUpcomingMoviesFailure } from 'store/movie/upcoming/actions';
+import { fetchUpcomingMoviesFailure, fetchUpcomingMoviesSuccess } from 'store/movie/upcoming/actions';
 
 const API = new TMDbService();
 
-function* fetchUpcomingMoviesSaga(action: IFetchUpcomingMoviesStartAction) {
+function* saveUpcomingMovies(page = 1, shouldConcat = false) {
   try {
-    const upcomingMovies = yield call(API.getUpcomingMovies);
-    yield put(fetchUpcomingMoviesSuccess(upcomingMovies));
+    const upcomingMovies = yield call(API.getUpcomingMovies, page);
+    yield put(
+      fetchUpcomingMoviesSuccess({
+        movies: upcomingMovies,
+        shouldConcat,
+      })
+    );
   } catch (error) {
     yield put(fetchUpcomingMoviesFailure());
   }
 }
 
+function* fetchUpcomingMoviesSaga(action: IFetchUpcomingMoviesStartAction) {
+  yield saveUpcomingMovies(1, false);
+}
+
+function* fetchUpcomingMoviesWithPageSaga(action: ISetUpcomingSearchPage) {
+  const page = action.payload;
+
+  yield saveUpcomingMovies(page, true);
+}
+
 export default function*() {
-  yield all([takeLatest(ActionTypes.FETCH_UPCOMING_MOVIES_START, fetchUpcomingMoviesSaga)]);
+  yield all([
+    debounce(150, ActionTypes.SET_UPCOMING_SEARCH_PAGE, fetchUpcomingMoviesWithPageSaga),
+    takeLatest(ActionTypes.FETCH_UPCOMING_MOVIES_START, fetchUpcomingMoviesSaga),
+  ]);
 }

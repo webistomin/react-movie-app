@@ -7,40 +7,40 @@ import { FetchStatus } from 'common/types/fetch-status';
 import { b } from 'components/ui/AppContent/AppContent';
 import { AppCardInfinityList } from 'components/ui/AppCardList';
 import {
-  getCurrentPageNowPlayingMovies,
-  getNowPlayingFetchStatus,
-  getNowPlayingMovies,
-  hasMorePagesWithNowPlayingMovies,
-} from 'store/movie/now-playing/selectors';
-import { fetchNowPlayingMoviesStart, setNowPlayingSearchPage } from 'store/movie/now-playing/actions';
+  getCurrentPageUpcomingMovies,
+  getUpcomingFetchStatus,
+  getUpcomingMovies,
+  hasMorePagesWithUpcomingMovies,
+} from 'store/movie/upcoming/selectors';
+import { fetchUpcomingMoviesStart, setUpcomingSearchPage } from 'store/movie/upcoming/actions';
 
 const UpcomingMovies: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const nowPlayingMovies = useSelector(getNowPlayingMovies);
-  const hasMoreElements = useSelector(hasMorePagesWithNowPlayingMovies);
-  const currentPage = useSelector(getCurrentPageNowPlayingMovies);
-  const requestStatus = useSelector(getNowPlayingFetchStatus);
+  const upcomingMovies = useSelector(getUpcomingMovies);
+  const hasMoreElements = useSelector(hasMorePagesWithUpcomingMovies);
+  const currentPage = useSelector(getCurrentPageUpcomingMovies);
+  const requestStatus = useSelector(getUpcomingFetchStatus);
 
   useEffect(() => {
-    dispatch(fetchNowPlayingMoviesStart());
+    dispatch(fetchUpcomingMoviesStart());
   }, [dispatch]);
 
   const loadMoreCards = useCallback(() => {
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;
-      dispatch(setNowPlayingSearchPage(nextPage));
+      dispatch(setUpcomingSearchPage(nextPage));
     }
   }, [dispatch, requestStatus, currentPage]);
 
   return (
     <>
       <AppContent className={b({ withPaddings: true })}>
-        {nowPlayingMovies?.results && (
+        {upcomingMovies?.results && (
           <AppCardInfinityList
             currentPage={currentPage}
             hasMoreElements={hasMoreElements}
-            title='Now playing movies'
-            movies={nowPlayingMovies.results}
+            title='Upcoming movies'
+            movies={upcomingMovies.results}
             onLoadHandler={loadMoreCards}
           />
         )}

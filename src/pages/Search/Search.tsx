@@ -7,7 +7,7 @@ import { getSearchContent, getSearchPage, getSearchStatus, hasMorePages } from '
 import { AppCardInfinityList } from 'components/ui/AppCardList';
 import { b } from 'components/ui/AppContent/AppContent';
 import { FetchStatus } from 'common/types/fetch-status';
-import { clearSearchPage, setSearchPage, setSearchQuery, toggleSearchBarVisibility } from 'store/search/actions';
+import { setSearchPage, toggleSearchBarVisibility } from 'store/search/actions';
 
 const Search: FunctionComponent = () => {
   const searchResult = useSelector(getSearchContent);
@@ -17,6 +17,7 @@ const Search: FunctionComponent = () => {
   const requestStatus = useSelector(getSearchStatus);
 
   const loadMoreCards = useCallback(() => {
+    console.log('load');
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;
       dispatch(setSearchPage(nextPage));
@@ -25,8 +26,6 @@ const Search: FunctionComponent = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(clearSearchPage());
-      dispatch(setSearchQuery(''));
       dispatch(toggleSearchBarVisibility(false));
     };
   }, [dispatch]);

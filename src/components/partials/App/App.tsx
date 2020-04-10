@@ -29,6 +29,11 @@ const w = cn('Wrapper');
 const { store, persistor } = configureStore();
 
 const App: FunctionComponent = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+    return null;
+  };
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -36,6 +41,7 @@ const App: FunctionComponent = () => {
           <AppInitializer />
           <AppNotifications />
           <ConnectedRouter history={history}>
+            <Route component={scrollToTop} />
             <div className={w()}>
               <AppNav />
               <AppSearch />

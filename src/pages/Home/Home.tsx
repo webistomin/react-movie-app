@@ -7,16 +7,17 @@ import AppFooter from 'components/partials/AppFooter';
 import AppSpin from 'components/ui/AppSpin/AppSpin';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLatestMovieStart } from 'store/movie/latest/actions';
 import { fetchPopularMoviesStart } from 'store/movie/popular/actions';
 import { getPopularMovies } from 'store/movie/popular/selectors';
-import { getLatestMovie } from 'store/movie/latest/selectors';
 import { getNowPlayingMovies } from 'store/movie/now-playing/selectors';
 import { fetchNowPlayingMoviesStart } from 'store/movie/now-playing/actions';
 import { getTopRatedMovies } from 'store/movie/top-rated/selectors';
 import { fetchTopRatedMoviesStart } from 'store/movie/top-rated/actions';
 import { getUpcomingMovies } from 'store/movie/upcoming/selectors';
 import { fetchUpcomingMoviesStart } from 'store/movie/upcoming/actions';
+import { randomInteger } from 'utils/randomInteger';
+
+const randomInt = randomInteger(0, 9);
 
 const Home: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -24,11 +25,10 @@ const Home: FunctionComponent = () => {
   const nowPlayingMovies = useSelector(getNowPlayingMovies);
   const topRatedMovies = useSelector(getTopRatedMovies);
   const upcomingMovies = useSelector(getUpcomingMovies);
-  const latestMovie = useSelector(getLatestMovie);
+  const latestMovie = popularMovies?.results.slice(0, 10)[randomInt];
 
   useEffect(() => {
     document.title = 'Home, sweet home :: 💚';
-    dispatch(fetchLatestMovieStart());
     dispatch(fetchPopularMoviesStart());
     dispatch(fetchTopRatedMoviesStart());
     dispatch(fetchNowPlayingMoviesStart());

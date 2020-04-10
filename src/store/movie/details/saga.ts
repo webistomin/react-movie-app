@@ -2,6 +2,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { ActionTypes, IFetchMovieDetailsStartAction } from 'store/movie/details/types';
 import TMDbService from '~/services/tmdbService';
 import { fetchMovieDetailsFailure, fetchMovieDetailsSuccess } from 'store/movie/details/actions';
+import Notifications from 'react-notification-system-redux';
 
 const API = new TMDbService();
 
@@ -11,6 +12,13 @@ function* fetchMovieDetailsSaga(action: IFetchMovieDetailsStartAction) {
     yield put(fetchMovieDetailsSuccess(movieDetails));
   } catch (error) {
     yield put(fetchMovieDetailsFailure());
+    yield put(
+      Notifications.error({
+        title: 'Movie details',
+        message: 'Error during request, please reload page',
+        autoDismiss: 3,
+      })
+    );
   }
 }
 

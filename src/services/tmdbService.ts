@@ -14,7 +14,12 @@ export default class TMDb {
 
   private fetchJSON = async (url: string) => {
     const response = await fetch(url);
-    return response.json();
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch ${url}, received ${response.status} error`);
+    }
+
+    return await response.json();
   };
 
   public getGenres = async (): Promise<IGenre[]> => {

@@ -10,6 +10,7 @@ import {
 } from 'store/search/actions';
 import { getSearchPage, getSearchQuery } from 'store/search/selectors';
 import { getCurrentLocation } from 'store/router/selectors';
+import Notifications from 'react-notification-system-redux';
 
 const API = new TMDbService();
 
@@ -32,6 +33,13 @@ function* saveMovies(query: string, page = 1, shouldConcat = false) {
       }
     } catch (error) {
       yield put(fetchSearchContentFailure());
+      yield put(
+        Notifications.error({
+          title: 'Movie search',
+          message: 'Error during request, please reload page',
+          autoDismiss: 3,
+        })
+      );
     }
   }
 }

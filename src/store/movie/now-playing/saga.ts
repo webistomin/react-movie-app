@@ -6,6 +6,7 @@ import {
 } from 'store/movie/now-playing/types';
 import TMDbService from '~/services/tmdbService';
 import { fetchNowPlayingMoviesFailure, fetchNowPlayingMoviesSuccess } from 'store/movie/now-playing/actions';
+import Notifications from 'react-notification-system-redux';
 
 const API = new TMDbService();
 
@@ -20,6 +21,13 @@ function* saveNowPlayingMovies(page = 1, shouldConcat = false) {
     );
   } catch (error) {
     yield put(fetchNowPlayingMoviesFailure());
+    yield put(
+      Notifications.error({
+        title: 'Now playing movies',
+        message: 'Error during request, please reload page',
+        autoDismiss: 3,
+      })
+    );
   }
 }
 

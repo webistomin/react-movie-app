@@ -2,6 +2,7 @@ import { all, call, debounce, put, takeLatest } from 'redux-saga/effects';
 import { ActionTypes, IFetchTopRatedMoviesStartAction, ISetTopRatedSearchPage } from 'store/movie/top-rated/types';
 import TMDbService from '~/services/tmdbService';
 import { fetchTopRatedMoviesFailure, fetchTopRatedMoviesSuccess } from 'store/movie/top-rated/actions';
+import Notifications from 'react-notification-system-redux';
 
 const API = new TMDbService();
 
@@ -16,6 +17,13 @@ function* saveTopRatedMovies(page = 1, shouldConcat = false) {
     );
   } catch (error) {
     yield put(fetchTopRatedMoviesFailure());
+    yield put(
+      Notifications.error({
+        title: 'Top rated movies',
+        message: 'Error during request, please reload page',
+        autoDismiss: 3,
+      })
+    );
   }
 }
 

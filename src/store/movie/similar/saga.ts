@@ -2,6 +2,7 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { ActionTypes, IFetchSimilarMoviesStartAction } from 'store/movie/similar/types';
 import TMDbService from '~/services/tmdbService';
 import { fetchSimilarMoviesFailure, fetchSimilarMoviesSuccess } from 'store/movie/similar/actions';
+import Notifications from 'react-notification-system-redux';
 
 const API = new TMDbService();
 
@@ -11,6 +12,13 @@ function* fetchSimilarMoviesSaga(action: IFetchSimilarMoviesStartAction) {
     yield put(fetchSimilarMoviesSuccess(similarMovie));
   } catch (error) {
     yield put(fetchSimilarMoviesFailure());
+    yield put(
+      Notifications.error({
+        title: 'Similar movies',
+        message: 'Error during request, please reload page',
+        autoDismiss: 3,
+      })
+    );
   }
 }
 

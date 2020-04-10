@@ -8,6 +8,7 @@ import AppLazyImage from 'components/ui/AppLazyImage';
 
 import './AppCard.sass';
 import { IVideo } from 'common/types/videos';
+import AppIcon from 'components/ui/AppIcon';
 
 const b = cn('Card');
 
@@ -16,13 +17,17 @@ interface IProps {
   name: IVideo['name'];
   type: IVideo['type'];
   ytKey: IVideo['key'];
+  onClick?: () => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/camelcase
-const AppVideoCard: FunctionComponent<IProps> = ({ id, name, type, ytKey }) => {
+const AppVideoCard: FunctionComponent<IProps> = ({ id, name, type, ytKey, onClick }) => {
   return (
     <article className={b()}>
       <figure className={b('Figure')}>
+        <button onClick={onClick} className={b('LightboxBtn')}>
+          <AppIcon icon={'icon-play'} width={48} height={48} />
+        </button>
         <picture className={b('Picture')}>
           <AppLazyImage
             image={`https://img.youtube.com/vi/${ytKey}/sddefault.jpg`}

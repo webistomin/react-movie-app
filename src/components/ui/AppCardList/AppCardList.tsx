@@ -9,6 +9,7 @@ import { IFavoriteMovie } from 'store/favorites/types';
 
 import './AppCardList.sass';
 import AppLightbox from 'components/ui/AppLightbox/AppLightbox';
+import AppVideoModal from 'components/ui/AppVideoModal/AppVideoModal';
 
 const b = cn('CardList');
 
@@ -38,12 +39,20 @@ type ConditionalListProps = IVideoList | IImageList | IMovieList;
 
 const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, images, movies }) => {
   const [isLightboxVisible, setLightboxVisibility] = useState(false);
+  const [isVideoModalVisible, setVideoModalVisibility] = useState(false);
+
   const [currentPhotoIndex, setIndex] = useState(0);
+  const [currentVideoKey, setVideoKey] = useState('');
 
   const handleImageCardClick = (path: IImage['file_path']) => {
     setLightboxVisibility(true);
     const newIndex = images?.findIndex((image) => image.file_path === path) || 0;
     setIndex(newIndex);
+  };
+
+  const handleVideoCardClick = (videoId: string) => {
+    setVideoModalVisibility(true);
+    setVideoKey(videoId);
   };
 
   return (
@@ -58,10 +67,23 @@ const AppCardList: FunctionComponent<ConditionalListProps> = ({ title, videos, i
             videos.map((video) => {
               return (
                 <li className={b('Item')} key={video.id}>
-                  <AppVideoCard id={video.id} name={video.name} type={video.type} ytKey={video.key} />
+                  <AppVideoCard
+                    id={video.id}
+                    name={video.name}
+                    type={video.type}
+                    ytKey={video.key}
+                    onClick={() => handleVideoCardClick(video.key)}
+                  />
                 </li>
               );
             })}
+          {videos && isVideoModalVisible && (
+            <AppVideoModal
+              videoId={currentVideoKey}
+              isOpen={isVideoModalVisible}
+              onClose={() => setVideoModalVisibility(false)}
+            />
+          )}
 
           {images &&
             images.map((image) => {

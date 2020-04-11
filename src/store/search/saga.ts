@@ -1,6 +1,6 @@
 import { all, call, put, debounce, select, takeLatest } from 'redux-saga/effects';
 import { ActionTypes, ISearchPageAction, ISearchQueryAction } from 'store/search/types';
-import { push } from 'connected-react-router';
+import { push, replace } from 'connected-react-router';
 import TMDbService from '~/services/tmdbService';
 import {
   clearSearchPage,
@@ -20,6 +20,7 @@ function* saveMovies(query: string, page = 1, shouldConcat = false) {
 
   if (query) {
     yield put(fetchSearchContentStart());
+    yield put(push(`/search?query=${query}`));
     try {
       const searchResult = yield call(API.getContentBySearchQuery, query, page);
       yield put(fetchSearchContentSuccess({ movies: searchResult, shouldConcat }));

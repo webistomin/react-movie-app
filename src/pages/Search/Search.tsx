@@ -7,9 +7,15 @@ import { getSearchContent, getSearchPage, getSearchStatus, hasMorePages } from '
 import { AppCardInfinityList } from 'components/ui/AppCardList';
 import { b } from 'components/ui/AppContent/AppContent';
 import { FetchStatus } from 'common/types/fetch-status';
-import { setSearchPage, toggleSearchBarVisibility } from 'store/search/actions';
+import { setSearchPage, setSearchQuery, toggleSearchBarVisibility } from 'store/search/actions';
+import { getCurrentLocation } from 'store/router/selectors';
+
+interface ISearchLocation {
+  location: Location;
+}
 
 const Search: FunctionComponent = () => {
+  const location = useSelector(getCurrentLocation);
   const searchResult = useSelector(getSearchContent);
   const dispatch = useDispatch();
   const hasMoreElements = useSelector(hasMorePages);
@@ -17,7 +23,6 @@ const Search: FunctionComponent = () => {
   const requestStatus = useSelector(getSearchStatus);
 
   const loadMoreCards = useCallback(() => {
-    console.log('load');
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;
       dispatch(setSearchPage(nextPage));
@@ -28,6 +33,16 @@ const Search: FunctionComponent = () => {
     return () => {
       dispatch(toggleSearchBarVisibility(false));
     };
+  }, [dispatch]);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    if (location?.query?.query) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      dispatch(setSearchQuery(location.query.query));
+    }
   }, [dispatch]);
 
   return (

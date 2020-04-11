@@ -41,14 +41,24 @@ const AppNav: FunctionComponent = () => {
       action: onToggleSearchBarVisibility,
     },
     {
-      name: 'Movies',
-      link: '/movies',
+      name: 'Now playing movies',
+      link: '/now-playing',
       icon: 'icon-movie',
     },
     {
-      name: 'TV',
-      link: '/tv',
-      icon: 'icon-tv',
+      name: 'Upcoming movies',
+      link: '/upcoming',
+      icon: 'icon-calendar',
+    },
+    {
+      name: 'Popular movies',
+      link: '/popular',
+      icon: 'icon-flame',
+    },
+    {
+      name: 'Top rated movies',
+      link: '/top-rated',
+      icon: 'icon-rated',
     },
   ];
 

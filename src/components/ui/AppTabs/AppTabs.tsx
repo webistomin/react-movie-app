@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
 

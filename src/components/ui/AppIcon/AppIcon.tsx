@@ -15,7 +15,7 @@ interface IProps {
 
 const AppIcon: FunctionComponent<IProps> = ({ icon, width, height, className }) => {
   return (
-    <svg className={classnames(b(), className)} width={width} height={height}>
+    <svg className={classnames(b({ name: icon.replace('icon-', '') }), className)} width={width} height={height}>
       <use xlinkHref={`#${icon}`} />
     </svg>
   );

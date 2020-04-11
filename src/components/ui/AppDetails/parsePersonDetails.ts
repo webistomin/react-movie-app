@@ -10,7 +10,7 @@ export const parsePersonDetails = (person: IPersonDetails | null): IDetails[] =>
     },
     {
       detailName: 'Birthday',
-      detailValue: person && new Date(person.birthday).toDateString(),
+      detailValue: person?.birthday && new Date(person.birthday).toDateString(),
     },
     {
       detailName: 'Place of birth',
@@ -18,11 +18,11 @@ export const parsePersonDetails = (person: IPersonDetails | null): IDetails[] =>
     },
     {
       detailName: 'Deathday',
-      detailValue: person && new Date(person.deathday).toDateString(),
+      detailValue: person?.deathday && new Date(person.deathday).toDateString(),
     },
     {
       detailName: 'Gender',
-      detailValue: person && getGender(person.gender),
+      detailValue: person?.gender && getGender(person.gender),
     },
     {
       detailName: 'Biography',

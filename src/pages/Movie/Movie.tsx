@@ -1,25 +1,27 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import AppIntro from 'components/ui/AppIntro';
 import AppContent from 'components/ui/AppContent';
 import AppCarousel from 'components/ui/AppCarousel';
 import AppFooter from 'components/partials/AppFooter';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import AppSpin from 'components/ui/AppSpin/AppSpin';
+import AppTabs, { ITab } from 'components/ui/AppTabs/AppTabs';
+import AppDetails from 'components/ui/AppDetails/AppDetails';
+import AppCardList from 'components/ui/AppCardList';
+
 import { clearMovieDetails, fetchMovieDetailsStart } from 'store/movie/details/actions';
 import { fetchRecommendedMoviesStart } from 'store/movie/recommended/actions';
 import { fetchSimilarMoviesStart } from 'store/movie/similar/actions';
 import { getMovieDetails } from 'store/movie/details/selectors';
 import { getRecommendedMovies } from 'store/movie/recommended/selectors';
 import { getSimilarMovies } from 'store/movie/similar/selectors';
-import AppTabs, { ITab } from 'components/ui/AppTabs/AppTabs';
-import AppDetails from 'components/ui/AppDetails/AppDetails';
 import { parseMovieDetails } from 'components/ui/AppDetails/parseMovieDetails';
-import { getMovieCredits } from 'store/movie/credits/selectors';
+import { getMovieCredits, getMovieCreditsFetchStatus } from 'store/movie/credits/selectors';
 import { fetchMovieCreditsStart } from 'store/movie/credits/actions';
 import { fetchMovieVideosStart } from 'store/movie/videos/actions';
 import { getMovieVideos } from 'store/movie/videos/selectors';
-import AppCardList from 'components/ui/AppCardList';
 import { getMovieImages } from 'store/movie/images/selectors';
 import { fetchMovieImagesStart } from 'store/movie/images/actions';
 import { IVideo } from 'common/types/videos';
@@ -100,7 +102,7 @@ const Movie: FunctionComponent = () => {
     return (
       <>
         <AppDetails title='Storyline' poster={movie.poster_path} overview={movie.overview} details={parsedDetails} />
-        {credits?.cast?.length ? <AppCarousel title='Cast' cast={credits.cast} /> : null}
+        {credits?.cast?.length ? <AppCarousel title='Cast' cast={credits.cast} /> : <AppSpin minHeight={563} />}
       </>
     );
   }, [credits, movie]);

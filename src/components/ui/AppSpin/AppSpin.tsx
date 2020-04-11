@@ -1,16 +1,19 @@
 import React, { FunctionComponent } from 'react';
+import { cn } from '@bem-react/classname';
+
+import './AppSpin.sass';
 
 interface IProps {
   minHeight: number;
 }
 
+const b = cn('Spin');
+
 export const AppSpin: FunctionComponent<IProps> = ({ minHeight }) => {
   return (
     <div
+      className={b()}
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         minHeight: `${minHeight}px`,
       }}>
       <svg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' stroke='#2196f3'>

@@ -8,10 +8,10 @@ import { IImages } from 'common/types/images';
 import { IPersonDetails } from 'common/types/person-details';
 
 export default class TMDb {
-  private readonly API_BASE = process.env.REACT_APP_TMDB_URL || process.env.react_app_tmdb_url;
-  private readonly IMG_BASE = process.env.REACT_APP_API_IMAGE_URL || process.env.react_app_api_image_url;
-  private readonly TMDB_API_KEY = process.env.REACT_APP_API_KEY || process.env.react_app_api_key;
-  private readonly API_LANGUAGE = process.env.REACT_APP_API_LANG || process.env.react_app_api_lang;
+  private readonly API_BASE = 'https://api.themoviedb.org/3/';
+  private readonly TMDB_API_KEY = '52217232f795bbefbb1b7c951aae98ad';
+  private readonly API_LANGUAGE = 'en-US';
+  public readonly API_IMAGE_PATH = 'https://image.tmdb.org/t/p/';
 
   private fetchJSON = async (url: string) => {
     const response = await fetch(url);

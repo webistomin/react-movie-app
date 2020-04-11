@@ -1,6 +1,6 @@
 import { all, call, put, debounce, select, takeLatest } from 'redux-saga/effects';
 import { ActionTypes, ISearchPageAction, ISearchQueryAction } from 'store/search/types';
-import { push, replace } from 'connected-react-router';
+import { push } from 'connected-react-router';
 import TMDbService from '~/services/tmdbService';
 import {
   clearSearchPage,

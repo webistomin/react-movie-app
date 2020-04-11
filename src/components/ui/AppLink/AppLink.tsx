@@ -13,22 +13,28 @@ interface OwnProps {
   to: string | undefined;
   children: string | ReactNode;
   color?: string;
+  ariaLabel?: string;
 }
 
 type IProps = OwnProps & React.HTMLProps<HTMLLinkElement>;
 
-const AppLink: FunctionComponent<IProps> = ({ className, to, children, color }) => {
+const AppLink: FunctionComponent<IProps> = ({ ariaLabel, className, to, children, color }) => {
   if (!to) {
     return null;
   } else if (to.match(/^(http(s)?|ftp):\/\//)) {
     return (
-      <a href={to} target='_blank' rel='noopener noreferrer nofollow' className={classnames(b({ color }), className)}>
+      <a
+        href={to}
+        aria-label={ariaLabel}
+        target='_blank'
+        rel='noopener noreferrer nofollow'
+        className={classnames(b({ color }), className)}>
         {children}
       </a>
     );
   } else {
     return (
-      <Link to={to} className={classnames(b({ color }), className)}>
+      <Link to={to} aria-label={ariaLabel} className={classnames(b({ color }), className)}>
         {children}
       </Link>
     );

@@ -75,7 +75,7 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
             {cast &&
               cast.map((card) => {
                 return (
-                  <li className={b('Item')} key={card.id}>
+                  <div className={b('Item')} key={card.id}>
                     <AppPersonCard
                       character={card.character}
                       id={card.id}
@@ -83,15 +83,15 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
                       profile_path={card.profile_path || card.poster_path}
                       linkName={card.name ? 'person' : 'movie'}
                     />
-                  </li>
+                  </div>
                 );
               })}
             {link && (
-              <li className={b('Item')}>
+              <div className={b('Item')}>
                 <AppLink to={link} className={b('Explore')} color='white'>
                   Explore all
                 </AppLink>
-              </li>
+              </div>
             )}
           </Flickity>
         </div>

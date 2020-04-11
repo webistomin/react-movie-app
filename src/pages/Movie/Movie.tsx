@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useEffect } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 
 import AppIntro from 'components/ui/AppIntro';
 import AppContent from 'components/ui/AppContent';
@@ -49,6 +49,7 @@ const Movie: FunctionComponent = () => {
 
     return () => {
       dispatch(clearMovieDetails());
+      setTab('movie-overview');
     };
   }, [dispatch, params]);
 
@@ -87,6 +88,8 @@ const Movie: FunctionComponent = () => {
 
     return tabs;
   };
+
+  const [currentTab, setTab] = useState('movie-overview');
 
   const renderMovieOverview = useCallback(() => {
     if (!movie) {
@@ -142,7 +145,7 @@ const Movie: FunctionComponent = () => {
           runtime={movie?.runtime}
           vote_average={movie?.vote_average}
         />
-        <AppTabs tabs={getAvailableTabs()} />
+        <AppTabs tabs={getAvailableTabs()} currentTab={currentTab} onTabClick={(id) => setTab(id)} />
         {recommended && Boolean(recommended.total_results) && (
           <AppCarousel title='Recommended movies' items={recommended.results} />
         )}

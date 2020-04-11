@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
 
@@ -13,13 +13,13 @@ export interface ITab {
 interface IProps {
   className?: string;
   tabs: ITab[];
+  onTabClick: (id: ITab['id']) => void;
+  currentTab: string;
 }
 
 const b = cn('Tabs');
 
-export const AppTabs: FunctionComponent<IProps> = ({ className, tabs }) => {
-  const [currentTab, setTab] = useState(tabs[0].id);
-
+export const AppTabs: FunctionComponent<IProps> = ({ className, tabs, onTabClick, currentTab }) => {
   return (
     <div className={classnames(b(), className)}>
       <div className={classnames(b('Heading'))}>
@@ -28,7 +28,10 @@ export const AppTabs: FunctionComponent<IProps> = ({ className, tabs }) => {
             const isActive = currentTab === tab.id;
             return (
               <li className={classnames(b('ListItem'))} key={tab.id}>
-                <button type='button' className={classnames(b('TabBtn', { isActive }))} onClick={() => setTab(tab.id)}>
+                <button
+                  type='button'
+                  className={classnames(b('TabBtn', { isActive }))}
+                  onClick={() => onTabClick(tab.id)}>
                   {tab.title}
                 </button>
               </li>

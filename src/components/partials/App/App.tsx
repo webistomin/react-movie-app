@@ -10,7 +10,6 @@ import '@/assets/sass/main.sass';
 import AppNav from 'components/partials/AppNav';
 import AppSearch from 'components/partials/AppSearch';
 import ErrorBoundary from 'components/partials/AppErrorBoundary';
-import AppInitializer from 'components/partials/AppInitializer';
 import AppNotifications from 'components/partials/AppNotifications/AppNotifications';
 import AppScrollRestorator from 'components/partials/AppScrollRestorator/AppScrollResorator';
 
@@ -35,7 +34,6 @@ const App: FunctionComponent = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ErrorBoundary className={b()}>
-          <AppInitializer />
           <AppNotifications />
           <ConnectedRouter history={history}>
             <Route render={() => <AppScrollRestorator />} />

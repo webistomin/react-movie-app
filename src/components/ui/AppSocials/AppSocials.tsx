@@ -23,7 +23,8 @@ const AppSocials: FunctionComponent<IProps> = ({ className }) => {
             target='_blank'
             rel='noopener noreferrer nofollow'
             className={b('Link')}
-            color='grey'>
+            color='grey'
+            aria-label='Open project on GitHub'>
             <AppIcon className='Icon_github' icon='icon-github' width={24} height={24} />
           </AppLink>
         </li>

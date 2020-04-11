@@ -95,9 +95,35 @@
           grid-template-columns: repeat(auto-fill, minmax(15%, 1fr))
 
       .CardList-Item
-        width: 48%
+        width: 45%
         margin-bottom: 20px
 
         @supports (display: grid)
           width: 100%
           margin-bottom: 0
+
+        +media($screen-sm)
+          width: 30%
+
+          @supports (display: grid)
+            width: 100%
+
+        +media($screen-lg)
+          width: 23%
+
+          @supports (display: grid)
+            width: 100%
+
+        +media($screen-xl)
+          width: 18%
+
+          @supports (display: grid)
+            width: 100%
+
+        +media($screen-xxl)
+          width: 15%
+
+          @supports (display: grid)
+            width: 100%
+
+

@@ -7,4 +7,5 @@ export interface ICast {
   name: string;
   order: number;
   profile_path: string;
+  poster_path: string;
 }

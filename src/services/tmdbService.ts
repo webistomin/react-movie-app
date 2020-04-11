@@ -5,6 +5,7 @@ import { IMovieCredits } from 'common/types/movie-credits';
 import { IMovieDetails } from 'common/types/movie-details';
 import { IVideos } from 'common/types/videos';
 import { IImages } from 'common/types/images';
+import { IPersonDetails } from 'common/types/person-details';
 
 export default class TMDb {
   private readonly API_BASE = process.env.REACT_APP_TMDB_URL || process.env.react_app_tmdb_url;
@@ -95,6 +96,12 @@ export default class TMDb {
   public getMovieVideos = async (id: number): Promise<IVideos> => {
     return await this.fetchJSON(
       `${this.API_BASE}movie/${id}/videos?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}`
+    );
+  };
+
+  public getPersonDetails = async (id: number): Promise<IPersonDetails> => {
+    return await this.fetchJSON(
+      `${this.API_BASE}person/${id}?api_key=${this.TMDB_API_KEY}&language=${this.API_LANGUAGE}&append_to_response=movie_credits`
     );
   };
 }

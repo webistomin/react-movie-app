@@ -6,10 +6,18 @@
     margin: 50px 0
     padding-left: 40px
 
+    +m('noPaddings')
+      padding-left: 0
+      width: calc(100% + 40px)
+
   +media($screen-lg)
     box-sizing: border-box
     min-height: 463px
     padding-left: 50px
+
+    +m('noPaddings')
+      width: calc(100% + 50px)
+      padding-left: 0
 
   .flickity-viewport
     overflow: hidden

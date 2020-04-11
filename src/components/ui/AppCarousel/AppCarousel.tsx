@@ -10,7 +10,7 @@ import './AppCarousel.sass';
 import { IMovie } from 'common/types/movie';
 import { ICast } from 'common/types/cast';
 
-const b = cn('CardCarousel');
+export const b = cn('CardCarousel');
 
 interface IMovieCarousel extends IProps {
   link?: string;
@@ -26,6 +26,7 @@ interface IPersonCarousel extends IProps {
 
 interface IProps {
   title: string;
+  className?: string;
 }
 
 type ConditionalCarouselProps = IMovieCarousel | IPersonCarousel;
@@ -44,10 +45,10 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
   };
 
   render() {
-    const { title, items, cast, link } = this.props;
+    const { title, items, cast, link, className } = this.props;
 
     return (
-      <section className={b()}>
+      <section className={classnames(b(), className)}>
         <div className={b('Heading')}>
           <h2 className={classnames(b('Title'), 'Title')}>{title}</h2>
           {link && (
@@ -79,7 +80,8 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
                       character={card.character}
                       id={card.id}
                       name={card.name}
-                      profile_path={card.profile_path}
+                      profile_path={card.profile_path || card.poster_path}
+                      linkName={card.name ? 'person' : 'movie'}
                     />
                   </li>
                 );

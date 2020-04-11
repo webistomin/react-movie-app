@@ -13,6 +13,7 @@ import movieCreditsSaga from 'store/movie/credits/saga';
 import movieVideosSaga from 'store/movie/videos/saga';
 import movieImagesSaga from 'store/movie/images/saga';
 import genresSaga from 'store/genres/saga';
+import personDetailsSaga from 'store/person/saga';
 import initializeAppSaga from 'store/init/saga';
 
 export default function* rootSaga() {
@@ -30,6 +31,7 @@ export default function* rootSaga() {
     similarMoviesSaga(),
     movieVideosSaga(),
     movieImagesSaga(),
+    personDetailsSaga(),
     initializeAppSaga(),
   ]);
 }

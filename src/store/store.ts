@@ -25,6 +25,7 @@ import movieVideosReducer from 'store/movie/videos/reducer';
 import movieImagesReducer from 'store/movie/images/reducer';
 import genresReducer from 'store/genres/reducer';
 import favoriteMoviesReducer from 'store/favorites/reducer';
+import personDetailsReducer from 'store/person/reducer';
 
 const movieReducers = combineReducers({
   latestMovies: latestMovieReducer,
@@ -48,6 +49,7 @@ const rootReducers = combineReducers({
   movies: movieReducers,
   genres: genresReducer,
   favoriteMovies: favoriteMoviesReducer,
+  person: personDetailsReducer,
   notifications: notifications,
 });
 

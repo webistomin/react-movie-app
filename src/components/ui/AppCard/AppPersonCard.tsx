@@ -12,6 +12,7 @@ import './AppCard.sass';
 const b = cn('Card');
 
 interface IProps {
+  linkName: 'person' | 'movie';
   profile_path: ICast['profile_path'];
   id: ICast['id'];
   name: ICast['name'];
@@ -19,10 +20,10 @@ interface IProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/camelcase
-const AppPersonCard: FunctionComponent<IProps> = ({ profile_path, id, name, character }) => {
+const AppPersonCard: FunctionComponent<IProps> = ({ profile_path, linkName, id, name, character }) => {
   return (
     <article className={b()}>
-      <Link to={`/person/${id}`} className={b('Link')}>
+      <Link to={`/${linkName}/${id}`} className={b('Link')}>
         <figure className={b('Figure')}>
           <picture className={b('Picture')}>
             <AppLazyImage

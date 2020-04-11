@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 
 import AppContent from 'components/ui/AppContent';
 import AppFooter from 'components/partials/AppFooter';
@@ -9,6 +9,10 @@ import { getFavoriteMovies } from 'store/favorites/selectors';
 
 const FavoriteMovies: FunctionComponent = () => {
   const favoriteMovies = useSelector(getFavoriteMovies);
+
+  useEffect(() => {
+    document.title = `Favorite movies – ${favoriteMovies.length} items`;
+  }, [favoriteMovies]);
 
   return (
     <>

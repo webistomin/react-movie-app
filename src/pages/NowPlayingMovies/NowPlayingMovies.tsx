@@ -25,6 +25,10 @@ const NowPlayingMovies: FunctionComponent = () => {
     dispatch(fetchNowPlayingMoviesStart());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = 'Now playing movies 🎞️';
+  }, []);
+
   const loadMoreCards = useCallback(() => {
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;

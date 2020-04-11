@@ -25,6 +25,10 @@ const UpcomingMovies: FunctionComponent = () => {
     dispatch(fetchUpcomingMoviesStart());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = 'Upcoming movies 📅';
+  }, []);
+
   const loadMoreCards = useCallback(() => {
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;

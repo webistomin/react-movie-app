@@ -29,6 +29,10 @@ export const Person: FunctionComponent = () => {
     };
   }, [dispatch, params]);
 
+  useEffect(() => {
+    document.title = `${personDetails?.name || 'Person page'}`;
+  }, [personDetails]);
+
   const parsedDetails = parsePersonDetails(personDetails);
 
   return (
@@ -38,7 +42,11 @@ export const Person: FunctionComponent = () => {
           <AppDetails title={personDetails.name} poster={personDetails.profile_path} details={parsedDetails} />
         )}
         {personDetails?.movie_credits?.cast && (
-          <AppCarousel className={bCarousel({ noPaddings: true })} title='Known for' cast={personDetails?.movie_credits?.cast} />
+          <AppCarousel
+            className={bCarousel({ noPaddings: true })}
+            title='Known for'
+            cast={personDetails?.movie_credits?.cast}
+          />
         )}
       </AppContent>
       <AppFooter />

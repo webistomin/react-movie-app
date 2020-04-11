@@ -28,7 +28,7 @@ const Home: FunctionComponent = () => {
   const latestMovie = popularMovies?.results.slice(0, 10)[randomInt];
 
   useEffect(() => {
-    document.title = 'Home, sweet home :: 💚';
+    document.title = 'Home, sweet home :: 💙';
     dispatch(fetchPopularMoviesStart());
     dispatch(fetchTopRatedMoviesStart());
     dispatch(fetchNowPlayingMoviesStart());

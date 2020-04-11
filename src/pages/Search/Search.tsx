@@ -45,6 +45,12 @@ const Search: FunctionComponent = () => {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    document.title = `Search result for "${location.query.query}"`;
+  }, [location]);
+
   return (
     <>
       <AppContent className={b({ withPaddings: true })}>

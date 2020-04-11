@@ -25,6 +25,10 @@ const TopRatedMovies: FunctionComponent = () => {
     dispatch(fetchTopRatedMoviesStart());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = 'Top rated movies 🌟';
+  }, []);
+
   const loadMoreCards = useCallback(() => {
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;

@@ -62,14 +62,14 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
             {items &&
               items.map((card) => {
                 return (
-                  <li className={b('Item')} key={card.id}>
+                  <div className={b('Item')} key={card.id}>
                     <AppCard
                       id={card.id}
                       poster_path={card.poster_path}
                       title={card.title}
                       vote_average={card.vote_average}
                     />
-                  </li>
+                  </div>
                 );
               })}
             {cast &&

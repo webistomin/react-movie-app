@@ -25,6 +25,10 @@ const PopularMovies: FunctionComponent = () => {
     dispatch(fetchPopularMoviesStart());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = 'Popular movies 🔥';
+  }, []);
+
   const loadMoreCards = useCallback(() => {
     if (requestStatus !== FetchStatus.PENDING) {
       const nextPage = currentPage + 1;

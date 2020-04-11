@@ -67,14 +67,18 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
 
   return (
     <article className={b()}>
-      <button onClick={toggleFavoriteState} type='button' className={b('Like')}>
+      <button
+        onClick={toggleFavoriteState}
+        aria-label={isInFavoriteList ? 'Remove movie from favorite list' : 'Add movie to favorite list'}
+        type='button'
+        className={b('Like')}>
         {isInFavoriteList() ? (
           <AppIcon className='Icon_heart' icon='icon-heart-filled' width={24} height={24} />
         ) : (
           <AppIcon className='Icon_heart' icon='icon-heart' width={24} height={24} />
         )}
       </button>
-      <Link to={`/movie/${id}`} className={b('Link')}>
+      <Link to={`/movie/${id}`} className={b('Link')} aria-label={`Open ${title} movie`}>
         <figure className={b('Figure')}>
           <picture className={b('Picture')}>
             <AppLazyImage

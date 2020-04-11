@@ -12,6 +12,7 @@ import AppSearch from 'components/partials/AppSearch';
 import ErrorBoundary from 'components/partials/AppErrorBoundary';
 import AppInitializer from 'components/partials/AppInitializer';
 import AppNotifications from 'components/partials/AppNotifications/AppNotifications';
+import AppScrollRestorator from 'components/partials/AppScrollRestorator/AppScrollResorator';
 
 const Home = lazy(() => import('pages/Home'));
 const Movie = lazy(() => import('pages/Movie'));
@@ -30,11 +31,6 @@ const w = cn('Wrapper');
 const { store, persistor } = configureStore();
 
 const App: FunctionComponent = () => {
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-    return null;
-  };
-
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -42,7 +38,7 @@ const App: FunctionComponent = () => {
           <AppInitializer />
           <AppNotifications />
           <ConnectedRouter history={history}>
-            <Route component={scrollToTop} />
+            <Route render={() => <AppScrollRestorator />} />
             <div className={w()}>
               <AppNav />
               <AppSearch />

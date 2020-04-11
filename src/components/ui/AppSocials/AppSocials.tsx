@@ -18,12 +18,12 @@ const AppSocials: FunctionComponent<IProps> = ({ className }) => {
     <div className={classnames(b('Socials'), className)}>
       <ul className={b('List')}>
         <li className={b('Item')}>
-          <AppLink to='/' className={b('Link')} color='grey'>
-            <AppIcon className='Icon_mail' icon='icon-mail' width={24} height={24} />
-          </AppLink>
-        </li>
-        <li className={b('Item')}>
-          <AppLink to='/' className={b('Link')} color='grey'>
+          <AppLink
+            to='https://github.com/webistomin/react-movie-app'
+            target='_blank'
+            rel='noopener noreferrer nofollow'
+            className={b('Link')}
+            color='grey'>
             <AppIcon className='Icon_github' icon='icon-github' width={24} height={24} />
           </AppLink>
         </li>

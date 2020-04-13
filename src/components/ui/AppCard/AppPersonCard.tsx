@@ -31,6 +31,7 @@ const AppPersonCard: FunctionComponent<IProps> = ({ profile_path, linkName, id, 
               className={b('Img')}
               width={240}
               height={360}
+              alt={`${name} - ${character}`}
             />
           </picture>
         </figure>

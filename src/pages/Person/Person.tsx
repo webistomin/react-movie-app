@@ -41,13 +41,13 @@ export const Person: FunctionComponent = () => {
         {personDetails && (
           <AppDetails title={personDetails.name} poster={personDetails.profile_path} details={parsedDetails} />
         )}
-        {personDetails?.movie_credits?.cast && (
+        {personDetails?.movie_credits?.cast ? (
           <AppCarousel
             className={bCarousel({ noPaddings: true })}
             title='Known for'
             cast={personDetails?.movie_credits?.cast}
           />
-        )}
+        ) : null}
       </AppContent>
       <AppFooter />
     </>

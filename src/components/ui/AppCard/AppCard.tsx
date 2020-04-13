@@ -86,6 +86,7 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
               className={b('Img')}
               width={240}
               height={360}
+              alt={title}
             />
           </picture>
         </figure>

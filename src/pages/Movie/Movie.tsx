@@ -26,6 +26,7 @@ import { getMovieImages } from 'store/movie/images/selectors';
 import { fetchMovieImagesStart } from 'store/movie/images/actions';
 import { IVideo } from 'common/types/videos';
 import { IImage } from 'common/types/images';
+import { FetchStatus } from 'common/types/fetch-status';
 
 interface IRouteParams {
   id: string;
@@ -36,6 +37,7 @@ const Movie: FunctionComponent = () => {
   const params = useParams<IRouteParams>();
   const movie = useSelector(getMovieDetails);
   const credits = useSelector(getMovieCredits);
+  const creditFetchStatus = useSelector(getMovieCreditsFetchStatus)
   const videos = useSelector(getMovieVideos);
   const images = useSelector(getMovieImages);
   const recommended = useSelector(getRecommendedMovies);
@@ -102,10 +104,11 @@ const Movie: FunctionComponent = () => {
     return (
       <>
         <AppDetails title='Storyline' poster={movie.poster_path} overview={movie.overview} details={parsedDetails} />
-        {credits?.cast?.length ? <AppCarousel title='Cast' cast={credits.cast} /> : <AppSpin minHeight={563} />}
+        {creditFetchStatus === FetchStatus.PENDING ? <AppSpin minHeight={563} /> : null}
+        {credits?.cast?.length ? <AppCarousel title='Cast' cast={credits.cast} /> : null}
       </>
     );
-  }, [credits, movie]);
+  }, [credits, movie, creditFetchStatus]);
 
   const renderMovieVideos = useCallback(() => {
     if (!videos) {

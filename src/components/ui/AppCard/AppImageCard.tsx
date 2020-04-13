@@ -34,6 +34,7 @@ const AppImageCard: FunctionComponent<IProps> = ({ file_path, onClick }) => {
             className={b('Img')}
             width={780}
             height={439}
+            alt={'Some picture'}
           />
         </picture>
       </figure>

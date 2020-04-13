@@ -14,9 +14,10 @@ interface IProps {
   width?: number;
   height?: number;
   image?: string;
+  alt?: string;
 }
 
-const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, image, width, height }) => {
+const AppLazyImage: FunctionComponent<IProps> = ({ className, alt, scrollPosition, image, width, height }) => {
   const [isLoaded, setLoadingState] = useState(false);
 
   const afterLoad = () => {
@@ -28,11 +29,11 @@ const AppLazyImage: FunctionComponent<IProps> = ({ className, scrollPosition, im
   return (
     <LazyLoadImage
       src={currentImage}
-      alt='#'
+      alt={alt || '#'}
       width={width}
       height={height}
       afterLoad={afterLoad}
-      threshold={0}
+      threshold={1}
       scrollPosition={scrollPosition}
       className={classnames(b({ loaded: isLoaded, contain: !image }), className)}
     />

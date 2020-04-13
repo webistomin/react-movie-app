@@ -34,6 +34,7 @@ const AppVideoCard: FunctionComponent<IProps> = ({ id, name, type, ytKey, onClic
             className={b('Img')}
             width={640}
             height={480}
+            alt={name}
           />
         </picture>
       </figure>

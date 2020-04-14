@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
 import Flickity from 'react-flickity-component';
+import { IMovie } from 'common/types/movie';
+import { ICast } from 'common/types/cast';
 
 import AppCard, { AppPersonCard } from 'components/ui/AppCard';
 import AppLink from 'components/ui/AppLink';
 
 import './AppCarousel.sass';
-import { IMovie } from 'common/types/movie';
-import { ICast } from 'common/types/cast';
+import AppExploreCard from 'components/ui/AppCard/AppExploreCard';
 
 export const b = cn('CardCarousel');
 
@@ -42,10 +43,12 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
     selectedAttraction: 0.01,
     friction: 0.15,
     groupCells: '100%',
+    resize: true,
   };
 
   render() {
     const { title, items, cast, link, className } = this.props;
+    let flkty = null;
 
     return (
       <section className={classnames(b(), className)}>
@@ -58,7 +61,7 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
           )}
         </div>
         <div className={b('Wrapper')}>
-          <Flickity className={b('Slider')} options={this.flickityOptions}>
+          <Flickity className={b('Slider')} options={this.flickityOptions} flickityRef={(ref) => (flkty = ref)}>
             {items &&
               items.map((card) => {
                 return (
@@ -88,9 +91,7 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
               })}
             {link && (
               <div className={b('Item')}>
-                <AppLink to={link} className={b('Explore')} color='white'>
-                  Explore all
-                </AppLink>
+                <AppExploreCard link={link} />
               </div>
             )}
           </Flickity>

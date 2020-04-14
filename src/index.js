@@ -8,10 +8,6 @@ import { detectUserInput } from 'utils/detectUserInput';
 // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 import * as icons from './assets/img/icons';
 
-// polyfills
-// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-import polyfill from 'utils/polyfill';
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

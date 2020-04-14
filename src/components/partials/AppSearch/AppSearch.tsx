@@ -32,8 +32,13 @@ const AppSearch: FunctionComponent = () => {
           className={b('Input')}
           placeholder='Search for a movie...'
           onChange={handleChange}
+          aria-label='Input movie name'
         />
-        <button type='button' className={b('Clear', { visible: Boolean(searchQuery) })} onClick={handleClear}>
+        <button
+          type='button'
+          className={b('Clear', { visible: Boolean(searchQuery) })}
+          onClick={handleClear}
+          aria-label='Clear search query'>
           <AppIcon icon='icon-cross' width={24} height={24} />
         </button>
       </form>

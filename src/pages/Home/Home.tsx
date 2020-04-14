@@ -8,7 +8,7 @@ import AppSpin from 'components/ui/AppSpin/AppSpin';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPopularMoviesStart } from 'store/movie/popular/actions';
-import { getPopularMovies } from 'store/movie/popular/selectors';
+import { getPopularMovies, getPopularMoviesFetchStatus } from 'store/movie/popular/selectors';
 import { getNowPlayingMovies } from 'store/movie/now-playing/selectors';
 import { fetchNowPlayingMoviesStart } from 'store/movie/now-playing/actions';
 import { getTopRatedMovies } from 'store/movie/top-rated/selectors';
@@ -26,6 +26,7 @@ const Home: FunctionComponent = () => {
   const topRatedMovies = useSelector(getTopRatedMovies);
   const upcomingMovies = useSelector(getUpcomingMovies);
   const latestMovie = popularMovies?.results.slice(0, 10)[randomInt];
+  const popularFetchStatus = useSelector(getPopularMoviesFetchStatus);
 
   useEffect(() => {
     document.title = 'Home, sweet home :: 💙';
@@ -46,6 +47,8 @@ const Home: FunctionComponent = () => {
           release_date={latestMovie?.release_date}
           runtime={latestMovie?.runtime}
           vote_average={latestMovie?.vote_average}
+          fetchStatus={popularFetchStatus}
+          isBreadcrumbVisible={false}
         />
         {nowPlayingMovies ? (
           <AppCarousel title='Now playing movies' link='/now-playing' items={nowPlayingMovies.results} />

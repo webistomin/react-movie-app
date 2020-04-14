@@ -14,7 +14,7 @@ import AppCardList from 'components/ui/AppCardList';
 import { clearMovieDetails, fetchMovieDetailsStart } from 'store/movie/details/actions';
 import { fetchRecommendedMoviesStart } from 'store/movie/recommended/actions';
 import { fetchSimilarMoviesStart } from 'store/movie/similar/actions';
-import { getMovieDetails } from 'store/movie/details/selectors';
+import { getMovieDetails, getMovieDetailsFetchStatus } from 'store/movie/details/selectors';
 import { getRecommendedMovies } from 'store/movie/recommended/selectors';
 import { getSimilarMovies } from 'store/movie/similar/selectors';
 import { parseMovieDetails } from 'components/ui/AppDetails/parseMovieDetails';
@@ -36,8 +36,9 @@ const Movie: FunctionComponent = () => {
   const dispatch = useDispatch();
   const params = useParams<IRouteParams>();
   const movie = useSelector(getMovieDetails);
+  const detailsFetchStatus = useSelector(getMovieDetailsFetchStatus);
   const credits = useSelector(getMovieCredits);
-  const creditFetchStatus = useSelector(getMovieCreditsFetchStatus)
+  const creditFetchStatus = useSelector(getMovieCreditsFetchStatus);
   const videos = useSelector(getMovieVideos);
   const images = useSelector(getMovieImages);
   const recommended = useSelector(getRecommendedMovies);
@@ -149,6 +150,8 @@ const Movie: FunctionComponent = () => {
           release_date={movie?.release_date}
           runtime={movie?.runtime}
           vote_average={movie?.vote_average}
+          fetchStatus={detailsFetchStatus}
+          isBreadcrumbVisible={true}
         />
         <AppTabs tabs={getAvailableTabs()} currentTab={currentTab} onTabClick={(id) => setTab(id)} />
         {recommended && Boolean(recommended.total_results) && (

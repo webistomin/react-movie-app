@@ -54,6 +54,7 @@ export const AppCardInfinityList: FunctionComponent<IMovieList> = ({
                     poster_path={movie.poster_path}
                     id={movie.id}
                     vote_average={movie.vote_average}
+                    shouldOpenInNewTab={true}
                   />
                 </li>
               );

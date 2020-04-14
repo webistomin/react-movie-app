@@ -23,10 +23,11 @@ interface IProps {
   poster_path: IMovie['poster_path'];
   id: IMovie['id'];
   vote_average: IMovie['vote_average'];
+  shouldOpenInNewTab?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/camelcase
-const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_average }) => {
+const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_average, shouldOpenInNewTab }) => {
   const favoriteMovies = useSelector(getFavoriteMovies);
   const dispatch = useDispatch();
 
@@ -78,7 +79,11 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
           <AppIcon className='Icon_heart' icon='icon-heart' width={24} height={24} />
         )}
       </button>
-      <Link to={`/movie/${id}`} className={b('Link')} aria-label={`Open ${title} movie`}>
+      <Link
+        to={`/movie/${id}`}
+        className={b('Link')}
+        aria-label={`Open ${title} movie`}
+        target={shouldOpenInNewTab ? '_blank' : '_self'}>
         <figure className={b('Figure')}>
           <picture className={b('Picture')}>
             <AppLazyImage

@@ -16,6 +16,7 @@ import iconZoom from './icon-zoom.svg';
 import iconCalendar from './icon-calendar.svg';
 import iconRated from './icon-rated.svg';
 import iconFlame from './icon-flame.svg';
+import iconArrowThin from './icon-arrow-thin.svg';
 
 export {
   iconFlame,
@@ -36,4 +37,5 @@ export {
   iconUser,
   iconCross,
   iconZoom,
+  iconArrowThin,
 };

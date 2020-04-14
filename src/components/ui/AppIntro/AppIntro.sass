@@ -44,6 +44,9 @@
       &::before
         background-image: linear-gradient(90deg, $color-blacker 0, transparent 50%, transparent)
 
+      +m('default')
+        width: 60%
+
   +e('Pic')
     height: 100%
 
@@ -52,6 +55,10 @@
     height: 30vh
     object-fit: cover
     object-position: top
+
+    +m('default')
+      object-fit: contain
+      object-position: center
 
     +media($screen-md)
       height: 40vh
@@ -120,3 +127,41 @@
 
     +media($screen-lg)
       display: inline-flex
+
+  +e('Breadcrumb')
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 3
+    font-size: 0
+    width: 60px
+    height: 60px
+    background-color: $color-black
+    display: flex
+    align-items: center
+    justify-content: center
+    color: $color-white
+
+    &:hover
+      color: $color-blue
+
+    &::before
+      display: none
+
+    .Icon
+      transform: rotate(180deg)
+
+    +media($screen-lg)
+      width: auto
+      height: auto
+      font-size: 14px
+      left: 50px
+      top: 50px
+      background-color: transparent
+      color: $color-blue
+
+      .Icon
+        display: none
+
+      &::before
+        display: block

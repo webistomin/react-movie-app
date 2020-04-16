@@ -13,7 +13,8 @@
     "lint:write": "eslint src/. --fix",
     "prettier:write": "prettier --write \"src/**/*.+(jsx|js|json|md)\"",
     "analyze": "react-app-rewired build --analyze",
-    "deploy": "now"
+    "deploy": "now",
+    "tests:e2e:windows": "node_modules\\.bin\\hermione"
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.6",
@@ -61,6 +62,7 @@
     "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
     "customize-cra": "^0.9.1",
     "editorconfig-checker": "^3.0.3",
     "eslint": "^6.8.0",
@@ -70,6 +72,8 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react-hooks": "0.0.0-5de5b6150",
     "file-loader": "^6.0.0",
+    "hermione": "^3.1.0",
+    "html-reporter": "^5.15.2",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.5",
     "node-sass": "^4.13.1",

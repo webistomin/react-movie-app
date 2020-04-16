@@ -83,7 +83,8 @@ const AppCard: FunctionComponent<IProps> = ({ title, poster_path, id, vote_avera
         to={`/movie/${id}`}
         className={b('Link')}
         aria-label={`Open ${title} movie`}
-        target={shouldOpenInNewTab ? '_blank' : '_self'}>
+        // target={shouldOpenInNewTab ? '_blank' : '_self'}
+      >
         <figure className={b('Figure')}>
           <picture className={b('Picture')}>
             <AppLazyImage

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="" alt="TMDB">
+  <img src="https://raw.githubusercontent.com/webistomin/react-movie-app/master/docs/tmdb.svg" alt="TMDB">
 </p>
 <h1 align="center">Мувисёрчер</h1>
 

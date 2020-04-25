@@ -8,6 +8,8 @@
 [![devDependencies Status](https://david-dm.org/webistomin/react-movie-app/dev-status.svg)](https://david-dm.org/webistomin/react-movie-app?type=dev)
 [![Build Status](https://travis-ci.com/webistomin/react-movie-app.svg?branch=master)](https://travis-ci.com/webistomin/react-movie-app)
 [![CodeFactor](https://www.codefactor.io/repository/github/webistomin/react-movie-app/badge)](https://www.codefactor.io/repository/github/webistomin/react-movie-app)
+![GitHub top language](https://img.shields.io/github/languages/top/webistomin/react-movie-app)
+![GitHub last commit](https://img.shields.io/github/last-commit/webistomin/react-movie-app)
 ![2ch](https://img.shields.io/static/v1?label=Sup&message=2ch.hk/wrk&color=orange)
 
 <h4 align="center">

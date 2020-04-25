@@ -1,4 +1,5 @@
-# Мувисёрчер
+<h1 align="center">Мувисёрчер</h1>
+
 
 [![dependencies Status](https://david-dm.org/webistomin/react-movie-app/status.svg)](https://david-dm.org/webistomin/react-movie-app)
 [![devDependencies Status](https://david-dm.org/webistomin/react-movie-app/dev-status.svg)](https://david-dm.org/webistomin/react-movie-app?type=dev)
@@ -16,22 +17,10 @@
 
 ## Стэк технологий
 
-<table>
-  <tbody>
-    <tr>
-      <td><code>React.js</code></td>
-    </tr>
-    <tr>
-      <td><code>Redux</code></td>
-    </tr>
-    <tr>
-      <td><code>Redux Saga</code></td>
-    </tr>
-    <tr>
-      <td><code>TypeScript</code></td>
-    </tr>
-  </tbody>
-</table>
+* React.js
+* Redux
+* Redux Saga
+* TypeScript
 
 ## Команды
 

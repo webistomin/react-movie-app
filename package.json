@@ -13,14 +13,14 @@
     "lint:write": "eslint src/. --fix",
     "prettier:write": "prettier --write \"src/**/*.+(jsx|js|json|md)\"",
     "analyze": "react-app-rewired build --analyze",
-    "deploy": "now",
-    "tests:e2e:windows": "node_modules\\.bin\\hermione"
+    "deploy": "now"
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.6",
     "@bem-react/classnames": "^1.3.7",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
+    "nanogram.js": "^1.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-flickity-component": "^3.2.0",
@@ -72,8 +72,6 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react-hooks": "0.0.0-5de5b6150",
     "file-loader": "^6.0.0",
-    "hermione": "^3.1.0",
-    "html-reporter": "^5.15.2",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.5",
     "node-sass": "^4.13.1",

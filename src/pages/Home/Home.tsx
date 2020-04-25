@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react';
+import Nanogram from 'nanogram.js';
 
 import AppIntro from 'components/ui/AppIntro';
 import AppCarousel from 'components/ui/AppCarousel';
@@ -18,6 +19,7 @@ import { fetchUpcomingMoviesStart } from 'store/movie/upcoming/actions';
 import { randomInteger } from 'utils/randomInteger';
 
 const randomInt = randomInteger(0, 9);
+const lib = new Nanogram();
 
 const Home: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,12 @@ const Home: FunctionComponent = () => {
     dispatch(fetchNowPlayingMoviesStart());
     dispatch(fetchUpcomingMoviesStart());
   }, [dispatch]);
+
+  useEffect(() => {
+    lib.getMediaByUsername('instagram').then((value) => {
+      console.log(value.profile?.edge_owner_to_timeline_media.edges[0].node.accessibility_caption);
+    });
+  }, []);
 
   return (
     <>

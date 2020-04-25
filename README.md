@@ -9,7 +9,7 @@
 Одностраничное приложения для просмотра фильмов с помощью The Movie Database API.   
 </h4>
 
-<img alt='Превью' src="">
+<img alt='Превью' src="https://github.com/webistomin/react-movie-app/blob/master/docs/preview.png">
 
 ## Техническое задание
 

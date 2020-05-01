@@ -1,4 +1,5 @@
 export interface ICast {
+  adult: boolean;
   cast_id: number;
   character: string;
   credit_id: string;
@@ -6,6 +7,8 @@ export interface ICast {
   id: number;
   name: string;
   order: number;
+  overview: string;
   profile_path: string;
   poster_path: string;
+  title: string;
 }

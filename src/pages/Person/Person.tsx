@@ -23,7 +23,6 @@ export const Person: FunctionComponent = () => {
 
   useEffect(() => {
     dispatch(fetchPersonDetailsStart(Number(params.id)));
-
     return () => {
       dispatch(clearPersonDetails());
     };
@@ -31,6 +30,7 @@ export const Person: FunctionComponent = () => {
 
   useEffect(() => {
     document.title = `${personDetails?.name || 'Person page'}`;
+    console.log(personDetails);
   }, [personDetails]);
 
   const parsedDetails = parsePersonDetails(personDetails);

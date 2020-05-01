@@ -82,7 +82,7 @@ class AppCarousel extends Component<ConditionalCarouselProps> {
                     <AppPersonCard
                       character={card.character}
                       id={card.id}
-                      name={card.name}
+                      name={card.name || card.title}
                       profile_path={card.profile_path || card.poster_path}
                       linkName={card.name ? 'person' : 'movie'}
                     />

@@ -99,6 +99,7 @@
     +media($screen-lg)
       font-size: 15px
       margin-bottom: 5px
+      +text-overflow()
 
   +e('Character')
     font-weight: 400
@@ -108,7 +109,9 @@
     letter-spacing: 0.4px
 
     +media($screen-lg)
+      display: block
       font-size: 14px
+      +text-overflow()
 
   +e('LightboxBtn')
     opacity: 0

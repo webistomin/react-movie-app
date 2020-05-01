@@ -24,7 +24,7 @@
 
 [Ссылка на gist](https://gist.github.com/krambertech/ecb3890824fd7ada0f4ec1ff55125758)
 
-## Стэк технологий
+## Стек технологий
 
 * React.js
 * Redux
